@@ -3,4 +3,11 @@
 #+STARTUP: indent
 #+OPTIONS: toc:nil
 
-Container images bootstrapped with my configs
+Container images bootstrapped with my configs.  The game is simple:
+
+- choose and image
+- bootstrap with a few dependencies as possible 
+- configure it with ansible
+
+You win if you get emacs to load after running `docker run`
+
