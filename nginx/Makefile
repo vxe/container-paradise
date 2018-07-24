@@ -5,5 +5,5 @@ clean: release
 release: 
 	git init . ; git remote add origin https://github.com/vxe/home.git; git pull origin master; rm -rf .git; docker build -f Dockerfile.nginx -t `whoami`/`basename $$PWD | tr '[A-Z]' '[a-z]'` .
 
-docker-build:
+rebuild:
 	docker build -f Dockerfile.nginx -t `whoami`/`basename $$PWD | tr '[A-Z]' '[a-z]'` .
