@@ -1,0 +1,6 @@
+# -*- mode:org -*-
+#+TITLE: README
+#+STARTUP: indent
+#+OPTIONS: toc:nil
+
+Container images bootstrapped with my configs
