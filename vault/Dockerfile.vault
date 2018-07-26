@@ -1,0 +1,23 @@
+FROM vault:0.10.4
+
+ADD . /host
+WORKDIR /root
+
+ENV TERM=xterm-256color
+RUN  apk add ansible curl
+RUN ansible-galaxy install -r /host/etc/ansible/requirements.yml
+RUN ansible-playbook -l localhost /host/etc/ansible/home-alpine.yml --verbose
+# RUN ansible-playbook -l localhost /host/etc/ansible/perl-locallib.yml --verbose
+# RUN ansible-playbook -l localhost /host/etc/ansible/virtualenvs.yml --verbose
+# RUN ansible-playbook -l localhost /host/etc/ansible/ruby-gems.yml --verbose
+# RUN ansible-playbook -l localhost /host/etc/ansible/slow-lang.yml --verbose
+RUN rm -rf /root/.emacs.d/ && rsync --exclude .git --exclude var --exclude elpa -avz /host/ /root  && emacs -nw --batch -l ~/.emacs.d/init.el --eval="(+ 2 3)" 
+
+EXPOSE 5432/tcp 
+EXPOSE 7199/tcp
+EXPOSE 2480/tcp 
+EXPOSE 8888/tcp 
+
+
+
+
