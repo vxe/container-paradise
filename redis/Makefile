@@ -6,4 +6,4 @@ clean:
 rebuild:
 	docker build -f Dockerfile.nginx -t `whoami`/`basename $$PWD | tr '[A-Z]' '[a-z]'` .
 push:
-	docker push vedwin/nginx
+	docker push vedwin/redis
