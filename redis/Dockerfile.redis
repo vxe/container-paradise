@@ -1,6 +1,7 @@
-FROM nginx:stable-perl
+FROM redis
 
 ADD . /host
+WORKDIR /root
 
 ENV TERM=xterm-256color
 ENV DEBIAN_FRONTEND=noninteractive
