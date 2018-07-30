@@ -24,8 +24,8 @@ RUN ansible-playbook -l localhost /host/etc/ansible/clasp.yml --verbose
 # RUN ansible-playbook -l localhost /host/etc/ansible/virtualenvs.yml --verbose
 # RUN ansible-playbook -l localhost /host/etc/ansible/ruby-gems.yml --verbose
 # RUN ansible-playbook -l localhost /host/etc/ansible/slow-lang.yml --verbose
- RUN rm -rf /root/.emacs.d/ && rsync --exclude .git --exclude var --exclude elpa -avz /host/ /root  && emacs -nw --batch -l ~/.emacs.d/init.el --eval="(+ 2 3)" 
-#RUN rm -rf /root/.emacs.d/ && rsync --exclude .git --exclude var --exclude elpa -avz /host/ /home/app  && emacs -nw --batch -l ~/.emacs.d/init.el --eval="(+ 2 3)"     
+# RUN rm -rf /root/.emacs.d/ && rsync --exclude .git --exclude var --exclude elpa -avz /host/ /root  && emacs -nw --batch -l ~/.emacs.d/init.el --eval="(+ 2 3)" 
+RUN rm -rf /root/.emacs.d/ && rsync --exclude .git --exclude var --exclude elpa -avz /host/ /home/app  && emacs -nw --batch -l ~/.emacs.d/init.el --eval="(+ 2 3)"     
 RUN which emacs; ln -s /usr/bin/emacs /root/emacs
 
 EXPOSE 5432/tcp 
