@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: set-file-local-variable
-# key: filelocalvariable
-# --
--*- mode: ${1}; ${2:var}: ${3:value};  -*-

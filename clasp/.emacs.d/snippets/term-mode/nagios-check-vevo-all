@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: nagios-check-vevo-all
-# key: nagioscheckvevoall
-# --
-for edge in ams ash atl bln bos chi dal den drf exp fra hkg lax lon man mia msp nyc prn sea sin sjc stg syd tyo; do echo $edge; curl -s "http://cargo-image0001.\$edge.parsec.apple.com:2228/fs.json?tql=%7B%22index%22%3A%20%7B%22type%22%3A%20%22reverse%22%7D%2C%20%22features%22%3A%20%5B%22as_filter%22%2C%20%22phrase_v1%22%5D%2C%20%22batch%22%3A%20%7B%22limit%22%3A%2010000%7D%2C%20%22rank%22%3A%20%7B%22results%22%3A%20%7B%22order%22%3A%20%22time%22%7D%2C%20%22pick%22%3A%20%7B%22group%22%3A%20%22none%22%7D%7D%2C%20%22num_terms%22%3A%20%221%22%2C%20%22queryd%22%3A%20%7B%22use_window_pick_timecount%22%3A%20false%2C%20%22allow_enrich_errors%22%3A%20true%2C%20%22auto_window%22%3A%20false%7D%2C%20%22query%22%3A%20%7B%22and%22%3A%20%5B%7B%22tag%22%3A%20%22subsample%3A1percent%22%7D%2C%20%7B%22eq%22%3A%20%5B%22t%3A%3Asite%22%2C%20%22%3A%3Avevo%22%5D%7D%5D%7D%7D&rs_key=no&rs_sc=pretty&rs_ar=pretty&rs_tr=pretty&rs_cr=pretty&rs_fcr=pretty&rs_raw=no&rs_plot_delta=flat_0" | jq '.[] | .list[0].cr.created' | grep -v null | while read line; do date -d @$line; done done

@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: clush-ifconfig-grep
-# key: clush-ifconfig-grep
-# --
-clush -w '$1' -B 'ifconfig -a| grep addr:$2'

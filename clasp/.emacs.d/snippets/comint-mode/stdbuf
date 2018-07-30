@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: stdbuf
-# key: stdbuf
-# --
-stdbuf -o0

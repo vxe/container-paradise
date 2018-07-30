@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: rtcli-get-spares
-# key: rtcligetspares
-# --
-/opt/ops/bin/rtcli.py -f ~/.ldapauth search -r name="hou.parsec.apple.com" attr:assignment=50050  > hou.spares 

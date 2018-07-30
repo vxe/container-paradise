@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: guile-shebang
-# key: guileshebang
-# --
-#!/usr/local/bin/guile \
--e main -s
-!#

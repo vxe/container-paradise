@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: java-jcmd-list-java
-# key: java-jcmd-list-java
-# --
-/usr/lib/jvm/jdk-8-oracle-x64/bin/jcmd -l 

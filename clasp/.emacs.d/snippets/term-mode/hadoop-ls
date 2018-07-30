@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: hadoop-ls
-# key: hadoop
-# --
-sudo -u hdfs hadoop fs -ls -h

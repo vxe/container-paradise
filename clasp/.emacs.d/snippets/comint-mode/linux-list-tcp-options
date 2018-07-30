@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: linux-list-tcp-options
-# key: linuxlisttcpoptions
-# --
-cd /proc/sys/net/ipv4; ls -F

@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: cargo-increase-write-threads
-# key: cargoincrewrteathrea
-# --
-for e in EDGE
-do /opt/parsec/bin/cargo-cast.py -s "sss+cargo://cargo.\${e}.parsec.apple.com/SSS_Web_Result_Cache" --command="a=cc&config=stringstore__Stored__num_write_cmd_runner_thread:8"

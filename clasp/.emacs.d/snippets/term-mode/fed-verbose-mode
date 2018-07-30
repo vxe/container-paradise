@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: fed-verbose-mode
-# key: fedverbosemode
-# --
-/opt/parsec/bin/federator -o=/var/lib/shepherd/config/API/federator.cfg 2>&1 | grep -i --line-buffered 'timeout'

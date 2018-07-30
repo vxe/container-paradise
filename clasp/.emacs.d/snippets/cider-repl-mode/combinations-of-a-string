@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: combinations-of-a-string
-# key: combinations-of-a-string
-# --
-(count (combo/combinations #{"word1 "word2" "word3"} ${1:set_size}))

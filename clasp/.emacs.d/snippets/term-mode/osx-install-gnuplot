@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: osx-install-gnuplot
-# key: osx-install-gnuplot
-# --
-brew reinstall gnuplot --with-qt5

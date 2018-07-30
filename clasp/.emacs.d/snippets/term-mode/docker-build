@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: docker-build-image
-# key: dockerbuiolen
-# --
-sudo docker build -t \`whoami\`/\`basename $PWD | tr '[A-Z]' '[a-z]'\` .

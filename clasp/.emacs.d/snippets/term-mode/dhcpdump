@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: dhcpdump
-# key: dhcpdump
-# --
-sudo dhcpdump  -i $(sudo facter -p default_interface) | tee ~/dhcpdump.\`date +%F\`

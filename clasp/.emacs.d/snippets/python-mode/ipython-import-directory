@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: ipython-import-directory
-# key: ipythonimportdirectory
-# --
-import sys;sys.path.append("${1:absolute_path}")

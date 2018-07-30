@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: cargo-ab-search-web
-# key: cargoabsearch-web
-# --
-curl -s "http://api00$1.$2.parsec.apple.com:80/search?q=mrjob&agent=spotlight-iphone-monarch&key=granite0323&include=web_index&latlng=37,-122&locale=en_US&debug=1&domain_cache_enabled=0&latlng=37.322998%2C-122.032182&internal_test=nagios_health_check&domain_cache_enabled=0" | jq '.[]| .debug.domain_console_urls.web_index[0] ' | grep -v null | sed 's/^"//g' | sed 's/"$//' | pbcopy

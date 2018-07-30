@@ -1,7 +1,0 @@
-# -*- mode: snippet; require-final-newline: nil -*-
-# name: trello-checklist
-# key: trello
-# binding: direct-keybinding
-# --
-- [-]
-    - [-]

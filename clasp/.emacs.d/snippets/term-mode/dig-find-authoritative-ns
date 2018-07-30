@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: dig-find-authoritative-ns
-# key: digfindauthortativens
-# --
-dig +short  SOA stackoverflow.com | cut -d' ' -f1

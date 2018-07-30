@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: tcpdump-dns-requsts
-# key: tcpdumpdnsrequests
-# --
-sudo tcpdump -vvv -i p2p1 -s 0 -l -n port 53

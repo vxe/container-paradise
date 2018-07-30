@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: latex-argmin
-# key: latex-argmin
-# --
-\underset{x}{\arg\min} 

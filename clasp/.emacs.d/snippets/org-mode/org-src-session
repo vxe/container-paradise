@@ -1,8 +1,0 @@
-# -*- mode: snippet -*-
-# name: org-src-session
-# key: <session
-# --
-:PROPERTIES:
-:dir: /`(vxe-mt-chomp "hostname -f")`:
-:session: `(vxe-mt-chomp "hostname -f")`-`(vxe-mt-chomp "echo $RANDOM")`
-:END:

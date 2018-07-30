@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: extract-audio-from-youtube
-# key: extractaudiotfromyoutube
-# --
-ffmpeg -i ${1:input} -vn -acodec copy ${2:output}.aac

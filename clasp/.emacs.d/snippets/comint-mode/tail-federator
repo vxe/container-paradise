@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: tail-federator
-# key: pppppppppppp
-# --
-tail -f /var/log/shepherd/API\=federator.log | grep -Ev --line-buffered 'webindex|Error decoding semantic value|malformed|ipgeo|web_index|Unrecognized user agent'

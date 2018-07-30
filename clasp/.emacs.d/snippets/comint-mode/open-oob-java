@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: open-oob-java
-# key: open-oob-java
-# --
-/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Commands/javaws ~/Downloads/*.jnlp ; rm -rf ~/Downloads/*.jnlp; 

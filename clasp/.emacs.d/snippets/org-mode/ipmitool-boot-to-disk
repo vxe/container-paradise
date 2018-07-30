@@ -1,6 +1,0 @@
-# -*- mode: snippet; require-final-newline: nil -*-
-# name: ipmitool-boot-to-disk
-# key: ipmitoolboottodisk
-# binding: direct-keybinding
-# --
-ipmitool -U Administrator -P sv2bsv2b -H ${1:ps-name}-oob.${2:edge}.parsec.apple.com chassis bootdev disk

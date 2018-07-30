@@ -1,3 +1,0 @@
-#!/bin/bash
-
-/usr/local/bin/ansible-playbook -i /Users/vedwin/etc/ansible/hosts playbook.yml --verbose

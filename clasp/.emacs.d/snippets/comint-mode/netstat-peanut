@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: netstat-peanut
-# key: netstat
-# --
-sudo netstat -peanut

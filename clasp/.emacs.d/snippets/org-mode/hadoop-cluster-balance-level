@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: hadoop-cluster-balance-level
-# key: hadoopclusterbalance
-# --
-curl -s http://localhost:50070/jmx\?qry\=Hadoop:service\=NameNode,name\=NameNodeInfo | jq '.beans[]| .NodeUsage' | sed 's/\\\\//g' | awk '{print substr(\$0,2,length()-2);}' | jq -r '.nodeUsage.stdDev' | awk -F. '{printf ("stddev: %s%%\n", \$1)}'

@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: ipvsadm-stats
-# key: ipvsadmstats
-# --
-sudo ipvsadm -L -n --stats

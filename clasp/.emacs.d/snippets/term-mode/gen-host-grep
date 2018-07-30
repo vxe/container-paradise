@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: gen-host-grep
-# key: gen-host-grep
-# --
-sudo netstat -pant | grep $1 |  grep -E "\`for x in {${2:range}}; do host ${3:rolename}$x.${4:edge} |  perl -ne 'print "\$1\n" if /(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})/' ; done  | tr '\n' '|' | sed 's/|$//g'\`"

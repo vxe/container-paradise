@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: diff-commands
-# key: diffcommands
-# --
-diff <(${1:command1}) <(${2:comman2})

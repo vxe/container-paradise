@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: facter-primary-interface
-# key: facterprimaryinterface
-# --
-$(sudo facter -p default_interface)

@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: is-hdd
-# key: ishdd
-# --
-cat /sys/block/sda/queue/rotational

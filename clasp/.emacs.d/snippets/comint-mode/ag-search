@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: ag-search
-# key: agsearch
-# --
-ag -g

@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: python-import-bidict
-# key: importbidict
-# --
-from bidict import bidict

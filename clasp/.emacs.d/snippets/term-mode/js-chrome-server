@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: js-chrome-server
-# key: js-chrome-server
-# --
- /Applications/Google\ Chrome\ 2.app/Contents/MacOS/Google\ Chrome --disable-gpu --remote-debugging-port=$1

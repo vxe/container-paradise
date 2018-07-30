@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: latex-question
-# key: qqq
-# --
-\question{$0}

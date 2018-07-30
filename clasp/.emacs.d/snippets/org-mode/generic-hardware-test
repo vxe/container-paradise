@@ -1,8 +1,0 @@
-# -*- mode: snippet -*-
-# name: generic-hardware-test
-# key: <hw
-# --
-${1:#} pdsh -w "$5[$6].$7" 'uptime'  2>/dev/null
-${2:#} pdsh -w "$5[$6].$7" 'dmesg -T | grep -i error | wc -l; lsscsi | wc -l'  2>/dev/null
-${3:#} pdsh -w "$5[$6].$7" "sudo ethtool \\$(sudo facter -p default_interface) | grep -i speed"
-${4:#} pdsh -w "$5[$6].$7" 'sudo ethtool -i \`sudo facter -p default_interface\` | grep driver  | awk -F: "{print \$2}"; modinfo ixgbe | grep version | awk -F: "{print \$2}" | head -1' | sort

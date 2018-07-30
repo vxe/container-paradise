@@ -1,6 +1,0 @@
-# -*- mode: snippet; require-final-newline: nil -*-
-# name: rtcli-header-definition
-# key: rtcliheaderdefinition
-# binding: direct-keybinding
-# --
-name, attr:assignment, attr:rolename

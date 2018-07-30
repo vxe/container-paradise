@@ -1,8 +1,0 @@
-# -*- mode: snippet -*-
-# name: namenode-shell
-# key: namenode-shell
-# --
-#+BEGIN_SRC shell prologue "export PS1='$ '" :dir /hdpb-nn0001.prn: :session hdpb-nn0001.prn-2591 :results output replace  :exports both
-set -o xtrace
-rolename -l
-#+END_SRC

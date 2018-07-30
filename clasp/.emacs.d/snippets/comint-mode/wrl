@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: wrl
-# key: wrlwrl
-# --
-while read line; do

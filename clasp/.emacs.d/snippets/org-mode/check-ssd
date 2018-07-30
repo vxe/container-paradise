@@ -1,6 +1,0 @@
-# -*- mode: snippet; require-final-newline: nil -*-
-# name: check-ssd
-# key: checkssd
-# binding: direct-keybinding
-# --
-cat /sys/block/sda/queue/rotational # 1 = hdd ; 0 = ssd

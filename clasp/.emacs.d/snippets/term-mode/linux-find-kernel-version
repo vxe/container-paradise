@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: linux-find-kernel-version
-# key: linux-find-kernel-version
-# --
-uname -r

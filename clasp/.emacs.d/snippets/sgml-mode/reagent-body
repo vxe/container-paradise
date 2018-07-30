@@ -1,9 +1,0 @@
-# -*- mode: snippet -*-
-# name: reagent-body
-# key: reagentbody
-# --
-    <div id="app">
-      <h2>Figwheel template</h2>
-      <p>Checkout your developer console.</p>
-    </div>
-    <script src="js/compiled/${1:project_name}.js" type="text/javascript"></script>

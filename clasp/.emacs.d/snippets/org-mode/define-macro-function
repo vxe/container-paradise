@@ -1,8 +1,0 @@
-# -*- mode: snippet -*-
-# name: define-macro-function
-# key: define-macro-function
-# --
-(defun $1 ($2)
-(interactive $3)
-$0
-(put-macro-name-here))

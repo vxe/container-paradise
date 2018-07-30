@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: nagios-get-alerts
-# key: nagios-get-alerts
-# --
-curl -u vijay_edwin -s "https://nagios-$1.parsec.apple.com/cgi-bin/nagios3/history.cgi?host=all"

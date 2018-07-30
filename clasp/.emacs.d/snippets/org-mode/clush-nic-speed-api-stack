@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: clush-nic-api-stack
-# key: clushnicaistack
-# --
-export SITE= ;clush -s $SITE -g api -g apift -g cimage -g csearch -g cshared -g cstring -g cstate -g crelay -g lyraa -g lyrab -B "sudo ethtool \\$(sudo facter -p default_interface) | grep -i speed"

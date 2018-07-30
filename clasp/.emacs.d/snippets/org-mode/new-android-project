@@ -1,8 +1,0 @@
-# -*- mode: snippet; require-final-newline: nil -*-
-# name: new-android-project
-# key: new
-# binding: direct-keybinding
-# --
-android create project --target ${1:target-id} --name ${2:app-name} \
---path ~/Dropbox/android/workspace/$2 --activity ${3:activity-name} \
---package com.vedw.in.${4:app-name-lowercase} -g -v ${5:groovy-version}

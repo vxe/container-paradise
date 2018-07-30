@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: print-network-ips
-# key: printnetworkip
-# --
-nmap -sL $(ip addr show $(sudo facter -p default_interface) | grep inet | awk '{print \$1 " " \$2 " " \$7}' | awk '{print \$2}' | head -1) | grep "Nmap scan report" | awk '{print $NF}'

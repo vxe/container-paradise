@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: inlineimage
-# key: inlineimage
-# --
-#+STARTUP:inlineimages indent

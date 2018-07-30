@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: gnacker
-# key: gnackercommand
-# --
-~/src/gnaacker/bin/gnaacker --consul-server http://sre0001.prn.parsec.apple.com:8500/ ${1:action} ${2:edge} ${3:hostgroup}:${4:service}

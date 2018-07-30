@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: lsof-deleted-files
-# key: lsofdeletedfiles
-# --
-lsof -nP | grep '(deleted)'

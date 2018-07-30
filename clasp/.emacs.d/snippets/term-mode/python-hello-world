@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: python-hello-world
-# key: pythonhelloworld
-# --
-print "hello world"

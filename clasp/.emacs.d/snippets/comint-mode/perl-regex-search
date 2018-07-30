@@ -1,6 +1,0 @@
-# -*- mode: snippet; require-final-newline: nil -*-
-# name: perl-regex-search
-# key: perl-regex-search
-# binding: direct-keybinding
-# --
-perl -ne '/${1:regex}/ && print'

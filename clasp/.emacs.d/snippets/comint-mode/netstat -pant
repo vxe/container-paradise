@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: netstat-pant
-# key: netstatpant
-# --
-sudo netstat -pant

@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: ssh-tunnell
-# key: sshtunnell
-# --
-ssh -p2420 -NL10080:127.0.0.1:10080 server &

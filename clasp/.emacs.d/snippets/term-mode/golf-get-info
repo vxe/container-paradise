@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: golf-get-info
-# key: golfgetinfo
-# --
-curl -s http://${1:role}.${1:edge}.parsec.apple.com:10012/api/v1/info | jq

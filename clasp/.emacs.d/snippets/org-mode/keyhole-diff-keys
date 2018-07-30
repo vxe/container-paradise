@@ -1,6 +1,0 @@
-# -*- mode: snippet; require-final-newline: nil -*-
-# name: keyhole-diff-keys
-# key: keyholediffkeys
-# binding: direct-keybinding
-# --
-$0diff <(ssh -oStrictHostKeyChecking=no ops0002.${1:edge} 'sudo cat /var/run/nagios3/keyhole_tls' ) <(ssh -oStrictHostKeyChecking=no ha000${2:ha-num}.$1 'sudo cat /var/run/haproxy.keys')

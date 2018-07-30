@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: send-mail-to-local-user
-# key: sendmailtolocaluser
-# --
-mail -s "$1" $2

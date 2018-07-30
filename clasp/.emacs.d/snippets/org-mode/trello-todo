@@ -1,6 +1,0 @@
-# -*- mode: snippet; require-final-newline: nil -*-
-# name: trello-todo
-# key: todonew
-# binding: direct-keybinding
-# --
-* To-Do ${1:board}

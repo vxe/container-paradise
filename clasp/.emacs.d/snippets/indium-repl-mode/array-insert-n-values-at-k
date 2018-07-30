@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: array-insert-n-values-at-k
-# key: array-insert-n-values-at-k
-# --
-${1:array_name},splice(${2:k,N})

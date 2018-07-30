@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: append-to-array-head
-# key: append-to-array-head
-# --
-${1:array_name}.push(${2:value})

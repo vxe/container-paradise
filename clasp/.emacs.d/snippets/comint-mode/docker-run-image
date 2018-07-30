@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: gtd-gen-week-2-pages
-# key: gtdgenweek2pages
-# --
-gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=week.pdf ~/Downloads/9-1.pdf /Users/vedwin/Dropbox/desktop/Documents/checklists/src/weekly-review.pdf

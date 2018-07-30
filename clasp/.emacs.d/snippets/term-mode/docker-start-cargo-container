@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: docker-start-cargo-container
-# key: docker-start-cargo-container
-# --
-sudo docker run -v /Users/vedwin/pull-requests/cargo:/Users/vedwin/pull-requests/cargo -i -t \`whoami\`/\`basename $PWD\` bash

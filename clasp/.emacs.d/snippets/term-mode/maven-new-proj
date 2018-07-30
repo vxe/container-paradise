@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: maven-new-proj
-# key: mvnnewproj
-# --
- mvn -B archetype:generate \
-  -DarchetypeGroupId=org.apache.maven.archetypes \
-  -DgroupId=com.vijayedwin.${1:groupid} -DartifactId=${2:project_id}

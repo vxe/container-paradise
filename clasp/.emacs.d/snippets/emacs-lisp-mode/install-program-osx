@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: install-program-osx
-# key: installprogramosx
-# --
-(cond ((and (eq system-type 'darwin)
-      	    	(not (executable-find "multimarkdown")))
-	   (async-shell-command "brew install multimarkdown")))

@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: python-import-xml-module
-# key: pythonimportxml
-# --
-import xml.etree.ElementTree as ET

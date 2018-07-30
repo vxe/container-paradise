@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: python-http-request
-# key: pythonhttprequest
-# --
-python -c "
-import urllib2
-urllib2.urlopen('$1').read()

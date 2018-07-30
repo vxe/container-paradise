@@ -1,6 +1,0 @@
-# -*- mode: snippet; require-final-newline: nil -*-
-# name: ipmitool-print-errors
-# key: ipmitoolprinterrors
-# binding: direct-keybinding
-# --
-ipmitool -I lanplus -U Administrator -H ${1:rolename}-oob.${2:edge}.parsec.apple.com sel elist

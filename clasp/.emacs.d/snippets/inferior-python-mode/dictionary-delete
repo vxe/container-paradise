@@ -1,6 +1,0 @@
-# -*- mode: snippet; require-final-newline: nil -*-
-# name: dictionary-delete
-# key: <dictionarydelete
-# binding: direct-keybinding
-# --
-del(${1:dict_name}['${2:key}'][${3:value}])

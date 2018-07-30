@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: rtcli-servers-in-edge
-# key: rtclisercersinedge
-# --
-rtcli.py search -r name="$1.parsec.apple.com" | tee ${2:output}

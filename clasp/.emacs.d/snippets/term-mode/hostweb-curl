@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: hostweb-curl
-# key: hostwebcurl
-# --
-curl -k -s https://hostsweb.corp.apple.com/hosts| grep 

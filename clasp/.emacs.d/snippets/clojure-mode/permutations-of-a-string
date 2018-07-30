@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: permutations-of-a-string
-# key: permutations-of-a-string
-# --
-(require '[clojure.math.combinatorics :as combo])
-(count (combo/permutations #{"word1" "word2" "word3"}))

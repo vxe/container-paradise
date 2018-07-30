@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: tail-fed
-# key: tailfed
-# --
-"tail -50 /var/log/shepherd/API\=federator.log"

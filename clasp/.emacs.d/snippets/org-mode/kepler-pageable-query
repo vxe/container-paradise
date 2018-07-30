@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: kepler-pageable-query
-# key: keplerplageabquery
-# --
-curl -gs 'https://kepler.parsec.apple.com/api/event?source=naemon&filters[data.site]=/$1/&filters[data.pageable]=1&limit=0&verbosity=1&filters[data.alerting]=1&filters[data.acknowledged]=0' | jq '.data[] | .name,.url' | paste - -

@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: query-maps-endpoint-many-queries
-# key: querymapsendpoint
-# --
-for q in \`cat maps-queries.txt\`; do ./search-maps-linux -D fed \"Apple\" -L "en_US" -l ${1:lat},${2:long}; done

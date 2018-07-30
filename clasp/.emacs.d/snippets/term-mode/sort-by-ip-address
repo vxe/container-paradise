@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: sort-by-ip-address
-# key: sortbyaipaddres
-# --
-sort -V

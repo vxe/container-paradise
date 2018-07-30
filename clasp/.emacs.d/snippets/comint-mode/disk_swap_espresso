@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: disk_swap_espresso
-# key: diskswapespressowepejkwfpoewj
-# --
-/opt/ops/bin/disk_failure_esspresso.py -H FQDN_of_host -D drive_number -R rdar://problem/ -T drive-type

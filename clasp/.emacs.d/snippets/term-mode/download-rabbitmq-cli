@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: download-rabbitmq-cli
-# key: downloadrabbitmqcli
-# --
-wget http://$1.$2.parsec.apple.com:15672/cli/rabbitmqadmin ; chmod a+x rabbitmqadmin

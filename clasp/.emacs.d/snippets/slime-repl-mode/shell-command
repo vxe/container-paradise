@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: shell-command
-# key: <sh
-# --
-(with-output-to-string (asdf::*verbose-out*) (asdf:run-shell-command "$1"))

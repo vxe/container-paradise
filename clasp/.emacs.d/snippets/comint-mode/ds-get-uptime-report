@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: ds-get-uptime-report
-# key: dsgetuptimereport
-# --
-for edge in ams ap1 ash atl bln bos chi dal drf exp fra hkg hou kcy lax lon man mia msp nyc osa sea sin sjc syd tyo us1; do clush -w "ds00[01-10].$edge" -B 'supervisorctl status | grep -v day' ; done 2>/dev/null

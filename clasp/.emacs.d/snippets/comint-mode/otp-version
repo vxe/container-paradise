@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: otp-version
-# key: otpversion
-# --
-erlang:display(erlang:system_info(otp_release))
-.

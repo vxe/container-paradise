@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: kill-shared-data-rsync
-# key: efpowkefpopoij
-# --
-ps -eaf | grep rsync | grep shared | awk '{print \$2}' | xargs sudo kill -9 

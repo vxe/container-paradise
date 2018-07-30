@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: gradle-compile
-# key: gradlecompile
-# --
-gradle dist test

@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: latex-basic-equation
-# key: <lbe
-# --
-     \begin{equation}
-     $0
-     \end{equation}

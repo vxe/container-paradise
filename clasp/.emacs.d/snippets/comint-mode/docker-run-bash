@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: docker-run-bash
-# key: dockerrunbash
-# --
-sudo docker run -v /Users/vedwin/src/vedwin/sremacs:/root/.emacs.d -i -t \`whoami\`/\`basename $PWD\` bash

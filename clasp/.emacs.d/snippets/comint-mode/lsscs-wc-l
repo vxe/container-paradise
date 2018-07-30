@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: lsscsi-wc-l
-# key: lsscsi-wc-l
-# --
-lsscsi | wc -l 

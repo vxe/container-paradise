@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: import-combinatorics
-# key: import-combinatorics
-# --
-(require '[clojure.math.combinatorics :as combo])

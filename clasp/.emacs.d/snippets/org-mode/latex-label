@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: latex-label
-# key: lab
-# --
-\label{$0}

@@ -1,8 +1,0 @@
-# -*- mode: snippet -*-
-# name: symptoms
-# key: symptoms-snippet
-# --
-*** Symptoms
-$0
-*** Possible Causes <TEST
-*** Corrective Action

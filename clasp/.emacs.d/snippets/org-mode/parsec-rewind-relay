@@ -1,6 +1,0 @@
-# -*- mode: snippet; require-final-newline: nil -*-
-# name: parsec-rewind-relay
-# key: parsecrewindrelay
-# binding: direct-keybinding
-# --
-for i in {0..30}; for t in `cat SERVICES`;do /opt/parsec/bin/cargo-cast.py -s shovels+cargo://cargo.prn.parsec.apple.com/ShovelS_RS_\${t}_stg --command="a=channel_pos&name=RS_\${t}:$i:30&st=-1209600"; done; done

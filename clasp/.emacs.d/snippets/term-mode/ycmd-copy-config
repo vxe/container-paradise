@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: ycmb-copy-config
-# key: ycmbcopyconfig
-# --
-cp ~/.emacs.d/.ycm_extra_conf.py .

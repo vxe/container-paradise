@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: add-dependency-maven
-# key: add-dependency-maven
-# --
-(add-dependencies :coordinates '[$1]
-                     :repositories (merge cemerick.pomegranate.aether/maven-central
-                                          {"clojars" "https://clojars.org/repo"}))

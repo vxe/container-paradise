@@ -1,6 +1,0 @@
-# name: test
-# key: <deftest
-# --
-(deftest $1
-  (is (= $2))$>
-  $0)$>

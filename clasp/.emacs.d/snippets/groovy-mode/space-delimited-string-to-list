@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: space-delimited-string-to-list
-# key: spacedelintidedstringslist
-# --
-def toList(value) {
-    [value].flatten().findAll { it != null }
- }

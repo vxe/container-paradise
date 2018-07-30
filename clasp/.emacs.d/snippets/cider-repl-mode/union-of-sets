@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: union-of-sets
-# key: unionofsets
-# --
-(clojure.set/union ${1:sets})

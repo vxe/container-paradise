@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: set-mode
-# key: setmode
-# --
-# -*- mode:${1:ledger} -*-

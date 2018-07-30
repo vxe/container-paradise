@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: run-all-cron
-# key: runallcron
-# --
-sudo crontab -l | grep -v '#\|fstrim\|puppet\|distributor' | sed 's/.*\* \* \* //' | while read line ; do sudo bash -c "$line" ; done

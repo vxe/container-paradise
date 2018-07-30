@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: find-my-racks
-# key: findmyracks
-# --
-xargs ./find_racks.py -s

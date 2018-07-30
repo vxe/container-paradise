@@ -1,6 +1,0 @@
-# -*- mode: snippet; require-final-newline: nil -*-
-# name: dmesg-print-date
-# key: dmesgprintdate
-# binding: direct-keybinding
-# --
-dmesg -T

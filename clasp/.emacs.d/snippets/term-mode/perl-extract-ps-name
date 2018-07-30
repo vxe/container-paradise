@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: perl-extract-ps-name
-# key: perl-extract-ps-name
-# --
-perl -ne 'print "\$1\n" if /(ps\d{4}.us1.parsec.apple.com):\d{1,5}/'

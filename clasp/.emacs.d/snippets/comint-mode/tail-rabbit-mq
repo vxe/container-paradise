@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: tail-rabbit-mq
-# key: qwpokpqf-ip9o23
-# --
-tail -f /var/log/rabbitmq/rabbit@$(rolename).log

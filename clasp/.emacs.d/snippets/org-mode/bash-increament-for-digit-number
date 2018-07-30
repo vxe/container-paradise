@@ -1,6 +1,0 @@
-# -*- mode: snippet; require-final-newline: nil -*-
-# name: bash-increament-for-digit-number
-# key: bashincrementfourdigitnumber
-# binding: direct-keybinding
-# --
-for ((i = 0; i < 99; ++i)); do printf -v num '%04d' $i; echo $num; done

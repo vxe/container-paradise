@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: zk-find-learder
-# key: zkfindlearde
-# --
-echo stat | nc localhost 2181 | grep Mode

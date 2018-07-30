@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: hadoop-download-file
-# key: hadoopdownloadfile
-# --
-sudo -u hdfs hadoop fs -get $1  /tmp

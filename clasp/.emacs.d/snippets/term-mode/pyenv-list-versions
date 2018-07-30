@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: pyenv-list-versions
-# key: pyenv-list-versions
-# --
-pyenv install -l

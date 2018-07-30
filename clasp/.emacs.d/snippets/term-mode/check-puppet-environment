@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: check-puppet-environment
-# key: checkpuppetenvwho
-# --
-cat /etc/puppet/puppet.conf | grep env

@@ -1,6 +1,0 @@
-# -*- mode: snippet; require-final-newline: nil -*-
-# name: new-keybinding
-# key: newkeybinding
-# binding: direct-keybinding
-# --
-(global-set-key (kbd "${1:keybinding}") '${2:function})

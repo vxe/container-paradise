@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: pup
-# key: pup
-# --
-sudo puppet agent -tv

@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: awk-average-multiple-columns
-# key: awkaveragemultiplecolimne
-# --
-pdsh -w 'api00[01-55].mia' 'top -b -n 1 | grep field-completer'  | tr -s ' ' | cut -d ' ' -f6,7,8 | sed 's/g//g'   |awk '{sum1+=\$1; sum2+=\$2; sum3+=\$3} END {print sum1/55, sum2/55, sum3/55}'

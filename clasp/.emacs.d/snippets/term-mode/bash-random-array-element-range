@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: bash-random-array-element-range
-# key: bashrandomarratye
-# --
-${${1:name}[`shuf -i ${2:min}-${3:man} -n 1`]}

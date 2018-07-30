@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: import-sh
-# key: importsh
-# --
-(use '[clojure.java.shell :only [sh]])

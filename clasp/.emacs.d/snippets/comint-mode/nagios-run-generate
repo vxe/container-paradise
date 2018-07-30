@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: nagios-run-generate
-# key: nagiosrungenerate
-# --
-sudo /etc/nagios3/generate.sh | tee generate.$(date +%F) | grep --line-buffered -iE 'err|Error:'

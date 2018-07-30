@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: cat-syslog
-# key: catsyslog
-# --
-sudo cat /var/log/syslog | less

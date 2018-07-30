@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: org-auto-fill-mode
-# key: orgautofillmode
-# --
-# -*- mode:org; eval:(auto-fill-mode) -*-

@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: cargo-ab-original
-# key: cargoaboriginalwgweg
-# --
-site=dal; for i in {01..50}; do ab -n 100 -c 10 -k "http://cargo-image00$i.\${site}.parsec.apple.com:3218/string?k=__any__"; done | grep '100%'

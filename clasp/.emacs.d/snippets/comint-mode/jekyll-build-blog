@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: jekyll-build-blog
-# key: jekyllbuildblog
-# --
-cd  ~/src/vxe.github.io;bundle exec jekyll build; bundle exec jekyll s

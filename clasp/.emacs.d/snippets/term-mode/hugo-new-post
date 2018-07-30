@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: hugo-new-post
-# key: hugonewpost
-# --
-hugo new post/${1:post_name}.org

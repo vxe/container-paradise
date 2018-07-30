@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: change-background-color
-# key: change-background-color
-# --
-document.body.style.backgroundColor = "$1"

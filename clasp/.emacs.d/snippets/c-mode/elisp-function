@@ -1,9 +1,0 @@
-# -*- mode: snippet -*-
-# name: elisp-function
-# key: <efun
-# --
-static emacs_value
-F${1:function} (emacs_env *env, int nargs, emacs_value args[], void *data)
-{
-  return env->${2:stuff}   // eg. env->make_integer (env, 42);
-}

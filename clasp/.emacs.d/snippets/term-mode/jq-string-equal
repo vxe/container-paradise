@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: jq-string-equal
-# key: jqstringequal
-# --
-select("$1" == "$2")

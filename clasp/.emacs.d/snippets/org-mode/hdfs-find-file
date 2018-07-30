@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: hdfs-find-file
-# key: hdfsfindfile
-# --
-hdfs --config /etc/hadoop-clients/${1:hdp[a-z]}.prn dfs -ls ${2:path-eg-/data/nldata/completion_data/wiki_nl/20151031}

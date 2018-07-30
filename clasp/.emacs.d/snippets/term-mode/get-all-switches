@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: get-all-switches
-# key: getallswitches
-# --
-jq '.[] | select(.__type == "Network switch") | .attrs.FQDN.a_value' /var/spool/edge-sync/racktables/$1.parsec.apple.com.json | less

@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: puppet-run
-# key: puppetrun
-# --
-sudo puppet agent -tv& ; sudo cat /var/log/syslog | grep puppet | tail -100

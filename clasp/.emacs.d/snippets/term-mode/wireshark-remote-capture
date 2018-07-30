@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: wireshark-remote-capture
-# key: wireshark-remote-capture
-# --
-ssh ${1:host} sudo tcpdump -i ${2:interface} -w - 'port ${3:port}' | wireshark -k -i -

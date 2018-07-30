@@ -1,6 +1,0 @@
-# -*- mode: snippet; require-final-newline: nil -*-
-# name: clush-puppet
-# key: clushpuppet
-# binding: direct-keybinding
-# --
-$0clush -w '${1:edge}' 'sudo /usr/bin/puppet agent --confdir /etc/puppet --onetime --no-daemonize'	

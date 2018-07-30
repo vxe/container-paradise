@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: latex-gls
-# key: g
-# --
-\gls{${1:label}}

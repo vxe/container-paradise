@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: zombie-list
-# key: zombielist
-# --
-ps axo pid=,stat= | awk '\$2~/^Z/ { print }'  | awk '{print \$1}' | while read line; do pstree -p -s \$line; done

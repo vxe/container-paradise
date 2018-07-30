@@ -1,6 +1,0 @@
-# -*- mode: snippet; require-final-newline: nil -*-
-# name: pandoc-generator
-# key: pandocgenerator
-# binding: direct-keybinding
-# --
-pandoc -t ${1:to} -f ${2:from} -s ${3:source_file} -o ${4:output_file}

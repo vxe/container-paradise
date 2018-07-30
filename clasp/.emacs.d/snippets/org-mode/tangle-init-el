@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: tangle-init-el
-# key: tangleinitel
-# --
-elisp :tangle ~/.emacs.d/int.el

@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: pyenv-create-and-switch-to-virtualenv
-# key: pyenvcreateandswtcvirtualenv
-# --
-pyenv virtualenv VERSION NAME; pyenv activate NAME

@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: distributor-check-dataset-single-host
-# key: distributorcheckstathostr
-# --
-cd /opt/distributor && /usr/bin/env http_proxy=http://ec0001.$1.parsec.apple.com:8080 sudo bundle exec /opt/distributor/bin/distrib group check | cat

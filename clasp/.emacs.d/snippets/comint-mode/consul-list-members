@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: consul-list-members
-# key: consulelistmember
-# --
-sudo consul operator raft -list-peers

@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: awk-delete-column
-# key: awkdeletecolumn
-# --
-awk '!(\$2="")'

@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: cargo-ab-shared
-# key: cargo-ab-shared
-# --
-/opt/parsec/bin/cargo-ab.py -c 5 -n 50 -s httpsss+cargo://cargo.$1.parsec.apple.com/HTTP_SSS_$2 -v  | tee ~/var/log/cargo-ab.log.\`date +%s\` | grep 100% | perl -pe '$_ = "cargo-shared-$. $_"'

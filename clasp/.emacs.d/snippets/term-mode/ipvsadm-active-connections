@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: ipvsadm-active-connections
-# key: ipvsadmactiveconnections
-# --
-sudo ipvsadm -L -n -c | grep

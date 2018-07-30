@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: USE-iostat
-# key: USEiostat
-# --
-iostat -xz 1

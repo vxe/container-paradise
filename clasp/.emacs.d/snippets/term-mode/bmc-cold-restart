@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: ipmi-bmc-cold-restart
-# key: bmccoldrestaewpofkpok
-# --
-ipmi-setup-credentials; ;ipmitool -I lanplus -U $OOB_USER -P $OOB_PASS -H $oobip bmc reset cold

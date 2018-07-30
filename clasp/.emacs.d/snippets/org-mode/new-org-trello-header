@@ -1,7 +1,0 @@
-# -*- mode: snippet; require-final-newline: nil -*-
-# name: new-org-trello-header
-# key: new
-# binding: direct-keybinding
-# --
-# -*- mode:org; mode:org-trello -*-
-#+STARTUP: inent

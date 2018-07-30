@@ -1,9 +1,0 @@
-# -*- mode: snippet -*-
-# name: maven-dependency
-# key: mavendependenct
-# --
- <dependency>
-      <groupId>$1</groupId>
-      <artifactId>$2</artifactId>
-      <version>$3</version>
- </dependency>

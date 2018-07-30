@@ -1,9 +1,0 @@
-# -*- mode: snippet -*-
-# name: help-command
-# key: helpcommand
-# --
-if [ $# -eq 0 ]
-  then
-    echo "Usage: create-fhs-dirs DISTRO-VERSION";
-    exit 1;
-fi

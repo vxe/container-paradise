@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: tildepath
-# key: tildepath
-# --
-os.path.expanduser('$1')  

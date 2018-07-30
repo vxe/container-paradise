@@ -1,1 +1,0 @@
-The goal here is to build static libraries in golang which can be called from c++.  Jesus H Christ.

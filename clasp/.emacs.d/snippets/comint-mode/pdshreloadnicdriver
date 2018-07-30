@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: pdshreloadnicmodule
-# key: pdshreloadnicmodule
-# --
-pdsh -w "api00[01-55].dal" 'modprobe -r ixgbe && sudo modprobe ixgbe'

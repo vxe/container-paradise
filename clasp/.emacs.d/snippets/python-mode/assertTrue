@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: assertTrue
-# key: asst
-# group: testing
-# --
-self.assertTrue($0)

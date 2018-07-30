@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: peter-decomm-script
-# key: peter-decomm-script
-# --
-/opt/parsec/bin/hadoop_dn_ops.py -c hdpb -d ${1:host}

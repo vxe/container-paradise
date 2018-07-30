@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: hdfs-edit-excludes
-# key: hdfseditcexluces
-# --
-echo sudo vim /etc/hadoop/conf/hadoop-dfs.hosts.exclude; echo sudo vim /etc/hadoop/conf/hadoop-yarn.hosts.exclude

@@ -1,6 +1,0 @@
-# -*- mode: snippet; require-final-newline: nil -*-
-# name: interactive-y-n
-# key: interactiveyesorno
-# binding: direct-keybinding
-# --
-${1:var_name} = input('${2:question}?: [y/n]')

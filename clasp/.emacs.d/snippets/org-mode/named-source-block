@@ -1,9 +1,0 @@
-# -*- mode: snippet -*-
-# name:named-source-block 
-# key: <ns
-# --
-#+NAME:fig-${2:snippet-name}
-#+CAPTION: ${1:caption}
-#+BEGIN_SRC ${3:language}
-${0}
-#+END_SRC

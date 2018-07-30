@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: ipmi-power-down
-# key: ipmipopwerdwo
-# --
-ipmitool -I lanplus -U Administrator -P sv2bsv2b -H $1 chassis power off

@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: xargs-kill-9
-# key: xargskill9
-# --
-xargs sudo kill -9

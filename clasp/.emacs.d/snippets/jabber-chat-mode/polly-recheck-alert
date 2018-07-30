@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: polly-recheck-alert
-# key: pollyrecheckallert
-# --
-/g recheck ${1:edge} ${2:type}${3:XXXX}:${4:service}

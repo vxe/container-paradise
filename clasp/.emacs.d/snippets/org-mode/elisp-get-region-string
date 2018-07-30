@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: elisp-get-region-string
-# key: elispgetregion
-# --
-(buffer-substring (mark) (point))

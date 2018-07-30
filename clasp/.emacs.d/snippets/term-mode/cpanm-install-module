@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: cpanm-install-module
-# key: cpanminstallmodule
-# --
-cpanm --local-lib=~/perl5 $1::$2

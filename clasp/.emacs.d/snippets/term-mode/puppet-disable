@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: puppet-disable
-# key: puppet-disable
-# --
-puppet agent --disable "$1"

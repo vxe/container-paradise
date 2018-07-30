@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: pdsh-df-kh
-# key: pdshdfkh
-# --
-pdsh -w "${1}00[${2}].${3}" "echo ''; df -kh | sed 's/%//g'" | sort 2>/dev/null

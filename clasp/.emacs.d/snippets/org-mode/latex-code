@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: latex-code
-# key: code
-# --
-\begin{lstlisting}
-$0
-\end{lstlisting}

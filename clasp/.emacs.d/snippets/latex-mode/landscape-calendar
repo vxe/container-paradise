@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: calendar-landscape
-# key: calendarlandscape
-# --
-\documentclass[landscape, 12pt]{report}
-\usepackage[landscape]{geometry}

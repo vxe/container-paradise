@@ -1,9 +1,0 @@
-# -*- mode: snippet -*-
-# name: hello-world
-# key: <hello
-# --
-package $1
-import "fmt"
-func main() {
-    fmt.Println("hello world")
-}

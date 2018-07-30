@@ -1,8 +1,0 @@
-# -*- mode: snippet; require-final-newline: nil -*-
-# name: dated-entry
-# key: <d
-# binding: direct-keybinding
-# --
-
-** ${1:question_to_be_answered} `(vxe-mt-chomp "date +%H:%M:%S")`
-   $0

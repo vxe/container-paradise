@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: perl-print-captured-regex-stdin
-# key: perlprintcapturedregex
-# --
-perl -ne 'print "\$1\n" if /(${1:regex})/'

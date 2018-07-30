@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: pdsh-read-from-stdin
-# key: pdsh-read-from-stdin
-# --
-pdsh -w - '$1'

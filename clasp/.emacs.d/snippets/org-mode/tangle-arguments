@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: tangle-arguments
-# key: tangle-arguments
-# --
-:results silent :tangle ../project.clj

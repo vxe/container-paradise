@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: perl-read-columns-into-hash
-# key: perlreadlcolimnsinotahs
-# --
-perl -e 'use Data::Dumper; @out=qx!SHELL-COMMAND!; print $out; foreach my $line (@out){chomp $line;  my @columns = split(/\s+/, $line); my $key = $columns[0]; my $value = $columns[1]; $edgemap{$key} = $value; } print Dumper(\%edgemap);'

@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: doc
-# key: <docstring
-# --
-"""$0
-"""

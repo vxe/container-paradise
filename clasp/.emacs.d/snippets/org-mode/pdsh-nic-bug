@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: pdsh-nic-bug
-# key: pdshnicbug
-# --
-pdsh -w "$1.$2" 'sudo ethtool -i \`sudo facter -p default_interface\` | grep driver  | awk -F: "{print \$2}"; modinfo ixgbe | grep version | awk -F: "{print \$2}" | head -1' | sort

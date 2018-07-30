@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: pdsh-dmesg-real-bad
-# key: pdshdmesgrealba
-# --
-pdsh -w "cargo-image00[01-50].ams" "dmesg -T | grep -i error | wc -l" | grep ' [0-9][0-9][0-9][0-9]$'

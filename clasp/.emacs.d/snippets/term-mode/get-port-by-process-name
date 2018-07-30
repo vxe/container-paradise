@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: get-port-by-process-name
-# key: getportbyprocessname
-# --
-sudo netstat -pant | grep -E \`ps -eaf | grep $1 | awk '{print \$2}' | xargs | sed 's/ /|/g'\`

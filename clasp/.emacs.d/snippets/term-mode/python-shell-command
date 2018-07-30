@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: python-shell-command
-# key: pythonshell-command
-# --
-python -c "
-import subprocess
-date = subprocess.call('df -h', shell=True)

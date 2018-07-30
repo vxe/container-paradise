@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: org-src-formatting-fix
-# key: org-src-formatting-fix
-# --
-tr '' '' 

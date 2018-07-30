@@ -1,6 +1,0 @@
-# -*- mode: snippet; require-final-newline: nil -*-
-# name: find-mv
-# key: findmvmv
-# binding: direct-keybinding
-# --
-find . -maxdepth 1 -type f -name '${1:file_pattern}' -print0 | xargs -0 -I f mv f ${2:destination}

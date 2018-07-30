@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: graphite-pandas-dataframe
-# key: graphitedatafram
-# --
-df = lg.Query("http://graphite.${1:edge}.parsec.apple.com").target("${2:query}").execute()

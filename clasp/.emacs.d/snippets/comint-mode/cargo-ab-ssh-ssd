@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: cargo-ab-ssh-ssd
-# key: cargo-ab-ssh-ssd
-# --
-for edge in $1; do clush -w "cargo.$edge" "/opt/parsec/bin/cargo-ab.py -c 5 -n 50 -s httpsss+cargo://cargo.$edge.parsec.apple.com/HTTP_SSS_Shared_SSD"; done

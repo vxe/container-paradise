@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: latex-textbf
-# key: b
-# --
-\textbf{$1}$0

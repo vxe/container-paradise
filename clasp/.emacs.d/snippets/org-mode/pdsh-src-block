@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: pdsh-src-block
-# key: <pdshblock
-# --
-pdsh -w "${1:host}" "${2:command}"

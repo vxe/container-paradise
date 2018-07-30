@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: dmesg-count
-# key: dmesg
-# --
-dmesg -T | grep -i error | wc -l

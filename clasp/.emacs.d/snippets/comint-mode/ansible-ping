@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: ansible-ping
-# key: ansible
-# --
-ansible -i hosts all -m ping -u pizzaguy

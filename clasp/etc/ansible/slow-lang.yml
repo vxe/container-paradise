@@ -1,6 +1,0 @@
----
-- name: install golang
-  hosts: localhost
-  tasks:
-    - name: go get "docker sdk"
-      shell: go get github.com/docker/docker/client

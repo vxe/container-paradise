@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: perl-print-uniq
-# key: perlprintuniq
-# --
-perl -ne 'print unless $a{$_}++'

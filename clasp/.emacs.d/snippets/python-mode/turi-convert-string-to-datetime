@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: turi-convert-string-to-datetime
-# key: turi-convert-string-to-datetime
-# --
-${1:table}["${2:column}"] = $1["$2"].apply(lambda x: datetime.datetime.strptime(x, '${3:%Y-%m-%d %H:%M:%S}'))

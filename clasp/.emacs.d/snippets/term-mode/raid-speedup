@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: raid-speedup
-# key: raidspeedup
-# --
-echo 50000 > /proc/sys/dev/raid/speed_limit_min

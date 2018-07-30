@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: generic-tcpdump
-# key: generictcmpdump
-# --
-sudo tcpdump -vvv -i \$(sudo facter -p default_interface) -s 0 -l -n port ${1:port}

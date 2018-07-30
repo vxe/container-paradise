@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: hadoop-list-jobs
-# key: hadooplistjobs
-# --
-sudo -u hdfs hadoop --config /etc/hadoop/conf/ job -list

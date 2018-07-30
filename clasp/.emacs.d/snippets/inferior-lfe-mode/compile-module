@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: compile-module
-# key: <compile
-# --
-(c "${1:module_name}")

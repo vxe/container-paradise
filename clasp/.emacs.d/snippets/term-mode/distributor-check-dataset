@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: distributor-check-dataset
-# key: distributorcheckstat
-# --
-export SITE=$1; clush -w ds00[01-10].$SITE -B "cd /opt/distributor && /usr/bin/env http_proxy=http://ec0001.$1.parsec.apple.com:8080 sudo bundle exec /opt/distributor/bin/distrib group check | cat"

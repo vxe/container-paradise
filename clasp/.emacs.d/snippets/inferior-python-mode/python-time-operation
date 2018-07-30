@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: python-time-operation
-# key: pythontimeoperation
-# --
-import timeit
-timeit.timeit("${2:expressiob}")

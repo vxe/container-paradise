@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: kepler-get-nagios-alerts
-# key: keplergetnagios
-# --
-curl -s 'https://kepler.parsec.apple.com/api/event?source=naemon&filters\[data.site\]=/$1|$2/&filters\[data.alerting\]=1' | jq '.data[]'

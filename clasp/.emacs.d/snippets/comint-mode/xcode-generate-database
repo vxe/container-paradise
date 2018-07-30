@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: xcode-generate-database
-# key: xcodegeneratedatabase
-# --
-xcodebuild  | xcpretty --report json-compilation-database ; cp build/reports/compilation_db.json compile_commands.json

@@ -1,8 +1,0 @@
-# -*- mode: snippet -*-
-# name: org-todo-states-header
-# key: orgtodostatesheader
-# --
-#+TITLE: Notes
-#+STARTUP: indent
-#+OPTIONS: toc:nil author:nil
-#+SEQ_TODO: STUFF(s) NEXT(n) WAITING(w) DELEGATE(l) TALK(t) PROJ(p) | SOMEDAY(s@/!)  CANCELLED(c) DONE(d@/!)

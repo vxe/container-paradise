@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: use-package
-# key: <usep
-# --
-(use-package ${1:package}
-  :ensure t
-  ${2::init})

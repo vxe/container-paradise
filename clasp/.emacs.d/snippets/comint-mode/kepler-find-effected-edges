@@ -1,8 +1,0 @@
-# -*- mode: snippet -*-
-# name: kepler-find-effected-edges
-# key: keplerfindeffeedegs
-# --
-for edge in ams ap1 ash atl bln bos chi dal drf exp fra hkg hou kcy lax lon man mia msp nyc osa sea sin sjc syd tyo us1
-do
-echo $edge; curl -s "https://kepler.parsec.apple.com/api/event?source=naemon&filters\[data.site\]=/$edge/&filters\[data.alerting\]=1&filters\[data.service\]=/$1/" | jq ' .data | .[] |.data | .site' | sort | uniq
-done

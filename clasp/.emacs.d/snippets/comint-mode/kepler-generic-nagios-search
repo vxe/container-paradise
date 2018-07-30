@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: kepler-generic-nagios-search
-# key: keplergenericnagiossearch
-# --
-curl -s 'https://kepler.parsec.apple.com/api/event?source=naemon&filters\[data.site\]=/$1/&filters\[data.service\]=$2&\[data.rolename\]=/$3/&\[data.alerting\]=1' | jq '.data[] | .content' | awk '{print $1}' | sort  | uniq

@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: jet-shovel-find-exited-procs
-# key: jet-shovel-find-exited-procs
-# --
-clush -w  'jet-shovel00[01-80].prn' -B 'supervisorctl status | grep  EXITED'

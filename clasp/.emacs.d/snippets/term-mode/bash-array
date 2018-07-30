@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: bash-array
-# key: basharray
-# --
-$1=("$2")

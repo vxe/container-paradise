@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: clush-check-ubuntu-version
-# key: clushcheckubunt
-# --
-clush -bw $1 "lsb_release -a"

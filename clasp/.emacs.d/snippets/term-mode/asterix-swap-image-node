@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: asterix-swap-image-node
-# key: asterixswpimaenode
-# --
-update-dns; /usr/bin/swap-rolename ${1:rolename} -r rdar://problem/$2  --disks 10 --dns-repo ~/src/dns --cause ${3:disk} --cause-devices ${4:sda} --cause-devices ${5:ssd}

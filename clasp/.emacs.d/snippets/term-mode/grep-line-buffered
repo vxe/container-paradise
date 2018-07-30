@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: grep-line-buffered
-# key: grepgrep-line-buffered
-# --
-grep --line-buffered

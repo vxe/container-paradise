@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: cargo-ab-search
-# key: cargoabsearch
-# --
-curl -s $1 | jq '.[]| .debug.domain_console_urls.web_index[0] ' | grep -v null | sed 's/^"//g' | sed 's/"$//' | pbcopy

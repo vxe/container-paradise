@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: clush-check-nic-bug
-# key: clushchecknicbug
-# --
-export SITE= ;clush -s $SITE -g api -g apift -g cimage -g csearch -g cshared -g cstring -g cstate -g crelay -g mc -g ds -B 'sudo ethtool -i \`sudo facter -p default_interface\` | grep driver  | awk -F: "{print \$2}"; modinfo ixgbe | grep version | awk -F: "{print \$2}" | head -1' | sort

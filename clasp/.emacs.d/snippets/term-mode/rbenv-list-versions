@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: rbenv-list-versions
-# key: rbenvlistversions
-# --
-rbenv install -l

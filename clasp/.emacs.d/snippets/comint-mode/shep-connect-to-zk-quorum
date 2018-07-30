@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: shep-connect-to-zk-quorum
-# key: shepconnectozkquorum
-# --
-a_connection = ZKStore("zk-a0001.EDGE.parsec.apple.com")

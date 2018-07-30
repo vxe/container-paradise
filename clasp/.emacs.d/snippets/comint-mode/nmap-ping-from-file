@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: nmap-ping-from-file
-# key: nmappifromfile
-# --
-nmap -iL list-of-ips.txt

@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: polly-ack
-# key: pollyack
-# --
-/g ack ${1:edge} ${2:type}${3:XXXX}: ${4:rdar}
