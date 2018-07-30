@@ -30,7 +30,8 @@ RUN /home/app/clasp/bin/clasp --eval "(progn (load \"/home/app/.emacs.d/lib/slim
 RUN cd /home/app/clasp/bin; curl -O https://beta.quicklisp.org/quicklisp.lisp
 RUN /home/app/clasp/bin/clasp --load quicklisp.lisp --eval "(quicklisp-quickstart:install)"
 RUN /home/app/clasp/bin/clasp --load quicklisp.lisp --eval "(ql:add-to-init-file)"
-RUN cd /root ; git clone --recursive https://github.com/Andersbakken/rtags.git; cd rtags; cmake -DRTAGS_BUILD_CLANG=1 -DCMAKE_EXPORT_COMPILE_COMMANDS=1 . ; make ; make install
+RUN apt-get -y install clang libclang-dev cmake pkg-config bash-completion
+RUN cd /root ; git clone --recursive https://github.com/Andersbakken/rtags.git; cd rtags; cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 . ; make ; make install
 RUN which emacs; ln -s /usr/bin/emacs /root/emacs
 
 EXPOSE 5432/tcp 
