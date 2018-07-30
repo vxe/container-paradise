@@ -4,6 +4,6 @@ release:
 clean: 
 	find . ! -name Makefile ! -name Dockerfile.kali ! -name . ! -name .. | xargs rm -rf
 rebuild:
-	docker build -f Dockerfile.kali -t `whoami`/`basename $$PWD | tr '[A-Z]' '[a-z]'` .
+	docker build -f Dockerfile -t `whoami`/`basename $$PWD | tr '[A-Z]' '[a-z]'` .
 push:
 	docker push vedwin/kali

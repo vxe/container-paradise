@@ -23,7 +23,7 @@ RUN /home/app/clasp/bin/clasp --load quicklisp.lisp --eval "(quicklisp-quickstar
 RUN /home/app/clasp/bin/clasp --load quicklisp.lisp --eval "(ql:add-to-init-file)"
 RUN cd /home/app/.emacs.d; mkdir -p opt; cd opt; git clone --recursive https://github.com/Andersbakken/rtags.git
 RUN apt-get -y install libclang-6.0-dev
-RUN cd /home/app/opt/.emacs.d/rtags; cmake -DLIBCLANG_LLVM_CONFIG_EXECUTABLE=/usr/bin/llvm-config-6.0 -DCMAKE_EXPORT_COMPILE_COMMANDS=1 . ; make ; make install
+RUN cd /home/app/.emacs.d/opt/rtags; cmake -DLIBCLANG_LLVM_CONFIG_EXECUTABLE=/usr/bin/llvm-config-6.0 -DCMAKE_EXPORT_COMPILE_COMMANDS=1 . ; make ; make install
 RUN which emacs; ln -s /usr/bin/emacs /root/emacs
 
 EXPOSE 5432/tcp 
