@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: mq-check-server-status
+# key: mqcheckserverstatus
+# --
+clush -w @prn:mq -B 'if [[ `sudo service rabbitmq-server status > /dev/null; echo $?` != 0 ]]; then echo bad; fi'

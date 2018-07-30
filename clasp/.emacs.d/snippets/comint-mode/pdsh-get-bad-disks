@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: cmake-gen-database
+# key: cmakegendatabase
+# --
+cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 .

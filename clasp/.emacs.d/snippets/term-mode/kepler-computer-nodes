@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: kepler-computer-nodes
+# key: kepler-computer-nodes
+# --
+curl -sg 'kepler.parsec.apple.com/api/event?source=hwinfo&filters[data.site]=prn&filters[data.assignment]=/spare/&limit=0' | jq '.data[].data.cores' | grep 16 | wc -l

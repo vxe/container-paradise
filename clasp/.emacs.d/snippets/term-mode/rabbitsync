@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: rabbitsync
+# key: rabbitsynceweg
+# --
+cd ~/src/sriracha/topology; sync-sriracha; /opt/ops/bin/rabbitmq-topology sync edge.json api$1.$2.parsec.apple.com

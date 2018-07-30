@@ -1,0 +1,44 @@
+# ---> Emacs
+# -*- mode: gitignore; -*-
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+*.so
+CMake*
+*.tex
+auto-save-list
+tramp
+.\#*
+# Org-mode
+.org-id-locations
+# flymake-mode
+*_flymake.*
+# eshell files
+/eshell/history
+/eshell/lastdir
+# elpa packages
+/elpa/
+# reftex files
+*.rel
+# AUCTeX auto folder
+/auto/
+# cask packages
+.cask/ 
+# binaries
+bin/
+# variables
+var/
+# external packages
+lib/
+# system folders
+opt/
+# src dir
+# src/
+# wiki dir
+wiki/
+src/ios/swift-lispkit
+.go/
+# ansible
+etc/ansible

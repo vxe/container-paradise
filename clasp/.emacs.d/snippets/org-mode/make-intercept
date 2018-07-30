@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: make-intercept
+# key: makeinterept
+# --
+intercept-build --override-compiler make CC=intercept-cc CXX=intercept-c++ make

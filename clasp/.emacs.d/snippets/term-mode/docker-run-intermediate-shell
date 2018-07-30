@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: docker-run-intermediate-shell
+# key: dockerrunintermediashell
+# --
+docker run --rm -it $1 bash

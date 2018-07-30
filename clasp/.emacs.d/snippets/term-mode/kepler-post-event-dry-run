@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: kepler-post-event-dry-run
+# key: keplerpostevent
+# --
+curl -s -H 'Content-Type: application/json' -X PUT -d @release-test.json 'https://kepler.parsec.apple.com/api/event/?type=jenkins&dryRun=1'  | jq 

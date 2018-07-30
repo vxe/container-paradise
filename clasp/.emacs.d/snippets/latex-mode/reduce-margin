@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: reduce-margin
+# key: reducemargin
+# --
+\usepackage[margin=0.1in]{geometry}

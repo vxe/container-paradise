@@ -1,0 +1,47 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: python-racktable-cliient
+# key: python-racktable-client
+# binding: direct-keybinding
+# --
+#!/usr/bin/env python
+
+import argparse
+import os
+
+from triton_racktables.client import TritonRacktablesClient, get_auth
+
+def main():
+  """Racktables API Script  
+  This script is a skeleton. Copy and edit.
+
+  function_name_here:
+    Description of tests performed.
+
+  """
+  parser = argparse.ArgumentParser(description='list out existing Parsec sites')
+
+  parser.add_argument('-a', '--api',
+                     default='https://racktables.parsec.apple.com/api.php',
+                     help='base URI of Racktables API')
+
+  parser.add_argument('-p', '--password-file',
+                     default=os.getenv('HOME')+'/.ldapauth',
+                     help='file to get LDAP username and password from, defaults to $HOME/.ldapauth')
+
+  args = parser.parse_args()
+
+  ldapauth = {}
+
+  if os.path.exists(args.password_file):
+    ldap_auth = get_auth(pw_file=args.password_file)
+  else:
+    ldap_auth = get_auth()
+
+  rt_client = TritonRacktablesClient(args.api,
+                                     ldap_auth['username'],
+                                     ldap_auth['password'])
+  #do rt things here
+  ${1:print rt_client.get_dictionary()}
+
+if __name__ == '__main__':
+  main()

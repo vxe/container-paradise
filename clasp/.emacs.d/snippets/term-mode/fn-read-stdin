@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: fn-read-from-std-in
+# key: fnread-from-std-in
+# --
+function url-encode {
+    while read line
+    do
+		
+    done < "${1:-/dev/stdin}"
+    
+}

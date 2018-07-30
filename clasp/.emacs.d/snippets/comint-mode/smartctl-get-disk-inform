@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: smartctl-get-disk-inform
+# key: getdiskinformsmart
+# --
+sudo smartctl -a /dev/sd$1

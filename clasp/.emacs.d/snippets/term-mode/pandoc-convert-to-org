@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: pandoc-convert-to-org
+# key: pandoc-convert-to-org
+# --
+pandoc -s -S ${1:input} -o ${2:org_file_name}.org

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: graphite-remove-carriage-return
+# key: graphiteremovecarriagereturn
+# --
+tr -d '\r'

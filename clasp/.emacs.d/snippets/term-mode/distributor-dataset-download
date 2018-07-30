@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: distributor-download-dataset
+# key: distributordowloaddataert
+# --
+cd /opt/distributor && /usr/bin/env http_proxy=http://ec0001.$1.parsec.apple.com:8080 bundle exec /opt/distributor/bin/distrib dataset download --identifiers=NAME:current

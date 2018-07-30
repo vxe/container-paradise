@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: rtcli-get-spares
+# key: rtcligetspares
+# --
+rtcli.py search -e -r attr:assignment=spare > out.csv

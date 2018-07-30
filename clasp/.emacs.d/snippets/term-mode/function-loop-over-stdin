@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: function-loop-over-stdin
+# key: functionloopoverstdin
+# --
+$1 () 
+{ 
+    while read line; do echo $line | $2 ;done < "\${1:-/dev/stdin}"

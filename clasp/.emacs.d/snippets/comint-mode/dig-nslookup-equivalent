@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: dig-nslookup-equivalent
+# key: dignslookupequivalent
+# --
+dig +short

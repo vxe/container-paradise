@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: USE-memory-vmstat
+# key: USEmemortyvwefwepf
+# --
+vmstat 1

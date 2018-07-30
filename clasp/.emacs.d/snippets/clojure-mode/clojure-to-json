@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: clojure-to-json
+# key: clojuretojson
+# --
+(.stringify js/JSON (clj->js ${1:json_here}))

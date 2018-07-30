@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: loop-over-edges
+# key: loopoveredges
+# --
+for edge in ams ap1 ash atl bln bos chi dal drf exp fra hkg hou kcy lax lon man mia msp nyc osa sea sin sjc syd tyo us1

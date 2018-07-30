@@ -1,0 +1,14 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: update-dns
+# key: updatedns
+# binding: direct-keybinding
+# --
+git fetch upstream
+git merge upstream/master
+git checkout -b 'swap-ps0159'
+write_zone_file.py
+git add -p bln.zn bln.roles
+git commit -m 'this radar'
+git push origin swap-ps0158
+PR
+update_dns.py # TTL is 3600 seconds 

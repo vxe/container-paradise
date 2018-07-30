@@ -1,0 +1,51 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: parsec-logrotate-script
+# key: parseclogrotate
+# binding: direct-keybinding
+# --
+# Clean non existent log file entries from status file
+cd /var/lib/logrotate
+test -e status || touch status
+head -1 status > status.clean
+sed 's/"//g' status | while read logfile date
+do
+    [ -e "$logfile" ] && echo "\"$logfile\" $date"
+done >> status.clean
+mv status.clean status
+
+test -x /usr/sbin/logrotate || exit 0
+/usr/sbin/logrotate /etc/logrotate.conf
+
+# logrotate.conf
+ see "man logrotate" for details
+# rotate log files weekly
+weekly
+
+# keep 4 weeks worth of backlogs
+rotate 4
+
+# create new (empty) log files after rotating old ones
+create
+
+# uncomment this if you want your log files compressed
+#compress
+
+# packages drop log rotation information into this directory
+include /etc/logrotate.d
+
+# no packages own wtmp, or btmp -- we'll rotate them here
+/var/log/wtmp {
+    missingok
+    monthly
+    create 0664 root utmp
+    rotate 1
+}
+
+/var/log/btmp {
+    missingok
+    monthly
+    create 0660 root utmp
+    rotate 1
+}
+
+# system-specific logs may be configured here	

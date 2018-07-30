@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: anno-snipsy_data
+# key: annosnipsydata
+# --
+curl -vvv http://localhost:3000/page.json?url=http://www.apple.com&disable_phantom=1

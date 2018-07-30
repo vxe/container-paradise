@@ -1,0 +1,18 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: html-on-port
+# key: htmlonport
+# binding: direct-keybinding
+# --
+package main
+
+import (
+	"log"
+	"net/http"
+)
+
+func main() {
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) { w.Write([]byte(`<html>hi</html>`)) })
+	if err := http.ListenAndServe(":${1:port}", nil); err != nil {
+		log.Fatal("ListenAndServer:", err)
+	}
+}

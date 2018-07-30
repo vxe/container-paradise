@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: proc-interrupts-shortened
+# key: procinterruptsshortened
+# --
+egrep CPU\|eth /proc/interrupts

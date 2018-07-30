@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: clush-restart-fed
+# key: clushrestasrtfed
+# --
+clush -w "$1" -B 'supervisorctl restart API=federator:API=federator#00'

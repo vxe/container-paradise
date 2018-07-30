@@ -1,0 +1,21 @@
+- name: compiled code
+  hosts: mac
+  tasks:
+      - name: "rtags check out"
+        git:
+          repo: 'https://github.com/Andersbakken/rtags.git'
+          dest: /Users/vedwin/opt/rtags
+      - name: "clear cache"
+        file:
+          state: absent
+          path: /Users/vedwin/opt/rtags/CMakeCache.txt
+      - name: "compile"
+        shell: 
+          cmd: 'cmake . && make'
+          chdir: /Users/vedwin/opt/rtags
+
+
+        
+          
+
+      

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: cargo-ab
+# key: cargoabpeerg
+# --
+/opt/parsec/bin/cargo-ab.py -c 5 -n 50 -s httpsss+cargo://cargo.$1.parsec.apple.com/HTTP_SSS_${2:Web_Result_Cache} -v  | tee ~/var/log/cargo-ab.log.\`date +%s\` | grep 100% | perl -pe '$_ = "$. $_"'

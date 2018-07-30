@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: syslog-puppet
+# key: syslogpuppettaol
+# --
+sudo tail -f /var/log/syslog | grep --line-buffered 'puppet'

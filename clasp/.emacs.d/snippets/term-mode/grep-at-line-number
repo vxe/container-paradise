@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: grep-start-at-line-number
+# key: grepstartatlinenumber
+# --
+tail -n +NUMBER | grep

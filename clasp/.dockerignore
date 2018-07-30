@@ -1,0 +1,8 @@
+*
+!.emacs.d
+!src
+!lib
+!include
+!etc
+!.python.d
+!sbin

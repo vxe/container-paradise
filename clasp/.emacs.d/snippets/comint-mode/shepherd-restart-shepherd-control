@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: shepherd-restart-control
+# key: shepherdrestartcontrol
+# --
+supervisorctl restart shepherd_control

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: clush-uptime
+# key: clushuptime
+# --
+clush -w "$1" -B 'uptime | grep -v day'

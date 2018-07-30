@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: reloadnic
+# key: reloadnic
+# --
+modprobe -r ixgbe && sudo modprobe ixgbe

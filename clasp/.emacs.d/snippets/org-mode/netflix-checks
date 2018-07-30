@@ -1,0 +1,86 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: netflix-checks
+# key: netflixchecks
+# binding: direct-keybinding
+# --
+set -o xtrace
+
+echo vmstat 1 1
+vmstat 1 1
+# vmstat intepretation 
+
+# r: Number of processes running on CPU and waiting for a turn. This
+# provides a better signal than load averages for determining CPU
+#saturation, as it does not include I/O. To interpret: an 'r' value
+# greater than the CPU count is saturation.
+
+# si, so: Swap-ins and swap-outs. If these are non-zero, you're out of memory.
+
+# us, sy, id, wa, st: These are breakdowns of CPU time, on average
+# across all CPUs. They are user time, system time (kernel), idle, wait
+#I/O, and stolen time (by other guests, or with Xen, the guest's own
+# isolated driver domain).
+
+echo mpstat -P ALL 1 1
+mpstat -P ALL 1 1
+# mpstat interpretation
+
+# This command prints CPU time breakdowns per CPU, which can be used
+# to check for an imbalance. A single hot CPU can be evidence of a
+# single-threaded application.
+
+echo pidstat 1 1
+pidstat 1 1
+# pidstat interpretation
+
+# really just look for process taking a lot of cpu/mem etc
+
+echo iostat -xz 1 1
+iostat -xz 1 1
+# iostat intepretation
+
+# r/s, w/s, rkB/s, wkB/s: These are the delivered reads, writes, read
+# Kbytes, and write Kbytes per second to the device. Use these for
+# workload characterization. A performance problem may simply be due
+# to an excessive load applied.
+
+# await: The average time for the I/O in milliseconds. This is the time
+#that the application suffers, as it includes both time queued and
+#time being serviced. Larger than expected average times can be an
+#indicator of device saturation, or device problems.
+
+# avgqu-sz: The average number of requests issued to the
+# device. Values greater than 1 can be evidence of saturation
+# (although devices can typically operate on requests in parallel,
+# especially virtual devices which front multiple back-end disks.)
+
+# %util: Device utilization. This is really a busy percent, showing
+# the time each second that the device was doing work. Values greater
+# than 60% typically lead to poor performance (which should be seen
+# in await), although it depends on the device. Values close to 100%
+# usually indicate saturation.
+
+echo sar -n DEV 1 1
+sar -n DEV 1 1
+# sar throughput interpreatation
+
+# rxkB/s and txkB/: as a measure of workload, and also to check if any
+# limit has been reached.
+
+# %ifutil: for device utilization (max of both directions for full
+# duplex)
+
+echo sar -n TCP,ETCP 1 1
+sar -n TCP,ETCP 1 1
+# sar transmission intepretation
+
+# active/s: Number of locally-initiated TCP connections per second
+# (e.g., via connect()).
+
+# passive/s: Number of remotely-initiated TCP connections per second
+# (e.g., via accept()).
+
+# retrans/s: Number of TCP retransmits per second.
+
+echo top -b n 1 
+top -b n 1 | head -20

@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: tramp-proprerties-ssh
+# key: tramppropertiesssh
+# --
+:PROPERTIES:
+${3:#} :dir:  /${1:hostname}#${2:22}:
+${4:#} :session: $1
+       :exports: both
+:END:
+$0

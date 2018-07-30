@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: language-headings
+# key: <lang
+# --
+** c
+** java
+** python
+** elisp

@@ -1,0 +1,39 @@
+# -*- mode: snippet -*-
+# name: api-post-install
+# key: apipostinstall
+# --
+function api-post-install(){
+
+if [[ $# -eq 0 ]] ; then
+echo 'usage: api-post-install EDGE'
+return 0
+else
+local EDGE=\$1
+
+
+/opt/ops/bin/runner.py -f /var/run/lock/rsync_shared-data_mirror_twofishes -- /usr/bin/rsync -a  --exclude=**/.git* --delete-after sync0001.$EDGE.parsec.apple.com::shared-data/mirror/twofishes/ /opt/shared-data/mirror/twofishes/ 2>&1 | /usr/bin/logger -t rsync_shared-data_mirror_twofishes
+
+/opt/ops/bin/runner.py -f /var/run/lock/rsync_shared-data_mirror_glb_ip_distance -- /usr/bin/rsync -a  --exclude=**/.git* --delete-after sync0001.$EDGE.parsec.apple.com::shared-data/mirror/glb_ip_distance/ /opt/shared-data/mirror/glb_ip_distance/ 2>&1 | /usr/bin/logger -t rsync_shared-data_mirror_glb_ip_distance
+
+/opt/ops/bin/runner.py -f /var/run/lock/rsync_shared-data_unpack_lookup_hints -- /usr/bin/rsync -a  --exclude=**/.git* --delete-after sync0001.$EDGE.parsec.apple.com::shared-data/unpack/lookup_hints/ /opt/shared-data/unpack/lookup_hints/ 2>&1 | /usr/bin/logger -t rsync_shared-data_unpack_lookup_hints
+
+
+cd /opt/distributor && /usr/bin/env http_proxy=http://ec0001.lon.parsec.apple.com:8080 bundle exec /opt/distributor/bin/distrib group download 2>&1 | logger -t distributor
+
+/opt/ops/bin/runner.py -f /var/run/lock/rsync_shared-data_mirror_twofishes -- /usr/bin/rsync -a  --exclude=**/.git* --delete-after sync0001.$EDGE.parsec.apple.com::shared-data/mirror/twofishes/ /opt/shared-data/mirror/twofishes/ 2>&1 | /usr/bin/logger -t rsync_shared-data_mirror_twofishes
+
+/opt/ops/bin/runner.py -f /var/run/lock/rsync_shared-data_mirror_twofishes -- /usr/bin/rsync -a  --exclude=**/.git* --delete-after sync0001.$EDGE.parsec.apple.com::shared-data/mirror/twofishes/ /opt/shared-data/mirror/twofishes/ 2>&1 | /usr/bin/logger -t rsync_shared-data_mirror_twofishes
+
+/opt/ops/bin/runner.py -f /var/run/lock/rsync_shared-data_mirror_glb_routing -- /usr/bin/rsync -a  --exclude=**/.git* --delete-after sync0001.$EDGE.parsec.apple.com::shared-data/mirror/glb_routing/ /opt/shared-data/mirror/glb_routing/ 2>&1 | /usr/bin/logger -t rsync_shared-data_mirror_glb_routing
+
+/opt/ops/bin/runner.py -f /var/run/lock/rsync_shared-data_mirror_applehelp -- /usr/bin/rsync -a  --exclude=**/.git* --delete-after sync0001.$EDGE.parsec.apple.com::shared-data/mirror/applehelp/ /opt/shared-data/mirror/applehelp/ 2>&1 | /usr/bin/logger -t rsync_shared-data_mirror_applehelp
+
+/opt/ops/bin/runner.py -f /var/run/lock/rsync_shared-data_mirror_completer -- /usr/bin/rsync -a  --exclude=**/.git* --delete-after sync0001.$EDGE.parsec.apple.com::shared-data/mirror/completer/ /opt/shared-data/mirror/completer/ 2>&1 | /usr/bin/logger -t rsync_shared-data_mirror_completer
+
+/opt/ops/bin/runner.py -f /var/run/lock/rsync_shared-data_mirror_influence -- /usr/bin/rsync -a  --exclude=**/.git* --delete-after sync0001.$EDGE.parsec.apple.com::shared-data/mirror/influence/ /opt/shared-data/mirror/influence/ 2>&1 | /usr/bin/logger -t rsync_shared-data_mirror_influence
+
+/opt/ops/bin/runner.py -f /var/run/lock/rsync_shared-data_mirror_libtokenizer -- /usr/bin/rsync -a  --exclude=**/.git* --delete-after sync0001.$EDGE.parsec.apple.com::shared-data/mirror/libtokenizer/ /opt/shared-data/mirror/libtokenizer/ 2>&1 | /usr/bin/logger -t rsync_shared-data_mirror_libtokenizer
+
+fi
+}
+api-post-install

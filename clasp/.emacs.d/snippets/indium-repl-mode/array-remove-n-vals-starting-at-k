@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: array-remove-n-vals-starting-at-k
+# key: array-remove-n-vals-starting-at-k
+# --
+${1:array_name}.splice(${2:k},${3:n})

@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: ddxtest
+# key: <TEST
+# --
+
+***** TEST number_${1:number} - ${2:topic} - `(vxe-mt-chomp "date")` :${3:edge}:incident_management:troubleshooting:nagios:work:
+#+BEGIN_SRC shell prologue "export PS1='$ '" :dir /sre0001.prn: :session sre0001.prn-2591 :results output replace  :exports both
+set -o xtrace
+$0
+
+hostname -f; rolename -l
+#+END_SRC

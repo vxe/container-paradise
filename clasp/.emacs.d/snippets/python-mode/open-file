@@ -1,0 +1,7 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: open-file
+# key: openfilepython
+# binding: direct-keybinding
+# --
+with open('${1:file_path}') as ${2:var_name}:
+    $2

@@ -1,0 +1,75 @@
+# -*- mode: snippet -*-
+# name: elisp-new-shared-module
+# key: elisp-new-shared-module
+# --
+** ${1:file_name}
+*** CmakeLists.txt
+**** headers
+**** source
+***** [[file:~/.emacs.d/src/$1][$1]]
+**** project name
+#+BEGIN_SRC cmake :tangle ${3:path}
+ project (${2:project_name})
+#+END_SRC
+**** cmake specific build configuration
+***** cmake module imports
+***** set minimum version
+      #+BEGIN_SRC shell :tangle ~/.emacs.d/CMakeLists.txt
+  cmake_minimum_required(VERSION 2.8.9)
+      #+END_SRC
+***** generate compilation database
+#+BEGIN_SRC shell :tangle $3
+set( CMAKE_EXPORT_COMPILE_COMMANDS ON )
+#+END_SRC
+
+**** define output dirs
+***** binaries
+     #+BEGIN_SRC shell :tangle ~/.emacs.d/CMakeLists.txt
+  set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "./bin")
+      #+END_SRC
+***** libraries
+      #+BEGIN_SRC shell :tangle ~/.emacs.d/CMakeLists.txt
+	set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "./lib")
+      #+END_SRC
+
+**** define externally linked dependencies
+#+BEGIN_SRC shell :tangle $3
+link_directories("./lib")
+#+END_SRC
+
+
+**** define binary targets
+#+BEGIN_SRC shell :tangle $3
+add_library($2 SHARED "src/$1")
+#+END_SRC
+
+**** define header/library dirs
+      
+***** include
+#+BEGIN_SRC shell :tangle $3
+include_directories("./src/emacs-emacs-26.0.91/src")
+#+END_SRC
+***** lib
+#+BEGIN_SRC shell :tangle $3
+  # message(${GUILE_LIBRARIES})
+  # target_link_libraries(guile-repl ${GUILE_LIBRARIES}) 
+#+END_SRC
+***** additional compile flags
+	#+BEGIN_SRC shell :tangle ~/.emacs.d/CMakeLists.txt
+	  # message(${GUILE_CFLAGS_OTHER})
+	  # target_compile_options(guile-repl PUBLIC ${GUILE_CFLAGS_OTHER})
+	#+END_SRC
+
+**** osx configuration
+***** silence mac os errors
+      #+BEGIN_SRC shell :tangle ~/.emacs.d/CMakeLists.txt
+      set(CMAKE_MACOSX_RPATH 1)
+      #+END_SRC
+***** get rid of stupid dylib extension
+#+BEGIN_SRC shell :tangle $3
+if (APPLE)
+    set_property(TARGET $2 PROPERTY PREFIX "")
+    set_property(TARGET $2 PROPERTY OUTPUT_NAME "$2.so")
+    set_property(TARGET $2 PROPERTY SUFFIX "")
+endif()
+#+END_SRC

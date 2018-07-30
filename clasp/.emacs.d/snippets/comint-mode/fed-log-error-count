@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: fed-log-error-count
+# key: fedlogerrorcount
+# --
+cat API\=federator.log | grep '^E[0-9][0-9][0-9][0-9]' | awk '{\$1=\$2=\$3=""; print}' | grep -v 'healthcheck: FieldCompleterURL \[http://localhost:1984\]'|  sort | uniq -c | sort -n | less

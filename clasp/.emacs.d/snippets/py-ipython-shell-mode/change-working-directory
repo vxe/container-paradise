@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: change-working-directory
+# key: change
+# binding: direct-keybinding
+# --
+os.chdir("${1:file-path}")

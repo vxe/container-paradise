@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: perl-print-line-numbers
+# key: perllinenumbers
+# --
+perl -pe 'print "$. "'

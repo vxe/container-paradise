@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: minicom-setup-screen
+# key: minicomsetupscreen
+# --
+minicom -s

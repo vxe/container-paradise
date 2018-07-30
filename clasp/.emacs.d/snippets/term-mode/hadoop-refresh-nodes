@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: hadoop-refresh-nodes
+# key: hadooprefreshnodes
+# --
+sudo -u hdfs hdfs dfsadmin -fs hdfs://hdpb-nn0001.prn.parsec.apple.com:8020 -refreshNodes

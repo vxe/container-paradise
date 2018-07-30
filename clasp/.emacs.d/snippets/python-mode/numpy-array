@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: numpy-array
+# key: <numpy-array
+# --
+np.arange(${1:start},${2:end})

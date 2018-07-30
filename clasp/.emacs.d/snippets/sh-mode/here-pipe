@@ -1,0 +1,8 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: here-pipe
+# key: Here
+# binding: direct-keybinding
+# --
+cat << ~ |
+$0
+~

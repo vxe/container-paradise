@@ -1,0 +1,829 @@
+#+BEGIN_SRC clojure :tangle core.clj
+  (ns home.core
+    (:require 
+     [home.lib :refer :all])
+    (:use [clojure.java.shell :only [sh]]))
+#+END_SRC
+* constants
+* utilities
+* components
+** kubernetes
+**** _kubernetes config
+***** reference-types
+****** vars
+****** atoms
+****** refs 
+****** agents
+***** io
+****** web
+****** fs
+****** db
+***** compute
+****** deployment 
+       #+BEGIN_SRC clojure :tangle core.clj
+         (defn gen-deployment-yaml
+           ([app-name image]
+            {:apiVersion "apps/v1"
+             :kind "Deployment"
+             :metadata {:name (str app-name "-" image "-" (rand-int 10000))
+                        :labels {:app app-name}}
+             :spec {:replicas 1
+                    :selector {:matchLabels {:app app-name}}
+                    :template {:metadata {:labels {:app app-name}}
+                               :spec {:containers [{:name app-name :image image}]}}}})
+
+           ([app-name image   deployment-name ]
+            {:apiVersion "apps/v1"
+             :kind "Deployment"
+             :metadata {:name (str app-name "-" image "-" (rand-int 10000))
+                        :labels {:app app-name}}
+             :spec {:replicas 1
+                    :selector {:matchLabels {:app app-name}}
+                    :template {:metadata {:labels {:app app-name}}
+                               :spec {:containers [{:name app-name :image image}]}}}})
+
+           ([app-name image deployment-name replicas]
+            {:apiVersion "apps/v1"
+             :kind "Deployment"
+             :metadata {:name (str app-name "-" image "-" (rand-int 10000))
+                        :labels {:app app-name}}
+             :spec {:replicas replicas
+                    :selector {:matchLabels {:app app-name}}
+                    :template {:metadata {:labels {:app app-name}}
+                               :spec {:containers [{:name app-name :image image}]}}}}))
+       #+END_SRC
+****** pod
+       #+BEGIN_SRC clojure :tangle core.clj
+         (defn gen-pod-yaml [image-spec]
+           {:apiVersion "v1"
+            :kind "Pod"
+            :metadata {:name (str "pod-" (rand-int 10000))}
+            :spec image-spec})
+
+
+
+         ;; takes in a vector of (n - 1) maps and a command as the last element, eg for 2 imags 
+
+         ;; (gen-pod-yaml [{:name "name1"
+         ;;                                  :image "image1"
+         ;;                                  }
+         ;;                                 {:name "name2"
+         ;;                                  :image "image2"
+         ;;                                  }
+         ;;                                 {:command "[\"/bin/sh\", \"-c\", \"while : ;do curl http://localhost:80/; sleep 10; done\"]"}
+         ;;                                 ])
+
+       #+END_SRC
+
+**** _kubernetes commands
+***** reference-types
+****** vars
+****** atoms
+****** refs 
+****** agents
+***** io
+****** web
+****** fs
+****** db
+***** compute
+****** create deployment
+       #+BEGIN_SRC clojure :tangle core.clj
+         (defn kubectl-create-deployment
+           ([app-name image-name deployment-name]
+            (let [identifier (rand-int 10000)
+                  config-file (spit (str app-name "-" image-name "-" identifier ".yaml")
+                                    (yaml.core/generate-string
+                                     (gen-deployment-yaml
+                                      app-name
+                                      image-name
+                                      (str deployment-name "-" identifier))
+                                     :dumper-options {:flow-style :block}))]
+              (println (:out (sh "kubectl" "get" "deployment")))
+              (println (:out (sh "kubectl" "create" "-f" (str app-name "-" image-name "-" identifier ".yaml"))))))
+           ([app-name image-name deployment-name replicas]
+            (let [identifier (rand-int 10000)
+                  config-file (spit (str app-name "-" image-name "-" identifier ".yaml")
+                                    (yaml.core/generate-string
+                                     (gen-deployment-yaml
+                                      app-name
+                                      image-name
+                                      (str deployment-name "-" identifier)
+                                      replicas
+                                      )
+                                     :dumper-options {:flow-style :block}))]
+              (println (:out (sh "kubectl" "get" "deployment")))
+              (println (:out (sh "kubectl" "create" "-f" (str app-name "-" image-name "-" identifier ".yaml")))))))
+
+       #+END_SRC
+****** create pod
+       #+BEGIN_SRC clojure :tangle core.clj
+         (defn kubectl-create-pod
+           ([container-config pod-name]
+            (let [identifier (rand-int 10000)
+                  config-file (spit (str pod-name "-" identifier ".yaml")
+                                    (yaml.core/generate-string
+                                     (gen-pod-yaml
+                                      container-config)
+                                     :dumper-options {:flow-style :block}))]
+              (println (:out (sh "kubectl" "get" "pods")))
+              (println (:out (sh "kubectl" "create" "-f" (str pod-name "-" identifier ".yaml")))))))
+       #+END_SRC
+       #+BEGIN_EXAMPLE clojure :tangle core.clj
+               ;; example call
+                     (kubectl-create-pod {:containers [{:name "my-nginx" :image "nginx"} {:name "my-centos" :image "centos"
+                           :command ["\"/bin/sh\"" "\"-c\"" "while : ;do curl http://localhost:80/; sleep 10; done"]}]
+
+       #+END_EXAMPLE
+
+****** get deployments
+       #+BEGIN_SRC clojure :tangle core.clj
+         (defn kubectl-get-deployments []
+           (println (:out (sh "kubectl" "get" "deployment"))))
+       #+END_SRC
+****** delete deployment 
+       #+BEGIN_SRC clojure :tangle core.clj
+         (defn kubectl-delete-deployment [deployment]
+           (println (:out (sh "kubectl" "delete" "deploy" deployment))))
+       #+END_SRC
+****** list all deployments
+       #+BEGIN_SRC clojure
+       (defn kubectl-list-deployments []
+              (map (fn [lines]
+                   (-> lines
+                       (clojure.string/replace #"\s+[0-9]*m" "" )
+                       (clojure.string/replace #"\s+[0-9]*h" "" )
+                       (clojure.string/replace #"\s+[0-9]*\s+[0-9]" "")))
+                   (rest (clojure.string/split-lines (:out (sh "kubectl" "get" "deployment"))))))
+       #+END_SRC
+******* delete all deployments
+        #+BEGIN_SRC clojure
+          (defn kubectl-delete-all-deployments []
+            (for [deployment (kubectl-list-deployments)]
+              (kubectl-delete-deployment deployment)))
+        #+END_SRC
+****** get pods
+       #+BEGIN_SRC clojure :tangle core.clj
+         (defn kubectl-get-pods []
+           (println (:out (sh "kubectl" "get" "pods"))))
+       #+END_SRC
+****** delete pod
+       #+BEGIN_SRC clojure :tangle core.clj
+       (defn kubectl-delete-pod [pod]
+           (println (:out (sh "kubectl" "delete" "pod" pod))))
+       #+END_SRC
+****** list pods
+       #+BEGIN_SRC clojure :tangle core.clj
+         (defn kubectl-list-pods []
+           (map (fn [lines]
+                  (-> lines
+                      (clojure.string/split #"\s+")
+                      first))
+                (rest (clojure.string/split-lines (:out (sh "kubectl" "get" "pods"))))))
+       #+END_SRC
+******* delete all pods
+        #+BEGIN_SRC clojure :tangle core.clj
+          (defn kubectl-delete-all-pods []
+            (for [pod (kubectl-list-pods)]
+              (kubectl-delete-pod pod)))
+        #+END_SRC
+** hadoop
+*** _configuration
+**** constants
+***** core-site.xml
+ #+BEGIN_SRC clojure :tangle core.clj
+ (def xml:core-site
+ [:configuration
+         [:property
+          [:name "hadoop.tmp.dir"]
+          [:value "/usr/local/Cellar/hadoop/hdfs/tmp"]
+          [:description "A base for other temporary directories."]]
+         [:property
+          [:name "fs.default.name"]
+          [:value "hdfs://localhost:8020"]]
+         ]
+ )
+ #+END_SRC
+***** mapred-site.xml
+ #+BEGIN_SRC clojure :tangle core.clj
+   (def xml:mapred-site 
+     [:configuration
+      [:property
+       [:name "mapred.job.tracker"]
+       [:value "localhost:8021"]]])
+ #+END_SRC
+***** hdfs-site.xml
+ #+BEGIN_SRC clojure :tangle core.clj
+   (def xml:hdfs-site 
+     [:configuration
+      [:property
+       [:name "dfs.replication"]
+       [:value]]])
+ #+END_SRC
+**** reference-types
+***** vars
+***** atoms
+***** refs 
+***** agents
+**** io
+***** web
+***** fs
+***** db
+**** compute
+***** generate hadoop
+ #+BEGIN_SRC clojure :tangle core.clj
+    (defn hadoop:generate-configurations []
+      (xml-print-str
+       (xml-print-str xml:core-site)
+       "/usr/local/Cellar/hadoop/3.0.0/libexec/etc/hadoop/core-site.xml"
+       ))
+  #+END_SRC
+****** original
+  #+BEGIN_SRC clojure 
+    (defn hadoop:generate-configurations []
+      (xml-print-str xml:core-site "/usr/local/Cellar/hadoop/3.0.0/libexec/etc/hadoop/core-site.xml")
+      (xml-print-str xml:mapred-site "/usr/local/Cellar/hadoop/3.0.0/libexec/etc/hadoop/mapred-site.xml")
+      (xml-print-str xml:hdfs-site "/usr/local/Cellar/hadoop/3.0.0/libexec/etc/hadoop/hdfs-site.xml"))
+  #+END_SRC
+* experimental
+** _clojars-poll
+*** reference types
+**** atoms
+     #+BEGIN_SRC clojure :tangle core.clj
+     (def atm--clojars (atom {}))
+     #+END_SRC
+**** agents
+**** refs 
+*** IO
+**** web (io_...--web)
+     #+BEGIN_SRC clojure :tangle core.clj
+       (defn io-web--get-clojars-data
+         ([]
+          (:body (clj-http.client/get "https://clojars.org/repo/all-jars.clj")))
+         ([output]
+          (cond (= "cli" output)
+                (println    (:body (clj-http.client/get "https://clojars.org/repo/all-jars.clj")))
+                (= "json" output)
+                (cheshire.core/generate-string (:body (clj-http.client/get "https://clojars.org/repo/all-jars.clj")))))
+           ([output value]
+            (cond (= "cli" output)
+                  (swap! atm--clojars assoc :cli
+                         (:body (clj-http.client/get "https://clojars.org/repo/all-jars.clj")))
+                  (= "json" output)
+                  (swap! atm--clojars assoc :json
+                         (cheshire.core/generate-string (:body (clj-http.client/get "https://clojars.org/repo/all-jars.clj")))))))
+     #+END_SRC
+**** database (io_...--db)
+**** filesystem (io_...--fs)
+*** compute
+    #+BEGIN_SRC clojure
+
+    #+END_SRC    
+
+
+    
+** _sys-call-list
+*** reference types
+**** vars
+     #+BEGIN_SRC clojure
+       (def linux-syscalls ["_llseek"
+                            "_newselect"
+                            "_sysctl"
+                            "accept"
+                            "accept4"
+                            "access"
+                            "acct"
+                            "add_key"
+                            "adjtimex"
+                            "alarm"
+                            "alloc_hugepages"
+                            "bdflush"
+                            "bind"
+                            "bpf"
+                            "brk"
+                            "cacheflush"
+                            "capget"
+                            "capset"
+                            "chdir"
+                            "chmod"
+                            "chown"
+                            "chown32"
+                            "chroot"
+                            "clock_adjtime"
+                            "clock_getres"
+                            "clock_gettime"
+                            "clock_nanosleep"
+                            "clock_settime"
+                            "clone"
+                            "close"
+                            "connect"
+                            "copy_file_range"
+                            "creat"
+                            "create_module"
+                            "delete_module"
+                            "dup"
+                            "dup2"
+                            "dup3"
+                            "epoll_create"
+                            "epoll_create1"
+                            "epoll_ctl"
+                            "epoll_pwait"
+                            "epoll_wait"
+                            "eventfd"
+                            "eventfd2"
+                            "execve"
+                            "execveat"
+                            "exit"
+                            "exit_group"
+                            "faccessat"
+                            "fadvise64"
+                            "fadvise64_64"
+                            "fallocate"
+                            "fanotify_init"
+                            "fanotify_mark"
+                            "fchdir"
+                            "fchmod"
+                            "fchmodat"
+                            "fchown"
+                            "fchown32"
+                            "fchownat"
+                            "fcntl"
+                            "fcntl64"
+                            "fdatasync"
+                            "fgetxattr"
+                            "finit_module"
+                            "flistxattr"
+                            "flock"
+                            "fork"
+                            "free_hugepages"
+                            "fremovexattr"
+                            "fsetxattr"
+                            "fstat"
+                            "fstat64"
+                            "fstatat64"
+                            "fstatfs"
+                            "fstatfs64"
+                            "fsync"
+                            "ftruncate"
+                            "ftruncate64"
+                            "futex"
+                            "futimesat"
+                            "get_kernel_syms"
+                            "get_mempolicy"
+                            "get_robust_list"
+                            "get_thread_area"
+                            "getcpu"
+                            "getcwd"
+                            "getdents"
+                            "getdents64"
+                            "getegid"
+                            "getegid32"
+                            "geteuid"
+                            "geteuid32"
+                            "getgid"
+                            "getgid32"
+                            "getgroups"
+                            "getgroups32"
+                            "getitimer"
+                            "getpeername"
+                            "getpagesize"
+                            "getpgid"
+                            "getpgrp"
+                            "getpid"
+                            "getppid"
+                            "getpriority"
+                            "getrandom"
+                            "getresgid"
+                            "getresgid32"
+                            "getresuid"
+                            "getresuid32"
+                            "getrlimit"
+                            "getrusage"
+                            "getsid"
+                            "getsockname"
+                            "getsockopt"
+                            "gettid"
+                            "gettimeofday"
+                            "getuid"
+                            "getuid32"
+                            "getunwind"
+                            "getxattr"
+                            "init_module"
+                            "inotify_add_watch"
+                            "inotify_init"
+                            "inotify_init1"
+                            "inotify_rm_watch"
+                            "io_cancel"
+                            "io_destroy"
+                            "io_getevents"
+                            "io_setup"
+                            "io_submit"
+                            "ioctl"
+                            "ioperm"
+                            "iopl"
+                            "ioprio_get"
+                            "ioprio_set"
+                            "ipc"
+                            "kcmp"
+                            "kern_features"
+                            "kexec_file_load"
+                            "kexec_load"
+                            "keyctl"
+                            "kill"
+                            "lchown"
+                            "lchown32"
+                            "lgetxattr"
+                            "link"
+                            "linkat"
+                            "listen"
+                            "listxattr"
+                            "llistxattr"
+                            "lookup_dcookie"
+                            "lremovexattr"
+                            "lseek"
+                            "lsetxattr"
+                            "lstat"
+                            "lstat64"
+                            "madvise"
+                            "mbind"
+                            "membarrier"
+                            "memfd_create"
+                            "migrate_pages"
+                            "mincore"
+                            "mkdir"
+                            "mkdirat"
+                            "mknod"
+                            "mknodat"
+                            "mlock"
+                            "mlock2"
+                            "mlockall"
+                            "mmap"
+                            "mmap2"
+                            "modify_ldt"
+                            "mount"
+                            "move_pages"
+                            "mprotect"
+                            "mq_getsetattr"
+                            "mq_notify"
+                            "mq_open"
+                            "mq_timedreceive"
+                            "mq_timedsend"
+                            "mq_unlink"
+                            "mremap"
+                            "msgctl"
+                            "msgget"
+                            "msgrcv"
+                            "msgsnd"
+                            "msync"
+                            "munlock"
+                            "munlockall"
+                            "munmap"
+                            "name_to_handle_at"
+                            "nanosleep"
+                            "nfsservctl"
+                            "nice"
+                            "oldfstat"
+                            "oldlstat"
+                            "oldolduname"
+                            "oldstat"
+                            "olduname"
+                            "open"
+                            "open_by_handle_at"
+                            "openat"
+                            "pause"
+                            "pciconfig_iobase"
+                            "pciconfig_read"
+                            "pciconfig_write"
+                            "perf_event_open"
+                            "personality"
+                            "perfctr"
+                            "perfmonctl"
+                            "pipe"
+                            "pipe2"
+                            "pivot_root"
+                            "pkey_alloc"
+                            "pkey_free"
+                            "pkey_mprotect"
+                            "poll"
+                            "ppc_rtas"
+                            "ppc_swapcontext"
+                            "ppoll"
+                            "prctl"
+                            "pread64"
+                            "preadv"
+                            "preadv2"
+                            "prlimit64"
+                            "process_vm_readv"
+                            "process_vm_writev"
+                            "pselect6"
+                            "ptrace"
+                            "pwrite64"
+                            "pwritev"
+                            "pwritev2"
+                            "query_module"
+                            "quotactl"
+                            "read"
+                            "readahead"
+                            "readdir"
+                            "readlink"
+                            "readlinkat"
+                            "readv"
+                            "reboot"
+                            "recv"
+                            "recvfrom"
+                            "recvmsg"
+                            "recvmmsg"
+                            "remap_file_pages"
+                            "removexattr"
+                            "rename"
+                            "renameat"
+                            "renameat2"
+                            "request_key"
+                            "restart_syscall"
+                            "rmdir"
+                            "rt_sigaction"
+                            "rt_sigpending"
+                            "rt_sigprocmask"
+                            "rt_sigqueueinfo"
+                            "rt_sigreturn"
+                            "rt_sigsuspend"
+                            "rt_sigtimedwait"
+                            "rt_tgsigqueueinfo"
+                            "s390_runtime_instr"
+                            "s390_pci_mmio_read"
+                            "s390_pci_mmio_write"
+                            "sched_get_priority_max"
+                            "sched_get_priority_min"
+                            "sched_getaffinity"
+                            "sched_getattr"
+                            "sched_getparam"
+                            "sched_getscheduler"
+                            "sched_rr_get_interval"
+                            "sched_setaffinity"
+                            "sched_setattr"
+                            "sched_setparam"
+                            "sched_setscheduler"
+                            "sched_yield"
+                            "seccomp"
+                            "select"
+                            "semctl"
+                            "semget"
+                            "semop"
+                            "semtimedop"
+                            "send"
+                            "sendfile"
+                            "sendfile64"
+                            "sendmmsg"
+                            "sendmsg"
+                            "sendto"
+                            "set_mempolicy"
+                            "set_robust_list"
+                            "set_thread_area"
+                            "set_tid_address"
+                            "setdomainname"
+                            "setfsgid"
+                            "setfsgid32"
+                            "setfsuid"
+                            "setfsuid32"
+                            "setgid"
+                            "setgid32"
+                            "setgroups"
+                            "setgroups32"
+                            "sethostname"
+                            "setitimer"
+                            "setns"
+                            "setpgid"
+                            "setpriority"
+                            "setregid"
+                            "setregid32"
+                            "setresgid"
+                            "setresgid32"
+                            "setresuid"
+                            "setresuid32"
+                            "setreuid"
+                            "setreuid32"
+                            "setrlimit"
+                            "setsid"
+                            "setsockopt"
+                            "settimeofday"
+                            "setuid"
+                            "setuid32"
+                            "setup"
+                            "setxattr"
+                            "sgetmask"
+                            "shmat"
+                            "shmctl"
+                            "shmdt"
+                            "shmget"
+                            "shutdown"
+                            "sigaction"
+                            "sigaltstack"
+                            "signal"
+                            "signalfd"
+                            "signalfd4"
+                            "sigpending"
+                            "sigprocmask"
+                            "sigreturn"
+                            "sigsuspend"
+                            "socket"
+                            "socketcall"
+                            "socketpair"
+                            "splice"
+                            "spu_create"
+                            "spu_run"
+                            "ssetmask"
+                            "stat"
+                            "stat64"
+                            "statfs"
+                            "statfs64"
+                            "statx"
+                            "stime"
+                            "subpage_prot"
+                            "swapoff"
+                            "swapon"
+                            "symlink"
+                            "symlinkat"
+                            "sync"
+                            "sync_file_range"
+                            "sync_file_range2"
+                            "syncfs"
+                            "sysfs"
+                            "sysinfo"
+                            "syslog"
+                            "tee"
+                            "tgkill"
+                            "time"
+                            "timer_create"
+                            "timer_delete"
+                            "timer_getoverrun"
+                            "timer_gettime"
+                            "timer_settime"
+                            "timerfd_create"
+                            "timerfd_gettime"
+                            "timerfd_settime"
+                            "times"
+                            "tkill"
+                            "truncate"
+                            "truncate64"
+                            "ugetrlimit"
+                            "umask"
+                            "umount"
+                            "umount2"
+                            "uname"
+                            "unlink"
+                            "unlinkat"
+                            "unshare"
+                            "uselib"
+                            "ustat"
+                            "userfaultfd"
+                            "utime"
+                            "utimensat"
+                            "utimes"
+                            "utrap_install"
+                            "vfork"
+                            "vhangup"
+                            "vm86old"
+                            "vm86"
+                            "vmsplice"
+                            "wait4"
+                            "waitid"
+                            "waitpid"
+                            "write"
+                            "writev"])
+     #+END_SRC
+**** atoms
+**** agents
+**** refs 
+*** IO 
+**** web 
+**** database
+**** filesystem
+*** procedures
+    #+BEGIN_SRC clojure
+    
+    #+END_SRC    
+
+
+    
+** _clojang
+*** reference types
+**** vars
+**** atoms
+**** agents
+**** refs 
+*** IO 
+**** web
+**** memory
+**** database
+**** filesystem
+*** procedures
+    #+BEGIN_SRC clojure
+    
+    #+END_SRC    
+
+
+    
+** _docker-management
+*** state
+**** vars
+**** atoms
+**** agents
+**** refs
+*** IO 
+**** web
+**** mem
+**** db
+**** fs
+*** public
+    #+BEGIN_SRC clojure 
+      (defn docker:delete-all-images []
+        (println (:out (clojure.java.shell/sh "bash" "-c" "docker images -a | awk '{print $3}' | xargs docker rmi"))))
+    #+END_SRC
+docker images -a | awk '{print $3}' | xargs docker rmi
+** _travel
+*** state
+**** vars
+***** iso country codes
+      #+BEGIN_SRC clojure :tangle core.clj
+        (def country-codes-data (clojure.data.csv/read-csv (curl "https://raw.githubusercontent.com/lukes/ISO-3166-Countries-with-Regional-Codes/master/all/all.csv")))
+      #+END_SRC
+****** country code by country
+       #+BEGIN_SRC clojure :tangle core.clj
+         (def country-codes
+               (into {} (for* [code country-codes-data]
+                              {(keyword
+                                (-> code
+                                    first
+                                    clojure.string/lower-case
+                                    (clojure.string/replace #"[\s]" "-" )
+                                    (clojure.string/replace
+                                     #"[+()',;]" "")))
+                               [(rest code)]})))
+          
+       #+END_SRC
+***** airport code csv
+      #+BEGIN_SRC clojure :tangle core.clj
+      (def airport-data (clojure.data.csv/read-csv (curl "https://raw.githubusercontent.com/datasets/airport-codes/master/data/airport-codes.csv")))
+      #+END_SRC
+****** airport info by code
+       #+BEGIN_SRC clojure :tangle core.clj
+         (def airport-info
+           (into {} (for* [code airport-data]
+                          {(keyword (second (reverse code)))
+                           [(rest (reverse code))]})))
+       #+END_SRC
+**** atoms
+**** agents
+**** refs
+*** IO 
+**** web
+**** mem
+**** db
+**** fs
+*** public
+    #+BEGIN_SRC clojure 
+(defn airports-by-country [country])
+    #+END_SRC
+** _emacs-installer
+*** reference types
+**** vars
+**** atoms
+**** agents
+**** refs 
+*** IO 
+**** web
+     #+BEGIN_SRC clojure
+       (defn io-web--download-emacs-source [url]
+         (doall
+          (copy-uri-to-file "http://mirror.team-cymru.com/gnu/emacs/emacs-26.1.tar.gz" (expand-home "~/Downloads/emacs.tar.gz"))
+          (println (:out (clojure.java.shell/sh "tar" "-xvf" (expand-home "~/Downloads/emacs.tar.gz"))))))
+
+       (defn io-web--download-emacs-source [url]
+         (doall
+          (copy-uri-to-file "http://mirror.team-cymru.com/gnu/emacs/emacs-26.1.tar.gz" (expand-home "~/Downloads/emacs.tar.gz"))
+          (println (:out (clojure.java.shell/sh "tar" "-xvf" (expand-home "~/Downloads/emacs.tar.gz"))))))
+     #+END_SRC
+**** memory
+**** database
+**** filesystem
+*** procedures
+    #+BEGIN_SRC clojure
+    
+    #+END_SRC    
+** _job-finder
+*** reference types
+**** vars
+**** atoms
+**** agents
+**** refs 
+*** IO 
+**** web
+**** memory
+**** database
+**** filesystem
+*** procedures
+    #+BEGIN_SRC clojure
+    
+    #+END_SRC    
+
+
+    

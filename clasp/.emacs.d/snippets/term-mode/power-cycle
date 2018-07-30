@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: power-cycle
+# key: powercyclepokewpofk
+# --
+ipmitool -U $OOB_USER -P $OOB_PASS -H $oobip chassis power cycle

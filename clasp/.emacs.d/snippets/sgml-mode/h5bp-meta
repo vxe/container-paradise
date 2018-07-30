@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: h5bp-meta
+# key: <h5bpmeta
+# --
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title></title>
+<meta name="description" content="">

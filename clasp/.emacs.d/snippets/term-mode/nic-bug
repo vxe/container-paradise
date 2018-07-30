@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: nic-bug
+# key: nicbucoijfoweijf
+# --
+ethtool -i $(sudo facter -p default_interface) | grep driver  | awk -F: '{print \$2}'; modinfo ixgbe | grep version | awk -F: '{print \$2}' | head -1

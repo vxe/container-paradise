@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: pdsh-fix-nic-bug
+# key: pdshfixnicbug
+# --
+pdsh -w '$1.$2' "apt-get install -y ixgbe-dkms ; modinfo ixgbe | grep version | awk -F: '{print \$2}' | head -1"

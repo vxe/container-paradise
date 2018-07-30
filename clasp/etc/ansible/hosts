@@ -1,0 +1,6 @@
+[mac]
+localhost ansible_connection=local
+[docker]
+172.17.0.4 ansible_connection=local
+[home-ubuntu]
+localhost ansible_connection=local

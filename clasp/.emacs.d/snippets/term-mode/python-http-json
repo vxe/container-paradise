@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: python-http-json
+# key: pythonhttpjson
+# --
+python -c "
+import urllib2 
+import json
+data = urllib2.urlopen('$1').read()
+
+json_data = json.loads(data)
+print json_data$2
+"

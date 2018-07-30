@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: git-show-files-under-control
+# key: gitshowfilesundercontrol
+# --
+git ls-tree -r master --name-only

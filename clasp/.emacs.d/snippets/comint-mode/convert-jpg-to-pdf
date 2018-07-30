@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: convert-jpg-to-pdf
+# key: convertjpdtopdf
+# --
+convert *.jpg $1.pdf

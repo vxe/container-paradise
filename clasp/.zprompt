@@ -1,0 +1,9 @@
+# PROMPT='%@%B%m%~%b$(git_super_status) %# '
+  # PROMPT=$'[%*] %B%n@%m%b:%~ $(git_super_status) \n%# '
+PROMPT=$'[%*] %F{green}%B%n%b%f%F{yellow} at %f%F{red}%m%f:%~ $(git_super_status) \n%# '
+
+# PROMPT='%B%m%~%b$(git_super_status) %# '
+# source  ~/.zsh.d/powerlevel9k/powerlevel9k.zsh-theme
+
+# export POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir rbenv vcs)
+# export POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time)

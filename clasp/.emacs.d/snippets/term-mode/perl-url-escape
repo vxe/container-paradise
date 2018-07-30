@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: perl-url-escape
+# key: perlurlescape
+# --
+perl -MURI::Escape -le 'print uri_escape(<>)'

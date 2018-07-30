@@ -1,0 +1,21 @@
+# -*- mode: snippet -*-
+# name: src-template
+# key: srctemplate
+# --
+# -*- mode:org -*-
+#+TITLE: Implementation
+#+STARTUP: indent
+#+OPTIONS: toc:nil
+${1:description}
+procedures, data, macros
+*** Overview :TOC:
+- [[#installation][Installation]]
+- [[#usage][Usage]]
+- [[#extending][Extending]]
+- [[#implementation][Implementation]]
+
+** License
+** Global Data
+** Procedures
+** Abstractions
+** Algorithms

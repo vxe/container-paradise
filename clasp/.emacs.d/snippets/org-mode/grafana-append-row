@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: grafana-append-row
+# key: grafana-append-row
+# --
+,
+    {
+      "title": "$1",
+      "height": "250px",
+      "editable": true,
+      "collapse": false,
+      "panels": [$0]
+    }

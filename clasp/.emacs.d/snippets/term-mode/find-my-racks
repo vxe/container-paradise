@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: find-my-racks
+# key: find-my-racks
+# --
+xargs ~/src/noc/scripts/find_racks.py -s $1

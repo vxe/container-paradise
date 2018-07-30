@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: latex-underscore-escape
+# key: latexundersroe
+# --
+\texttt{${1:word1}\char`_${2:word2}}

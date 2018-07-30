@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: remove-every-other-line
+# key: removeeveryotherline
+# --
+paste - -

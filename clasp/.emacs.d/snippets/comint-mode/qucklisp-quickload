@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: qucklisp-quickload
+# key: qucklispquickload
+# --
+(ql:quickload "$1")

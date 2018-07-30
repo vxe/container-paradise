@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: sed-print-match-to-end-of-file
+# key: sedpinrmatchtoendfofile
+# --
+sed -n -e '/$1/,$p'

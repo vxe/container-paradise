@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: espresso-drive-swap
+# key: espressodriveswap
+# binding: direct-keybinding
+# --
+/opt/ops/bin/disk_failure_esspresso.py -H ${1:FQDN of host} -D ${2: drive number} -R rdar://problem/${3:rdar number} -T ${4:drive-type}

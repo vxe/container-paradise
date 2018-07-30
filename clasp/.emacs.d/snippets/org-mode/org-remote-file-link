@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: org-remote-file-link
+# key: org
+# binding: direct-keybinding
+# --
+[[file:/ssh:${1:vedwin}@${2:hostname}:${3:filepath}][${$:file-linke-name}]

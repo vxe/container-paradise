@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: fed-error-count
+# key: federrorcount
+# --
+pdsh -w 'api00$1.$2' "cat /var/log/shepherd/API\=federator.log | grep ^E | while read -a cols; do echo \${cols[@]:3}; done | sort | uniq -c | sort -n | tail"$0

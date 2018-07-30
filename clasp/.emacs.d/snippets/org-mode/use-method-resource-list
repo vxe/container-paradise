@@ -1,0 +1,11 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: use-method-resource-list
+# key: usemethodresourcelist
+# binding: direct-keybinding
+# --
+* CPUs: sockets, cores, hardware threads (virtual CPUs) 
+* Memory: capacity 
+* Network interfaces 
+* Storage devices: I/O, capacity 
+* Controllers: storage, network cards 
+* Interconnects: CPUs, memory, I/O 

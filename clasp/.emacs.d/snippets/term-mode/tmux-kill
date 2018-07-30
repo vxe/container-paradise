@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: tmux-kill
+# key: tmuxkill
+# --
+tmux kill-session -t ${1:name}

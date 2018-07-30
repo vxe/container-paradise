@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: docker-stop-all
+# key: docker-stop-all
+# --
+docker stop $(docker ps -a -q)

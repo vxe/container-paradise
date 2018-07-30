@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: grafana-curl-dashboard
+# key: grafana-curl-dashboard
+# --
+curl -sv -H "Authorization: Bearer eyJrIjoiOE1UMlY3NDZ4SVI4MnlFUFBpTU5JY3M5N0MwUEtTNlciLCJuIjoibW9yZSIsImlkIjoxfQ==" -H "Content-Type: application/json" https://grafana.parsec.apple.com/api/dashboards/dashboards/db -d @$1

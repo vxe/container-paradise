@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: rtcli-simple-header
+# key: rtcli
+# --
+name,attr:rolename,attr:assignment

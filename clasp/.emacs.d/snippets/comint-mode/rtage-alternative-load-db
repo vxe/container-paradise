@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: rtags-alternate-load-db
+# key: rtagsalternativeloaddb
+# --
+rc --load-compilation-database

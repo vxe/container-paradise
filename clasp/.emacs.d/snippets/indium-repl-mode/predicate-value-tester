@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: predicate-value-tester
+# key: predicate-value-tester
+# --
+function testTruthy(val) {
+return val ? console.log('truthy') : console.log('falsy')}

@@ -1,0 +1,16 @@
+# -*- mode: snippet -*-
+# name: jekyll-blog-post-template
+# key: newblogpost
+# --
+#+TITLE: $1
+#+LAYOUT: post
+#+TAGS: jekyll org-mode
+
+
+#+BEGIN_SRC sh
+
+#+END_SRC
+
+#+BEGIN_QUOTE
+
+#+END_QUOTE

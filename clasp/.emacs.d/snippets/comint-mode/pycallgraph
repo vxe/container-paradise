@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: pycallgraph
+# key: pycallgraph
+# --
+pycallgraph graphviz -- filename

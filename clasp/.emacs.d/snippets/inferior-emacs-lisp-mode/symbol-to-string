@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: symbol-to-string
+# key: symboltostring
+# --
+(symbol-name $1)

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: gcc-compile-without-main
+# key: gcccompilewithoutmain
+# --
+gcc -c

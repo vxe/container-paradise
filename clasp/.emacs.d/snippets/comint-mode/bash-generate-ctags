@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: bash-generate-ctags
+# key: bashgenctags
+# --
+ctags -e -R --language-force=sh

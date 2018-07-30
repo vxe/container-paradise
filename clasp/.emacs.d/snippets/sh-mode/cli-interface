@@ -1,0 +1,45 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: cli-interface
+# key: <cli
+# binding: direct-keybinding
+# --
+
+VERSION="$1"
+
+function verbose(){
+echo verbose
+}
+function debug(){
+echo debug
+}
+function version(){
+echo \$VERSION
+}
+function help(){
+echo USAGE: ${3:write-a-description}
+}
+
+function $4(){
+$5
+}
+
+# NOTE: This requires GNU getopt.  On Mac OS X and FreeBSD, you have to install this
+# separately; see below.
+TEMP=\`getopt -o vhd$6 --long version,verbose,help,debug,$7\
+             -n '${2:script-name}' -- "\$@"\`
+
+if [ \$? != 0 ] ; then echo "Terminating..." >&2 ; exit 1 ; fi
+
+
+eval set -- "$TEMP"
+
+while true; do
+  case "\$1" in
+  --version ) version; shift ;;
+  -v | --verbose ) verbose; shift ;;
+  -h | --help ) help; shift ;;
+  -d | --debug ) debug; shift;; $0
+  -- ) shift; break ;;
+  * )  ;;
+  esac
+done 

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: cargo-get-vip-ip
+# key: cargogetvipip
+# --
+clush -w cargo-state000[1-2].$1 "ip addr show \\\$(sudo facter -p default_interface) | grep \\\$(dig cargo.$1.parsec.apple.com +short)" 2>/dev/null

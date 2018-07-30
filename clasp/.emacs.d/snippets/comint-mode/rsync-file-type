@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: rsync-file-type
+# key: rsyncfiletype
+# --
+rsync -avz --include='*.${1:fileextension}' --include='*/' --exclude='*' ${2:source}/ ${3:target}/ 

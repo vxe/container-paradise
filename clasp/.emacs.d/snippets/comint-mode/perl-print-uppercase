@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: perl-print-uppercase
+# key: perlprintuppercase
+# --
+perl -nle 'print uc'

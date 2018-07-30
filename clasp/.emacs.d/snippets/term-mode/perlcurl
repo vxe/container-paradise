@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: perlcurl
+# key: perlcurl
+# binding: direct-keybinding
+# --
+perl -MLWP::Simple -e "getprint 'http://cpan.org/RECENT'"

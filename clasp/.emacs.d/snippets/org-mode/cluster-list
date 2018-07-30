@@ -1,0 +1,22 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: cluster-list
+# key: custerlist
+# binding: direct-keybinding
+# --
+- api
+- cargo-image
+- cargo-query
+- cargo-state
+- cargo-string
+- ec
+- graphite
+- ha
+- lb
+- ls
+- lyra
+- mc
+- ns-ext
+- ops
+- qa
+- sync
+- zk

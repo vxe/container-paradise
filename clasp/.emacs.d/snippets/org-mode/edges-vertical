@@ -1,0 +1,31 @@
+# -*- mode: snippet -*-
+#name : edges-vertical
+#key : edges-vertical
+#contributor : Vijay Edwin
+# --
+$0
+- AMS 
+- ASH
+- ATL
+- BLN
+- BOS
+- CHI
+- CRL
+- DAL
+- DEN
+- DRF
+- FRA
+- HKG
+- LAX
+- LON
+- MAN
+- MIA
+- MSP
+- NYC
+- PRN
+- PRZ
+- SEA
+- SJC
+- STG
+- SYD
+- TYO

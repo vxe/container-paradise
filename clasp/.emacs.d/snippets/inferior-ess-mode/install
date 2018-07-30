@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: install
+# key: <inst
+# --
+install.packages("ggplot2")

@@ -1,0 +1,43 @@
+# -*- mode: snippet -*-
+#name : terminal-session
+#key : terminalsession
+#contributor : Vijay Edwin
+# --
+     # from sre box 
+     clush -w 'hostpattern' 'sudo scp -r /var/log/shepherd .'
+
+     # rolename/hostname
+     $0
+
+     # uptime
+     
+
+     # description-of-command-and-output-below
+    
+* useful commands
+** sys health
+## CPU
+*** uptime
+*** dmesg -T | grep -i 'error\|warn\|exception'   
+*** mpstat -P ALL 1 # htop in Darwin
+## Virtual Memory
+*** vmstat 1  # vm_stat 1 on Darwin
+*** dmesg -T | grep -i memory
+*** pidstat 1 
+*** free -m
+## Storage
+*** iostat -xz 1 
+## Networking
+*** sar -n DEV 1
+*** dmesg -T | grep eth
+*** sar -n TCP,ETCP 1
+## sanity check
+*** top
+** hadoop
+** io + filesystem
+*** df -hai #inode count
+*** sudo parted -l | grep Disk # check disk capacity
+** networking
+** parsec tools
+# generate espresso
+*** /opt/ops/bin/disk_failure_esspresso.py -H FQDN -D 1,2,3,sda,sdb,sdc -R rdar url -T hdd,ssd

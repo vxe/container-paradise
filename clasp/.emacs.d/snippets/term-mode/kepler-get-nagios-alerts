@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: kepler-get-nagios-alerts
+# key: nagiosalertskepler-get-nagios-alerts
+# --
+curl -gs 'https://kepler.parsec.apple.com/api/event?source=naemon&filters[data.site]=/$1/&filters[data.alerting]=1&filters[data.acknowledged]=0&limit=0&verbosity=1' | jq '.data[] | .name,.url' | paste - - | grep -Ev 'artifactory|_stringd_|_queryd_|cargo-shovel|completer|cron|datanode_files|datanode_health|datanode_memory|datanode_mounts|date|disk_space_general|dns|fence|hdp[a-z]-dn|image-cache_hitrate|inode_count|interface|masterserver_health|namenode_balance|nlsearch|nodemanager_files|nodemanager_memory|ntpd|prod_doppler_daily|raid_status|real_memory|regionserver_files|regionserver_memory|shepherd_|shepherd_Pipeline|sshd|swap_memory|tmp_file_count|puppet|collectd_graphite|IOS|NEXUS_|System_UpTime|flume|maps_logs_hdpb|blacklist' | sort| sed 's/"//g'  | sed 's/^/- \[ \] /g'    

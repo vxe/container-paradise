@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: parsec-get-number-of-drives
+# key: parsecgetdrivenumber
+# binding: direct-keybinding
+# --
+sudo parted -l | grep Disk

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: ipmi-boot-pxe
+# key: ipmibootpxe
+# --
+ipmitool -U Administrator -P sv2bsv2b -H ${1:oobip} chassis bootdev pxe

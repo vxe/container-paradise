@@ -1,0 +1,57 @@
+# -*- mode: snippet -*-
+# name: investigating
+# key: <SI
+# --
+** PROJ  ${1:edge} - ${2:topic} - `(vxe-mt-chomp "date")` :$1:incident_management:work:deep_dive:
+*** Symptoms
+$0
+*** Possible Causes <TEST
+*** Corrective Action
+*** Data
+**** Edge Alerts
+#+BEGIN_SRC shell prologue "export PS1='$ '" :dir /sre0001.prn: :session sre0001.prn-2591 :results output replace  :exports both
+ curl -gs 'https://kepler.parsec.apple.com/api/event?source=naemon&filters[data.site]=/$1/&filters[data.alerting]=1&filters[data.acknowledged]=0' | jq '.data[] | .name,.url' | paste - - | sort | sed 's/"//g'
+#+END_SRC
+  - https://nagios-$1.parsec.apple.com/cgi-bin/nagios3/status.cgi?host=all&servicestatustypes=16&hoststatustypes=3
+  - https://mon-$1.parsec.apple.com/thruk/#cgi-bin/status.cgi?host=all&type=detail&servicestatustypes=16&hoststatustypes=3&serviceprops=42&limit=0&style=detail
+  - kepler
+**** Edge Metrics
+- [ ] graphitus: http://graphitus.$1.parsec.apple.com/dashboard.html?id=fed.all
+- [ ] hardware logs: https://kibana.parsec.apple.com/app/kibana#/dashboard/ve-Hardware-Issues?_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:now-24h,mode:quick,to:now))&_a=(filters:!(),options:(darkTheme:!f),panels:!((col:1,id:ve-disk-errors,panelIndex:2,row:1,size_x:12,size_y:4,type:visualization),(col:1,id:ve-kernel-message-count,panelIndex:3,row:10,size_x:12,size_y:4,type:visualization),(col:1,id:ve-memory-errors,panelIndex:4,row:5,size_x:12,size_y:5,type:visualization)),query:(query_string:(analyze_wildcard:!t,query:'edge:%22$1%22')),title:'ve%20-%20Hardware%20Issues',uiState:(P-2:(spy:(mode:(fill:!f,name:!n)))))
+- [ ] fed metrics: https://grafana.parsec.apple.com/dashboard/db/dm-site-fed-graphs?from=now-24h&to=now&var-Site=data_center_$1&var-TooSlowGraph=$1&var-cargo=cargo-shared&var-kibana_edge=$1
+- ops0001.prn
+#+BEGIN_SRC shell :prologue "export PS1='$ '" :dir /ops0001.prn: :session ops0001.prn-`(vxe-mt-chomp "echo $RANDOM")` :results output replace
+set -o xtrace
+hostname -f | tee ~/.output
+#+END_SRC
+
+- ops0001.$1
+#+BEGIN_SRC shell :prologue "export PS1='$ '" :dir /ops0001.$1: :session ops0001.$1-`(vxe-mt-chomp "echo $RANDOM")` :results output replace
+set -o xtrace
+hostname -f | tee ~/.output
+#+END_SRC
+
+- ops0002.$1
+#+BEGIN_SRC shell :prologue "export PS1='$ '" :dir /ops0002.$1: :session ops0002.$1-`(vxe-mt-chomp "echo $RANDOM")` :results output replace
+set -o xtrace
+
+hostname -f | tee ~/.output
+#+END_SRC
+
+- cargo.$1
+#+BEGIN_SRC shell :prologue "export PS1='$ '" :dir /cargo.$1: :dir: /cargo.$1: :session cargo.$1-`(vxe-mt-chomp "echo $RANDOM")`  :results output replace
+set -o xtrace
+
+hostname -f | tee ~/.output
+#+END_SRC
+
+#+BEGIN_SRC shell :prologue "export PS1='$ '" :dir /cargo.$1: :dir: /cargo.$1: :session cargo.$1-`(vxe-mt-chomp "echo $RANDOM")`  :results output replace
+set -o xtrace
+/opt/parsec/bin/cargo-ab.py -c 5 -n 50 -s httpsss+cargo://cargo.$1.parsec.apple.com/HTTP_SSS_Shared_SSD -v  | tee ~/var/log/cargo-ab.log | grep "100%"
+/opt/parsec/bin/cargo-ab.py -c 5 -n 50 -s httpsss+cargo://cargo.$1.parsec.apple.com/HTTP_SSS_Shared -v  | tee ~/var/log/cargo-ab.log | grep "100%"
+#+END_SRC
+- [ ] cluster stats: https://grafana.parsec.apple.com/dashboard/db/cluster-stats?from=now-24h&to=now&var-cluster=ds&var-edge=data_center_$1  
+- fed errors: https://kibana.parsec.apple.com/app/kibana#/discover?_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:now-4h,mode:quick,to:now))&_a=(columns:!(_source),index:'logstash-*',interval:auto,query:(query_string:(analyze_wildcard:!t,query:'edge:%22$1%22%20AND%20type:%22federator%22%20AND%20tags:%22fed-error%22')),sort:!('@timestamp',desc))
+-  fed timeouts: https://kibana.parsec.apple.com/app/kibana#/discover?_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:now-4h,mode:quick,to:now))&_a=(columns:!(_source),index:'logstash-*',interval:auto,query:(query_string:(analyze_wildcard:!t,query:'edge:%22$1%22%20AND%20type:%22federator%22%20AND%20tags:%22fed-error%22%20AND%20message:%22timeout%22')),sort:!('@timestamp',desc))
+- [ ] cargo-state: http://cargo-state0001.$1.parsec.apple.com:2180/static.raw?fn=pretty.html
+- [ ] qa edge deploy: https://build.parsec.apple.com/jenkins/view/SRE/job/diagnostics-qa-edge-deploy/build?delay=0sec

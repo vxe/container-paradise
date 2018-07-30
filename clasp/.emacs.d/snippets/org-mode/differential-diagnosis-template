@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: differential-diagnosis-template
+# key: differential-diagnosis-template
+# --
+*** Symptoms
+*** Possible Causes <TEST
+*** Corrective Action
+*** Data

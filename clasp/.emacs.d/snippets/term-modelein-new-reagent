@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: lein-new-reagent
+# key: lein-new-reagent
+# --
+lein new figwheel hello-world -- --reagent

@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: hydra-generic
+# key: hydrageneric
+# --
+(defhydra hydra-$1 (:color red)
+    "$2"
+    ("$3" $4 "$5"))
+

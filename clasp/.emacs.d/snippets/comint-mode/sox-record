@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: sox-record
+# key: soxrecord
+# --
+rec ~/Music/src/$1

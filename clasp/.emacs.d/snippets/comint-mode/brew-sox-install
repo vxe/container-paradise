@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: brew-sox-install
+# key: brewsoxinstall
+# --
+brew install sox --with-lame --with-flac --with-libvorbis

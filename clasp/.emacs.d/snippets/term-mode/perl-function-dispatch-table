@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: perl-function-dispatch-table
+# key: perlfunctiondispatch
+# --
+my %functions = (
+  fields  => \&fields,
+  another => \&another,
+);

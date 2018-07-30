@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: latex-argmax
+# key: latex-argmax
+# --
+\underset{x}{\arg\max} 

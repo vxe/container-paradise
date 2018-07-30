@@ -1,0 +1,12 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: new-user
+# key: newuser
+# binding: direct-keybinding
+# --
+user { '${1:user_name}':
+  ensure  => 'present',
+  managehome => true,
+  home    => '/home/$1',
+  shell   => '/bin/bash',
+}
+file { "/home/$1/.ssh" : ensure => "directory" , owner => $1, group => $1, mode => 700,}

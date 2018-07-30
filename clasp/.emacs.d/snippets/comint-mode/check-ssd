@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: check-ssd
+# key: checkssd
+# --
+cat /sys/block/sda/queue/rotational # if 0, ssd

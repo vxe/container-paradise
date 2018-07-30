@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: org-mime-template
+# key: orgmimetemplat
+# --
+#+OPTIONS: toc:nil

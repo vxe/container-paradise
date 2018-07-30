@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: emacs-interactive
+# key: <int
+# --
+(interactive $1)

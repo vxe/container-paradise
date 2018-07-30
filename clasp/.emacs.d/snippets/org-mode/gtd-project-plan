@@ -1,0 +1,7 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: gtd-project-plan
+# key: gtdprojectplan
+# binding: direct-keybinding
+# --
+* How did we get into this mess
+* What does done look like

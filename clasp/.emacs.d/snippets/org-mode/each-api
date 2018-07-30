@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: each-api
+# key: Each-Api
+# --
+for x in {01..55}; do ${1:command} api00$x:${2:dir} ; done

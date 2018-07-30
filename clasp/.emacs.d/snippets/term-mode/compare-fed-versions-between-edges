@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: compare-fed-versions-between-edges
+# key: comparefedversionsbetweenedges
+# --
+for host in {0001..0055}; do if [[ \`diff <(curl -s "http://api$host.$1.parsec.apple.com:4001/version") <(curl -s "http://api$host.$2.parsec.apple.com:4001/version")\` ]]; then echo api$host; fi; done

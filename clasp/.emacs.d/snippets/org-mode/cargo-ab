@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: cargoab
+# key: <cargoab
+# --
+/opt/parsec/bin/cargo-ab.py -c 5 -n 50 -s httpsss+cargo://cargo.$1.parsec.apple.com/HTTP_`(sre-cargo-sss-domain)` | sort -k2n | perl -e 'print reverse <>' | head
+# pdsh -w "cargo-state0001.$1" 'cat ~/var/log/cargo-ab.log'  2>/dev/null

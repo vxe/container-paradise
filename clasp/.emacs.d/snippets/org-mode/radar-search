@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: radar-search
+# key: <rs
+# --
+#+BEGIN_SRC shell :results output replace raw  :exports both
+echo "****** " ${1:query} \`date\` ; curl -gs 'https://kepler.parsec.apple.com/api/event?source=radar&filters[data.description]=/$1/&filters[data.state]=/Analyze/&limit=0&verbosity=1' | jq '.data[]| .url,.name' | paste - - | sed 's/^/ - \[ \]/g'
+#+END_SRC

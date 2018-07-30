@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: dstat-disk-net-io
+# key: dstatdisknetio
+# --
+dstat -dnyc -N p2p1 -C total -f 5

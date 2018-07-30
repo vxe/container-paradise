@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: mtr-batch-mode
+# key: mtr-batch-mode
+# --
+mtr --report --report-cycles 10 $1

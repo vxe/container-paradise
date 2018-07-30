@@ -1,0 +1,28 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: new-flashcard
+# key: new
+# binding: direct-keybinding
+# --
+***  :drill:
+    SCHEDULED: <2015-05-12 Tue>
+    :PROPERTIES:
+    :ID:       952f305e-407a-4f33-be6f-98cd656e4ce3
+    :DRILL_LAST_INTERVAL: 0.0
+    :DRILL_REPEATS_SINCE_FAIL: 1
+    :DRILL_TOTAL_REPEATS: 4
+    :DRILL_FAILURE_COUNT: 4
+    :DRILL_AVERAGE_QUALITY: 1.75
+    :DRILL_EASE: 2.5
+    :DRILL_LAST_QUALITY: 2
+    :DRILL_LAST_REVIEWED: [2015-05-12 Tue 09:36]
+    :END:
+
+${1:put-question-here}
+
+**** Answer
+
+${2:put-answer-here}
+
+**** Notes
+
+${3:put-notes-here}

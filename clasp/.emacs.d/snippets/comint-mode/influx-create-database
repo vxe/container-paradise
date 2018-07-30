@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: influx-create-database
+# key: influxcreatedatabase
+# --
+CREATE DATABASE $1

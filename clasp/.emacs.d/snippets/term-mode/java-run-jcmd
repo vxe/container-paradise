@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: java-run-jcmd
+# key: javarunjcmd
+# --
+sudo /usr/lib/jvm/jdk-8-oracle-x64/bin/jcmd

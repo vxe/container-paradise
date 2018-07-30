@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: noobify
+# key: <noobidyhqefefopk
+# --
+function noobify () {
+    while read line
+    do
+	echo $line | perl -pe 's/([0-9][0-9][0-9][0-9])-oob.([a-z][a-z][a-z])/$1.$2/g'
+    done < "${1:-/dev/stdin}"
+}
+noobify

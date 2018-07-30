@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: tailf-syslog
+# key: tailfsyslog
+# --
+sudo tail -f /var/log/syslog | perl -ne 'print if //'

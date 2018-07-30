@@ -1,0 +1,29 @@
+# -*- mode: snippet -*-
+# name: application
+# key: <application
+# --
+*** $1
+**** install
+#+BEGIN_SRC elisp :tangle ~/.emacs.d/init.el
+(defun $1:install ()
+(interactive)
+$0
+)
+#+END_SRC
+**** start
+#+BEGIN_SRC elisp :tangle ~/.emacs.d/init.el
+(defun $1:start ()
+(interactive)
+)
+#+END_SRC
+**** stop
+#+BEGIN_SRC elisp :tangle ~/.emacs.d/init.el
+(defun $1:stop ()
+(interactive)
+)
+#+END_SRC
+**** configuration
+#+BEGIN_SRC elisp :tangle ~/.emacs.d/init.el
+(define-skeleton $1-primary-configuration
+"primary config for $1" nil)
+#+END_SRC

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: docker-run-bash
+# key: dockerrunbash
+# --
+sudo docker run -v $PWD:/root/$1  -i -t \`whoami\`/\`basename $PWD | tr '[A-Z]' '[a-z]'\` bash 

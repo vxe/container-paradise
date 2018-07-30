@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: clush
+# key: <clush
+# --
+clush -w "$1" -B "$0" 2>/dev/null

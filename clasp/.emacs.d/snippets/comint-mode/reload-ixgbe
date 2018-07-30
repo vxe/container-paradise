@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: reload-ixgbe
+# key: reloadixgbe
+# --
+sudo modprobe -r ixgbe && sudo modprobe ixgbe

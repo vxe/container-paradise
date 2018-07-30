@@ -1,0 +1,32 @@
+# -*- mode: snippet -*-
+# name: cargo-ab-check-all-domains
+# key: cargoabchckalldomains
+# --
+cat << EOD |
+SSS_Apple_Help
+SSS_Bing
+SSS_Completion
+SSS_FwdGeo
+SSS_Hashtags
+SSS_ITunes
+SSS_ImageSearch
+SSS_Image_N
+SSS_NLCache
+SSS_News
+SSS_Profiles
+SSS_Result
+SSS_Site
+SSS_Sports
+SSS_Stock_Charts
+SSS_Stocks
+SSS_TV
+SSS_Video
+SSS_Weather
+SSS_Web
+SSS_Web_Result_Cache
+EOD
+while read DOMAIN
+do
+  if [[ \`/opt/parsec/bin/cargo-ab.py -c 5 -n 50 -s httpsss+cargo://cargo.$1.parsec.apple.com/HTTP_$DOMAIN -v | grep 100% | awk '{print \$2}'` > 2 ]]; then echo $DOMAIN;
+  fi
+done

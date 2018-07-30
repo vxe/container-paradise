@@ -1,0 +1,8 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: bash-loop-over-edges
+# key: bashloopoveredges
+# binding: direct-keybinding
+# --
+for edge in ams ash atl bln bos chi crl dal den drf fra hkg lax lon man mia msp nyc prn prz sea sjc stg syd tyo; do
+echo \$edge;
+done

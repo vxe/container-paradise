@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: proc-net-sockstat
+# key: procnetsockstat
+# --
+cat /proc/net/sockstat

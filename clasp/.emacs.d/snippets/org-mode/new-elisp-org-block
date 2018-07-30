@@ -1,0 +1,7 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: new-elisp-org-block
+# key: newelispirgblock
+# binding: direct-keybinding
+# --
+#+begin_src emacs-lisp :tangle ${1:output-file}
+$0

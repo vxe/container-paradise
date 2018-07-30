@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: pdns-recursor-restart
+# key: pdnsrecursorrestart
+# --
+sudo service pdns-recursor restart

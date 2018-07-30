@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: latex-blackboard-type
+# key: latex-blackboard-type
+# --
+\mathbb{$1} 

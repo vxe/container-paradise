@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: kick-firmware-profiles
+# key: kickfirmwareprofile
+# --
+kickstart -k -p lsi3008_v8_firmware cargo-$1.$2.parsec.apple.com

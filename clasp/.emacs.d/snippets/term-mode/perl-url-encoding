@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: perl-url-encoding
+# key: perlurlencoding
+# --
+perl -MURI::Escape -ne 'print uri_${1:un}escape($_);'

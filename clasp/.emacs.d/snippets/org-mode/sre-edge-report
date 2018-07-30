@@ -1,0 +1,345 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: sre-edge-report
+# key: sreedgereport
+# binding: direct-keybinding
+# --
+* TODO
+* Projects
+* Incubate
+* Handoff
+- group
+- adam
+- aydin
+- ben
+- brandon
+- conor
+- danb
+- danm
+- evan
+- jason
+- nahush
+- peter
+- tim
+
+* Environment Status + Hourly Shift Report
+- go through telemetry minimal noting any anamolies
+- fed metrics use emacs function
+- go through big board report looking for stuff from prev shift
+- for all alerts w/o radar filter create one
+** 1 (use edge report snippet for potential issues, look at graph scale)
+*** 4 x per hour, telemetry minimal
+*** look at administrative (bottom of this)
+*** look at action radars
+*** Create Hardware Tickets
+*** Projects
+*** Alerts
+- AMS
+- ASH
+- ATL
+- BLN
+- BOS
+- CHI
+- CRL
+- DAL
+- DEN
+- DRF
+- FRA
+- HKG
+- LAX
+- LON
+- MAN
+- MIA
+- MSP
+- NYC
+- PRN (schedule puppet first)
+- PRZ
+- SEA
+- SJC
+- STG
+- SYD
+- TYO
+
+** 2
+*** 4 x per hour, telemetry minimal
+*** look at administrative (bottom of this)
+*** look at action radars
+*** Create Hardware Tickets
+*** Projects
+*** Alerts
+- AMS 
+- ASH
+- ATL
+- BLN
+- BOS
+- CHI
+- CRL
+- DAL
+- DEN
+- DRF
+- FRA
+- HKG
+- LAX
+- LON
+- MAN
+- MIA
+- MSP
+- NYC
+- PRN (schedule puppet first)
+- PRZ
+- SEA
+- SJC
+- STG
+- SYD
+- TYO
+** look at administrative (bottom of this)
+** Projects
+** 3
+*** 4 x per hour, telemetry minimal
+*** look at administrative (bottom of this)
+*** look at action radars
+*** Create Hardware Tickets
+*** Projects
+*** Alerts
+- AMS 
+- ASH
+- ATL
+- BLN
+- BOS
+- CHI
+- CRL
+- DAL
+- DEN
+- DRF
+- FRA
+- HKG
+- LAX
+- LON
+- MAN
+- MIA
+- MSP
+- NYC
+- PRN (schedule puppet first)
+- PRZ
+- SEA
+- SJC
+- STG
+- SYD
+- TYO
+** look at administrative (bottom of this)
+** Projects
+** 4
+*** 4 x per hour, telemetry minimal
+*** look at administrative (bottom of this)
+*** look at action radars
+*** Create Hardware Tickets
+*** Projects
+*** Alerts
+- AMS 
+- ASH
+- ATL
+- BLN
+- BOS
+- CHI
+- CRL
+- DAL
+- DEN
+- DRF
+- FRA
+- HKG
+- LAX
+- LON
+- MAN
+- MIA
+- MSP
+- NYC
+- PRN (schedule puppet first)
+- PRZ
+- SEA
+- SJC
+- STG
+- SYD
+- TYO
+** look at administrative (bottom of this)
+** Projects
+** LUNCH
+- review trigger list work
+** 5
+*** look at administrative (bottom of this)
+*** look at action radars
+*** Create Hardware Tickets
+*** Projects
+*** 4 x per hour, telemetry minimal
+*** Alerts
+- AMS 
+- ASH
+- ATL
+- BLN
+- BOS
+- CHI
+- CRL
+- DAL
+- DEN
+- DRF
+- FRA
+- HKG
+- LAX
+- LON
+- MAN
+- MIA
+- MSP
+- NYC
+- PRN (schedule puppet first)
+- PRZ
+- SEA
+- SJC
+- STG
+- SYD
+- TYO
+** look at administrative (bottom of this)
+** Projects
+** 6
+*** 4 x per hour, telemetry minimal
+*** look at administrative (bottom of this)
+*** look at action radars
+*** Create Hardware Tickets
+*** Projects
+*** Alerts
+- AMS 
+- ASH
+- ATL
+- BLN
+- BOS
+- CHI
+- CRL
+- DAL
+- DEN
+- DRF
+- FRA
+- HKG
+- LAX
+- LON
+- MAN
+- MIA
+- MSP
+- NYC
+- PRN (schedule puppet first)
+- PRZ
+- SEA
+- SJC
+- STG
+- SYD
+- TYO
+** look at administrative (bottom of this)
+** Projects
+** 7
+*** 4 x per hour, telemetry minimal
+*** look at administrative (bottom of this)
+*** look at action radars
+*** Create Hardware Tickets
+*** Projects
+*** review projects/sync rdar+filters/emacs/email/
+*** review next shift rdars
+*** Alerts
+- AMS 
+- ASH
+- ATL
+- BLN
+- BOS
+- CHI
+- CRL
+- DAL
+- DEN
+- DRF
+- FRA
+- HKG
+- LAX
+- LON
+- MAN
+- MIA
+- MSP
+- NYC
+- PRN (schedule puppet first)
+- PRZ
+- SEA
+- SJC
+- STG
+- SYD
+- TYO
+** look at administrative (bottom of this)
+** Projects
+** 8
+*** 4 x per hour, telemetry minimal
+*** look at administrative (bottom of this)
+*** look at action radars
+*** Create Hardware Tickets
+*** Projects
+*** Alerts
+- AMS 
+- ASH
+- ATL
+- BLN
+- BOS
+- CHI
+- CRL
+- DAL
+- DEN
+- DRF
+- FRA
+- HKG
+- LAX
+- LON
+- MAN
+- MIA
+- MSP
+- NYC
+- PRN (schedule puppet first)
+- PRZ
+- SEA
+- SJC
+- STG
+- SYD
+- TYO
+
+
+* Administration -> loook at previous days notes (bottom above Review Chat History)
+** Hand off from this shift (rdar - capture + search from channel content and paste into rdar search)
+** Release/Deploy (calendar)
+** Network/Infra Changes (calendar/put on)
+** Parse Chat histroy for rdars (jabber)
+*** NOC
+*** OPS
+*** ENG
+** Outages
+*** underway (rdar)
+*** limbo
+*** resolved (email)
+** OP's
+*** SRE (email)
+*** Ops
+*** Siri
+**** Sriracha Changes (github)
+
+
+** Zero out email and add to mail rules
+- checking waiting items
+- checking delegated 
+- checking deferred
+
+** Zero Out Radar Capture
+- checking waiting
+- checking delegated
+- checking deferred
+
+** Review Latest Parsec Milestone Tickets
+- look for SRE tix
+- see if any projects need to be created
+
+** Review ConnectMe Inbox
+* notes (for next shift and self)
+
+* Review Chat History
+* Clear safari tabs
+
+* After Work
+** Calls
+** Gmail/github/emacs

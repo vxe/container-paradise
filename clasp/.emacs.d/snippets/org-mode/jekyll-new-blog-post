@@ -1,0 +1,19 @@
+# -*- mode: snippet -*-
+# name: jekyll-new-blog-post
+# key: <jnbp
+# --
+# -*- org-export-babel-evaluate: nil -*-
+#+STARTUP: showall indent
+#+STARTUP: hidestars
+#+OPTIONS: toc:nil
+#+BEGIN_HTML
+---
+layout: post
+title: ${1:title}
+categories: [${2:categories}]
+tags: [${3:tags}]
+description: ${4:description}
+---
+#+END_HTML
+
+* ${5:Conclusion}

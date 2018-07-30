@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: dash-create-docset
+# key: dashcreatedocset
+# --
+tar --exclude='.DS_Store' -cvzf $1.tgz $1.docset

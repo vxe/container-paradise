@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: node-type
+# key: <node
+# --
+typedef struct node {
+     	struct node *${1:name};
+	$0
+} node_t;

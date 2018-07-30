@@ -1,0 +1,97 @@
+- name: emacs
+  hosts: localhost
+  tasks:
+    - name: pip
+      pip:
+        name: pip
+        virtualenv: ~/.emacs.d/var/emacs
+    - name: scikit-learn
+      pip:
+        name: scikit-learn
+        virtualenv: ~/.emacs.d/var/emacs
+    - name: dnspython
+      pip:
+        name: dnspython
+        virtualenv: ~/.emacs.d/var/emacs
+    - name: numpy
+      pip:
+        name: numpy
+        virtualenv: ~/.emacs.d/var/emacs
+    - name: pyflux
+      pip:
+        name: pyflux
+        virtualenv: ~/.emacs.d/var/emacs
+    - name: psutil
+      pip:
+        name: psutil
+        virtualenv: ~/.emacs.d/var/emacs
+    - name: ClusterShell
+      pip:
+        name: ClusterShell
+        virtualenv: ~/.emacs.d/var/emacs
+    - name: pyflux
+      pip:
+        name: pyflux
+        virtualenv: ~/.emacs.d/var/emacs
+
+    - name: request
+      pip:
+        name: request
+        virtualenv: ~/.emacs.d/var/emacs
+    - name: retrying
+      pip:
+        name: retrying
+        virtualenv: ~/.emacs.d/var/emacs
+
+
+- name: sbin
+  hosts: mac
+  tasks:
+    - name: psutil
+      pip:
+        name: psutil
+        virtualenv: ~/.emacs.d/var/sbin
+    - name: ClusterShell
+      pip:
+        name: ClusterShell
+        virtualenv: ~/.emacs.d/var/sbin
+        
+
+
+
+- name: data-science
+  hosts: mac
+  tasks:
+    - name: scikit-learn
+      pip:
+        name: scikit-learn
+        virtualenv: ~/.emacs.d/var/data-science
+    - name: numpy
+      pip:
+        name: numpy
+        virtualenv: ~/.emacs.d/var/data-science
+    - name: scipy
+      pip:
+        name: scipy
+        virtualenv: ~/.emacs.d/var/data-science
+    - name: pandas
+      pip:
+        name: pandas
+        virtualenv: ~/.emacs.d/var/data-science
+    - name: matplotlib
+      pip:
+        name: matplotlib
+        virtualenv: ~/.emacs.d/var/data-science
+    - name: nltk
+      pip:
+        name: nltk
+        virtualenv: ~/.emacs.d/var/data-science
+    - name: statsmodels
+      pip:
+        name: statsmodels
+        virtualenv: ~/.emacs.d/var/data-science
+    - name: pyflux
+      pip:
+        name: pyflux
+        virtualenv: ~/.emacs.d/var/data-science
+

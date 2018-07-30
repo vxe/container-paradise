@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: shep-diff
+# key: <shepdiff
+# --
+shep -y diff $1

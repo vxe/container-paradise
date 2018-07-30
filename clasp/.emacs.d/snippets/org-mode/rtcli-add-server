@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: rtcli-add-server
+# key: rtcliaddserver
+# binding: direct-keybinding
+# --
+rtcli.py -vvv update -f ${1:server_list}.csv

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: pdsh-reload-ixgbe
+# key: pdshreloadixgbe
+# --
+pdsh -w "$1[$2].$3" 'modprobe -r ixgbe && sudo modprobe ixgbe'

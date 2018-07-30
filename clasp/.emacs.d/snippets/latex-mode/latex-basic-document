@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: latex-basic-document
+# key: latexbasicdoucment
+# --
+\documentclass[a4paper,11pt]{article}
+\begin{document}
+\title{${1:title}}
+\author{Vijay Edwin}
+\date{${2:date}}
+\maketitle
+\section{${3:section title}}
+$0
+\end{document}

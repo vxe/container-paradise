@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: ipmi-boot-disk-persistent
+# key: ipmibootdiskpersistentwgwg
+# --
+ipmitool -I lanplus -U $OOB_USER -P $OOB_PASS -H $oobip chassis bootdev disk options=persistent

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: hugo-new-site
+# key: hugonewsite
+# --
+hugo new site ${1:name}

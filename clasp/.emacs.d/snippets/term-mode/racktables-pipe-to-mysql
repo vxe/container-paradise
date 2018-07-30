@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: racktables-pipe-to-mysql
+# key: racktables-pipe-to-mysql
+# --
+sudo mysql racktables_db 

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: supervisorctl-status
+# key: <ss
+# --
+supervisorctl status | sed 's/#//g'

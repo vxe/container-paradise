@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: enhancedsrc
+# key: <SS
+# --
+:PROPERTIES:
+:session: ${1:server}
+:results: output
+:END:
+
+#+BEGIN_SRC sh :dir /ssh:vijay_edwin@$1:  :session $1
+$0
+#+END_SRC

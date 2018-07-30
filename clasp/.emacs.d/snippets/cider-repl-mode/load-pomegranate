@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: load-pomegranate
+# key: load-pomegranate
+# --
+(use '[cemerick.pomegranate :only (add-dependencies)])

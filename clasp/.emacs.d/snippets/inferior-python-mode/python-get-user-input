@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: python-get-user-input
+# key: pythongetuserinput
+# --
+${1:output} = raw_input("${2:prompt}\n")

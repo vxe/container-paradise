@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: disk-serial-number
+# key: disk-serial-number
+# --
+sudo lshw -class disk

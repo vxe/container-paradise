@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: clush-check-raid
+# key: clushcheckraid
+# --
+clush -s $1 -g api -g apift -g cimage -g csearch -g cshared -g cstring -g cstate -g crelay -g ds -B 'sudo cat /proc/mdstat | grep -A 1 "active raid10"'

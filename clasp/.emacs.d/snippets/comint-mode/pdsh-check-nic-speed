@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: pdsh-check-nic-speed
+# key: pcnp
+# --
+pdsh -w "" "sudo ethtool \\$(sudo facter -p default_interface) | grep -i speed"

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: load-gsl
+# key: load-gsl
+# --
+(ql:quickload "gsll")

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: perl-regex-print
+# key: perlregexprin
+# --
+perl -ne 'print if //'

@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: geo-report
+# key: georeport
+# binding: direct-keybinding
+# --
+./feedback-runner.sh edge_users.py 9/29 -e fra -e drf --email

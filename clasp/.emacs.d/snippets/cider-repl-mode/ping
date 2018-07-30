@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: ping
+# key: ping
+# --
+(defn ping [address]
+(.isReachable (java.net.InetAddress/getByName address) 1000))
+        

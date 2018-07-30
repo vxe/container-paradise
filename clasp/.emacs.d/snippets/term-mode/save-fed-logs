@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: save-fed-logs
+# key: savesafelogs
+# --
+mkdir -p ~/fed.\`rolename -l\`.\`date +%F-%H-%M%p\` ; cp /var/log/shepherd/API\=federator.log* ~/fed.\`rolename -l\`.\`date +%F-%H-%M%p\` ; ls -ltrh /var/log/shepherd | grep fed

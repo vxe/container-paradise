@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: rt-get-spare-report
+# key: rt-get-spare-report
+# --
+get_sites rt | while read line; do echo $line \`gen-rt-sql $line | sudo mysql racktables_db| grep -E "CSE-116TS-605WBP-AI036|ZT Systems Z1100HH" | wc -l\`; done | sort -k2n | perl -e 'print reverse <>'

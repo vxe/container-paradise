@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: drill-multi-cloze
+# key: drillmulticloze
+# --
+:DRILL_CARD_TYPE: hide1cloze

@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: ansible-hosts
+# key: ansiblehosts
+# --
+[${1:group-name}]
+${2:ip-or-hostname}${3::22}

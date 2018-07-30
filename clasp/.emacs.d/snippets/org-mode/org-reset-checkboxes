@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: org-reset-checkboxes
+# key: orgresetcheckboxes
+# --
+:PROPERTIES:
+:RESET_CHECK_BOXES: t
+:END:

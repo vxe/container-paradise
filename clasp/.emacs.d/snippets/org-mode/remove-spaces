@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: remove-spaces
+# key: removespacez
+# binding: direct-keybinding
+# --
+find ${1:dir} -name "* *" -type ${2:f_or_d} | rename 's/ /_/g'

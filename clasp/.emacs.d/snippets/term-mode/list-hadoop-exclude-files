@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: list-hadoop-exclude-files
+# key: listhadoopexlucde
+# --
+echo "sudo vim /etc/hadoop/conf/hadoop-dfs.hosts.exclude sudo vim /etc/hadoop/conf/hadoop-yarn.hosts.exclude

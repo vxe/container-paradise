@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: dig-find-ttl
+# key: digfidnttl
+# binding: direct-keybinding
+# --
+dig +nocmd +noall +answer ${1:host}

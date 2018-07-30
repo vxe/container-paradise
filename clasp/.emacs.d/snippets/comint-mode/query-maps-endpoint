@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: query-maps-endpoint
+# key: querymapsendpoint
+# --
+./search-maps-linux -D fed \"Apple\" -L "en_US" -l 34.79,-96.665

@@ -1,0 +1,21 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: task-plan
+# key: task
+# binding: direct-keybinding
+# --
+1. Capture
+2. Clarify
+# Next Actions
+## Document - putting items in ticket
+## Automate - draft scripts for generic/general parts of task
+## Research - calls/reading/jira-archive-search
+# Delegate
+# Project Creation
+# Reference
+3. Organize
+# create plan/list/checklist to follow for completing the task
+4. Reflect
+# Critique plan and look for bottleneck's and parallelization opportunities
+5. Engage
+# Carry out the plan
+

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: sort-list-of-strings
+# key: sort-list-of-strings
+# --
+(sort ${1:LIST} #'string-lessp)

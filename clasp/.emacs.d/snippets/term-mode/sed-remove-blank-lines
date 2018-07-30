@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: sed-remove-blank-lines
+# key: sedremovelanklioes
+# --
+sed '/^\s*$/d'

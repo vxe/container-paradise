@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: osx-netstat
+# key: osxnetstat
+# --
+sudo lsof -PiTCP -sTCP:LISTEN | grep 8080

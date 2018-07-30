@@ -1,0 +1,7 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: org-header
+# key: org
+# binding: direct-keybinding
+# --
+# -*- mode:org -*-
+#+STARTUP: indent

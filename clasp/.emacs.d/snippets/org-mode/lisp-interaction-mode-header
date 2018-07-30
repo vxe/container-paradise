@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: lisp-interaction-mode-header
+# key: lispinteractionmodehader
+# --
+; -*- mode:lisp-interaction -*-

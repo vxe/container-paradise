@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: cloze-multi
+# key: <cloze
+# --
+**** ${1:definition_concept_example}                                                       :drill:
+:PROPERTIES:
+:DRILL_CARD_TYPE: hide1cloze
+:END:
+
+$2

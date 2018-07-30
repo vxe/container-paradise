@@ -1,0 +1,12 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: exclude-cygwin-task
+# key: cygwin
+# binding: direct-keybinding
+# --
+(cond
+ ((or
+   (eq system-type 'gnu/linux)
+   (eq system-type 'linux))
+   (${1:do-something-for-not-cygwin})
+
+(t (${2:do-something-for-cygwin})))

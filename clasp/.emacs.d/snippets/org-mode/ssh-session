@@ -1,0 +1,20 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: ssh-session
+# key: <ssh
+# binding: direct-keybinding
+# --
+
+** ${1:hostname}.${2:domain} `(vxe-mt-chomp "date")`
+:PROPERTIES:
+:dir: /$1.$2:
+:session: $1.$2-`(vxe-mt-chomp "echo $RANDOM")`
+:END:
+
+#+BEGIN_SRC sh :prologue "export PS1='$ '"
+$0
+hostname -f | tee ~/.output
+#+END_SRC
+
+#+BEGIN_SRC sh
+cat ~/.output
+#+END_SRC

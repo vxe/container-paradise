@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: dhcp-gen
+# key: dhcpgen
+# --
+write_dhcp.py -s hkg -o .

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name:specify-file-mode 
+# key: specifyfilemode
+# --
+-*- mode: ${1:major-mode-name}; ${2:var: value;} -*-

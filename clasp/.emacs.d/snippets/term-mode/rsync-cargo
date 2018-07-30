@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: rsync-cargo
+# key: rsynccargo
+# --
+rsync -avz dev0018.lab:~/cargo/ /Users/vedwin/pull-requests/cargo

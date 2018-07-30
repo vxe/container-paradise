@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: rtcli-update
+# key: rtcli-update
+# --
+rtcli.py -v update -f $1

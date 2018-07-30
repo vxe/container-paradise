@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: weekend
+# key: weekend
+# --
+&%%(and (diary-block ${1:month} ${2:day} ${3:year} ${4:month} ${5:day} ${6:year})) ------------WEEKEND------------

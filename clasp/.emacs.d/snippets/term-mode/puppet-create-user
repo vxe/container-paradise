@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: puppet-create-user
+# key: puppetcreateuser
+# --
+puppet apply -e "user {'logstash': ensure => present,}"

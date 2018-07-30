@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: sudo-nobody
+# key: sudonobody
+# --
+sudo -u nobody bash

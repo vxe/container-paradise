@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: array-remove-tail
+# key: array-remove-tail
+# --
+${1:array_name}.pop()

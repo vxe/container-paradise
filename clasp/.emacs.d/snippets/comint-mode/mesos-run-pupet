@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: mesos-run-puppet
+# key: mesosrunpuppet
+# --
+pdsh -w 'mss-a00[01-03].prn' 'sudo puppet agent -tv';pdsh -w 'mss-b00[01-03].prn' 'sudo puppet agent -tv';pdsh -w 'mss-c00[01-03].prn' 'sudo puppet agent -tv'

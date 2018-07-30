@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: distributor-command
+# key: distributorcommand
+# --
+cd /opt/distributor && /usr/bin/env http_proxy=http://ec0001.lon.parsec.apple.com:8080 bundle exec /opt/distributor/bin/distrib

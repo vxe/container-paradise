@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: zombie-parent
+# key: zombieparent
+# --
+pstree -p -s 11431

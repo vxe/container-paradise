@@ -1,0 +1,250 @@
+# -*- mode: snippet -*-
+# name: weekly-review
+# key: weeklyreview
+# --
+* personal
+** Projects started, not completed	
+** Projects that need to be started	
+** Projects other organizations	
+ - Github/Open Source
+ - Community
+ - Volunteer
+** Commitments/promises to others	
+ - Significant Other
+ - Parents
+ - Family
+ - Friends
+ - Professionals
+ - Returnable items
+ - Debts
+** Communications to make/get	
+ - Calls
+ - E-mails
+ - Cards and letters
+ - Thank-yous
+ - Texts
+ - Social media postings
+** Upcoming events	
+ - Birthdays
+ - Anniversaries
+ - Weddings
+ - Graduations
+ - Receptions
+ - Outings
+ - Holidays
+ - Vacation
+ - Travel
+ - Dinners
+ - Parties
+ - Cultural events
+ - Sporting events
+** Administration
+ - Emacs
+ - Software
+ - Mobile device/Apps
+ - Filing and records
+ - Data storage/backup
+** Leisure	
+ - Books
+ - Music
+ - Video
+ - Travel
+ - Places to visit
+ - People to visit
+ - Web browsing
+ - Photography
+ - Sports equipment
+ - Hobbies
+ - Cooking
+ - Recreation
+** Personal development
+ - Blog Posts
+ - Books
+ - Classes
+ - Seminars
+ - Education
+ - Coaching/counseling
+ - Career
+ - Creative expressions
+** Financial
+ - Budget
+ - Bills
+ - Banks
+ - Investments
+ - Loans
+ - Taxes
+ - Insurance
+ - Mortgage
+ - Bookkeeping
+ - Accounting
+** Family projects/activities	
+ - Significant Other
+ - Children
+ - Parents
+ - Relatives
+** Home/household	
+ - Repairs
+ - Heating and air conditioning
+ - Utilities
+ - Decor
+ - Furniture
+ - Appliances
+ - Kitchen supplies/equipment
+ - Laundry
+ - Purging, organizing, cleaning
+ - Storage
+ - Service providers
+** Health	
+ - Diet
+ - Food
+ - Exercise
+** Transportation	
+ - Motor vehicles
+ - Maintenance
+ - Repair
+** Clothes	
+ - Professional
+ - Casual
+ - Formal
+ - Sports
+ - Accessories
+ - Luggage
+ - Repairs
+ - Tailoring
+** Errands	
+ - Shopping
+ - Stores
+ - Hardware
+ - Supplies
+ - Groceries
+ - Gifts
+ - Pharmacy
+ - Bank
+ - Cleaners
+ - Repairs
+** Community	
+ - Neighborhood
+ - Neighbors
+ - Civic involvement
+ - Voting
+** Waiting for	
+ - Product orders
+ - Repairs
+ - Reimbursements
+ - Loaned items
+ - Information
+ - RSVPs
+ - Projects/tasks completed by family/friends
+
+* Work
+** Projects started, not completed		
+** Projects that need to be started		
+** Look into projects		
+** Commitments/promises to others		
+ - [ ] Boss/partners	
+ - [ ] Colleagues	
+ - [ ] Subordinates	
+ - [ ] Others in organization	
+   - [ ] "Outside" people
+   - [ ] Customers
+   - [ ] Other organizations
+   - [ ] Professionals
+   - [ ] Vendors
+** Communications to make/get		
+ - [ ] Internal/external	
+   - [ ] Initiate or respond to:
+   - [ ] Phone calls
+   - [ ] Voice mails
+   - [ ] E-mails
+   - [ ] Text messages
+   - [ ] Letters
+   - [ ] Social media postings
+** Meetings		
+ - [ ] Upcoming	
+ - [ ] Needing to be set/requested	
+ - [ ] Need debriefing	
+** Other writing to finish/submit		
+ - [ ] Reports	
+ - [ ] Evaluations/reviews	
+ - [ ] Proposals	
+ - [ ] Articles	
+ - [ ] Marketing materials	
+ - [ ] Manuals/instructions	
+ - [ ] Summaries	
+ - [ ] Rewrites and edits
+ - [ ] Status reporting	
+ - [ ] Conversation and communication tracking	
+** Meetings that need to be set/requested		
+** Who needs to know about what decisions?		
+** Significant read/review		
+** Planning/organizing		
+ - [ ] Formal planning (goals, targets, objectives)	
+ - [ ] Current projects (next stages)	
+ - [ ] Organizational initiatives	
+ - [ ] Upcoming events	
+ - [ ] Meetings	
+ - [ ] Presentations	
+ - [ ] Conferences	
+ - [ ] Installation of new systems/equipment	
+ - [ ] Vacation	
+ - [ ] Business trips	
+** Organization Development		
+ - [ ] Roles	
+ - [ ] New systems	
+ - [ ] Leadership	
+ - [ ] Change initiatives	
+ - [ ] Succession planning/Knowledge Transfer
+ - [ ] Organization culture	
+** Administration		
+ - [ ] Policies/procedures	
+ - [ ] Training
+ - [ ] Personnel	
+** Systems/Automation Opportunities
+ - [ ] federator
+ - [ ] dataservice
+ - [ ] cargo
+ - [ ] hadoop
+ - [ ] pipelines
+ - [ ] nagios
+ - [ ] quip
+ - [ ] central-station
+ - [ ] racktbles
+ - [ ] ELK
+** Office/site		
+ - [ ] Maintenance/cleaning	
+** Staff		
+ - [ ] Promotions
+ - [ ] Reviews	
+ - [ ] Communication	
+ - [ ] Staff development	
+ - [ ] Compensation	
+ - [ ] Feedback	
+ - [ ] Morale	
+** Professional development
+ - [ ] Blog Posts - read/write
+ - [ ] Training/seminars	
+ - [ ] Things to learn	
+ - [ ] Things to find out	
+ - [ ] Skills to practice/develop	
+ - [ ] Books to read/study	
+ - [ ] Research	
+ - [ ] Formal education (licensing, degrees)	
+ - [ ] Career research	
+ - [ ] Resume
+ - [ ] Performance objectives	
+** Professional wardrobe		
+** Waiting for.		
+ - [ ] Information	
+ - [ ] Delegated tasks/projects	
+ - [ ] Completions critical to projects	
+ - [ ] Answers to questions	
+ - [ ] Replies to:	
+   - [ ] E-mails
+   - [ ] Proposals
+   - [ ] Calls
+   - [ ] Invitations
+ - [ ] Reimbursements	
+ - [ ] Ordered items	
+ - [ ] Repairs	
+ - [ ] Tickets	
+ - [ ] Decisions of others	

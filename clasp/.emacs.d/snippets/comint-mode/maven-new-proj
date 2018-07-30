@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: maven-new-proj
+# key: mvnnewproj
+# --
+ mvn -B archetype:generate \
+  -DarchetypeGroupId=org.apache.maven.archetypes \
+  -DgroupId=ninja.vxe.PACKAGE -DartifactId=PROJECT_NAME

@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: ssh-properties
+# key: sshperopewrfefopekfp
+# --
+:PROPERTIES:
+:session: ${1:session-name}
+:results: output
+:END:

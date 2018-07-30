@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: tailf-perl-search
+# key: tailfperlsearch
+# --
+sudo tail -f | perl -ne 'print if //'

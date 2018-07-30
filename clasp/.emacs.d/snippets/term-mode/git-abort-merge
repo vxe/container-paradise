@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: git-abort-merge
+# key: gitabortmerge
+# --
+git merge --abort

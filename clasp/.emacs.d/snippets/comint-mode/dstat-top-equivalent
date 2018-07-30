@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: dstat-top-equivalent
+# key: dstattopequivalent
+# --
+dstat -tcndylp --top-cpu

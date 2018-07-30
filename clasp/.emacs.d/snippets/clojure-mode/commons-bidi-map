@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: commons-bidi-map
+# key: commonsbidimap
+# --
+(def ${1:map_name_here} (org.apache.commons.collections4.bidimap.TreeBidiMap.))

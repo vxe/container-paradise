@@ -1,0 +1,1121 @@
+# -*- mode: snippet -*-
+# name: enhanced-src-with-graphs
+# key: enhanced-src-with-graphs
+# --
+***** STUFF  ${1:hostname}.${2:edge} - ${3:topic} - `(vxe-mt-chomp "date")` :$2:incident_management:troubleshooting:nagios:work:
+#+BEGIN_SRC ${8:shell} ${9:prologue "export PS1='$ '"} :dir /$1.$2: :session $1.$2-`(vxe-mt-chomp "echo $RANDOM")` :results output replace :exports both
+set -o xtrace
+$0
+
+hostname -f; rolename -l
+#+END_SRC
+
+
+******* Graphs
+********* Config
+ #+BEGIN_SRC json :tangle ./grafana-dashboards/${10:dashboard_name}.json
+       {"dashboard" :
+	{
+	    "id": 406,
+	    "title": "SRE - New Hire Dashboard",
+	    "originalTitle": "SRE - New Hire Dashboard",
+	    "tags": [],
+	    "style": "dark",
+	    "timezone": "browser",
+	    "editable": true,
+	    "hideControls": false,
+	    "sharedCrosshair": false,
+	    "rows": [
+ #+END_SRC
+********** Rows
+*********** Fed Timeouts
+  #+BEGIN_SRC json :tangle ./grafana-dashboards/$10.json
+		 {
+		     "title": "fed timeouts",
+		     "height": "250px",
+		     "editable": true,
+		     "collapse": false,
+		     "panels": [
+			 {
+			     "aliasColors": {},
+			     "bars": false,
+			     "datasource": "$edge1",
+			     "editable": true,
+			     "error": false,
+			     "fill": 1,
+			     "grid": {
+				 "threshold1": null,
+				 "threshold1Color": "rgba(216, 200, 27, 0.27)",
+				 "threshold2": null,
+				 "threshold2Color": "rgba(234, 112, 112, 0.22)"
+			     },
+			     "id": 1,
+			     "isNew": true,
+			     "legend": {
+				 "avg": false,
+				 "current": false,
+				 "max": false,
+				 "min": false,
+				 "show": true,
+				 "total": false,
+				 "values": false
+			     },
+			     "lines": true,
+			     "linewidth": 2,
+			     "links": [],
+			     "nullPointMode": "connected",
+			     "percentage": false,
+			     "pointradius": 5,
+			     "points": false,
+			     "renderer": "flot",
+			     "seriesOverrides": [],
+			     "span": 6,
+			     "stack": false,
+			     "steppedLine": false,
+			     "targets": [
+				 {
+				     "refId": "A",
+				     "target": "highestMax(group(cactiStyle(aliasByNode(scaleToSeconds(maximumAbove(sumSeriesWithWildcards(nonNegativeDerivative(services.federator.api[0-9]*.*.timeout.count),2),0),1),2)),cactiStyle(aliasByNode(scaleToSeconds(maximumAbove(sumSeriesWithWildcards(nonNegativeDerivative(services.federator.api[0-9]*.*.*.timeout.count),2),0),1),2,3))),12)",
+				     "textEditor": true
+				 }
+			     ],
+			     "timeFrom": null,
+			     "timeShift": null,
+			     "title": "Federator Timeouts - $edge1",
+			     "tooltip": {
+				 "msResolution": false,
+				 "shared": true,
+				 "value_type": "cumulative"
+			     },
+			     "type": "graph",
+			     "xaxis": {
+				 "show": true
+			     },
+			     "yaxes": [
+				 {
+				     "format": "short",
+				     "label": null,
+				     "logBase": 1,
+				     "max": null,
+				     "min": null,
+				     "show": true
+				 },
+				 {
+				     "format": "short",
+				     "label": null,
+				     "logBase": 1,
+				     "max": null,
+				     "min": null,
+				     "show": true
+				 }
+			     ]
+			 },
+			 {
+			     "aliasColors": {},
+			     "bars": false,
+			     "datasource": "$edge2",
+			     "editable": true,
+			     "error": false,
+			     "fill": 1,
+			     "grid": {
+				 "threshold1": null,
+				 "threshold1Color": "rgba(216, 200, 27, 0.27)",
+				 "threshold2": null,
+				 "threshold2Color": "rgba(234, 112, 112, 0.22)"
+			     },
+			     "id": 2,
+			     "isNew": true,
+			     "legend": {
+				 "avg": false,
+				 "current": false,
+				 "max": false,
+				 "min": false,
+				 "show": true,
+				 "total": false,
+				 "values": false
+			     },
+			     "lines": true,
+			     "linewidth": 2,
+			     "links": [],
+			     "nullPointMode": "connected",
+			     "percentage": false,
+			     "pointradius": 5,
+			     "points": false,
+			     "renderer": "flot",
+			     "seriesOverrides": [],
+			     "span": 6,
+			     "stack": false,
+			     "steppedLine": false,
+			     "targets": [
+				 {
+				     "refId": "A",
+				     "target": "highestMax(group(cactiStyle(aliasByNode(scaleToSeconds(maximumAbove(sumSeriesWithWildcards(nonNegativeDerivative(services.federator.api[0-9]*.*.timeout.count),2),0),1),2)),cactiStyle(aliasByNode(scaleToSeconds(maximumAbove(sumSeriesWithWildcards(nonNegativeDerivative(services.federator.api[0-9]*.*.*.timeout.count),2),0),1),2,3))),12)",
+				     "textEditor": true
+				 }
+			     ],
+			     "timeFrom": null,
+			     "timeShift": null,
+			     "title": "Federator Timeouts - $edge2",
+			     "tooltip": {
+				 "msResolution": false,
+				 "shared": true,
+				 "value_type": "cumulative"
+			     },
+			     "type": "graph",
+			     "xaxis": {
+				 "show": true
+			     },
+			     "yaxes": [
+				 {
+				     "format": "short",
+				     "label": null,
+				     "logBase": 1,
+				     "max": null,
+				     "min": null,
+				     "show": true
+				 },
+				 {
+				     "format": "short",
+				     "label": null,
+				     "logBase": 1,
+				     "max": null,
+				     "min": null,
+				     "show": true
+				 }
+			     ]
+			 }
+		 
+		 
+		     ]
+		 }
+		 ,
+  #+END_SRC
+*********** Search Average Response Time
+  #+BEGIN_SRC json :tangle ./grafana-dashboards/$10.json
+		 {
+		     "title": "search response time",
+		     "height": "250px",
+		     "editable": true,
+		     "collapse": false,
+		     "panels": [
+			 {
+			     "aliasColors": {},
+			     "bars": false,
+			     "datasource": "$edge1",
+			     "editable": true,
+			     "error": false,
+			     "fill": 1,
+			     "grid": {
+				 "threshold1": null,
+				 "threshold1Color": "rgba(216, 200, 27, 0.27)",
+				 "threshold2": null,
+				 "threshold2Color": "rgba(234, 112, 112, 0.22)"
+			     },
+			     "id": 3,
+			     "isNew": true,
+			     "legend": {
+				 "avg": false,
+				 "current": false,
+				 "max": false,
+				 "min": false,
+				 "show": true,
+				 "total": false,
+				 "values": false
+			     },
+			     "lines": true,
+			     "linewidth": 2,
+			     "links": [],
+			     "nullPointMode": "connected",
+			     "percentage": false,
+			     "pointradius": 5,
+			     "points": false,
+			     "renderer": "flot",
+			     "seriesOverrides": [],
+			     "span": 6,
+			     "stack": false,
+			     "steppedLine": false,
+			     "targets": [
+				 {
+				     "refId": "A",
+				     "target": "exclude(cactiStyle(aliasByNode(highestCurrent(averageSeriesWithWildcards(scale(services.federator.api[0-9]*.search.{domain,signal}.*.mean,0.000001),2),10),4)),'image_search_long_tail')",
+				     "textEditor": true
+				 }
+			     ],
+			     "timeFrom": null,
+			     "timeShift": null,
+			     "title": "Search Average Response Time  - $edge1",
+			     "tooltip": {
+				 "msResolution": false,
+				 "shared": true,
+				 "value_type": "cumulative"
+			     },
+			     "type": "graph",
+			     "xaxis": {
+				 "show": true
+			     },
+			     "yaxes": [
+				 {
+				     "format": "short",
+				     "label": null,
+				     "logBase": 1,
+				     "max": null,
+				     "min": null,
+				     "show": true
+				 },
+				 {
+				     "format": "short",
+				     "label": null,
+				     "logBase": 1,
+				     "max": null,
+				     "min": null,
+				     "show": true
+				 }
+			     ]
+			 },
+			 {
+			     "aliasColors": {},
+			     "bars": false,
+			     "datasource": "$edge2",
+			     "editable": true,
+			     "error": false,
+			     "fill": 1,
+			     "grid": {
+				 "threshold1": null,
+				 "threshold1Color": "rgba(216, 200, 27, 0.27)",
+				 "threshold2": null,
+				 "threshold2Color": "rgba(234, 112, 112, 0.22)"
+			     },
+			     "id": 4,
+			     "isNew": true,
+			     "legend": {
+				 "avg": false,
+				 "current": false,
+				 "max": false,
+				 "min": false,
+				 "show": true,
+				 "total": false,
+				 "values": false
+			     },
+			     "lines": true,
+			     "linewidth": 2,
+			     "links": [],
+			     "nullPointMode": "connected",
+			     "percentage": false,
+			     "pointradius": 5,
+			     "points": false,
+			     "renderer": "flot",
+			     "seriesOverrides": [],
+			     "span": 6,
+			     "stack": false,
+			     "steppedLine": false,
+			     "targets": [
+				 {
+				     "refId": "A",
+				     "target": "exclude(cactiStyle(aliasByNode(highestCurrent(averageSeriesWithWildcards(scale(services.federator.api[0-9]*.search.{domain,signal}.*.mean,0.000001),2),10),4)),'image_search_long_tail')",
+				     "textEditor": true
+				 }
+			     ],
+			     "timeFrom": null,
+			     "timeShift": null,
+			     "title": "Search Average Response Time  - $edge2",
+			     "tooltip": {
+				 "msResolution": false,
+				 "shared": true,
+				 "value_type": "cumulative"
+			     },
+			     "type": "graph",
+			     "xaxis": {
+				 "show": true
+			     },
+			     "yaxes": [
+				 {
+				     "format": "short",
+				     "label": null,
+				     "logBase": 1,
+				     "max": null,
+				     "min": null,
+				     "show": true
+				 },
+				 {
+				     "format": "short",
+				     "label": null,
+				     "logBase": 1,
+				     "max": null,
+				     "min": null,
+				     "show": true
+				 }
+			     ]
+			 }
+		   
+		   
+		     ]
+		 }
+	     
+		 ,
+  #+END_SRC
+*********** Max Reponse Time by Host
+  #+BEGIN_SRC json :tangle ./grafana-dashboards/$10.json
+		 {
+		 "title": "max reponse time by host",
+		 "height": "250px",
+		 "editable": true,
+		 "collapse": false,
+		 "panels": [
+
+		     {
+			 "aliasColors": {},
+			 "bars": false,
+			 "datasource": "$edge1",
+			 "editable": true,
+			 "error": false,
+			 "fill": 1,
+			 "grid": {
+			     "threshold1": null,
+			     "threshold1Color": "rgba(216, 200, 27, 0.27)",
+			     "threshold2": null,
+			     "threshold2Color": "rgba(234, 112, 112, 0.22)"
+			 },
+			 "id": 5,
+			 "isNew": true,
+			 "legend": {
+			     "avg": false,
+			     "current": false,
+			     "max": false,
+			     "min": false,
+			     "show": true,
+			     "total": false,
+			     "values": false
+			 },
+			 "lines": true,
+			 "linewidth": 2,
+			 "links": [],
+			 "nullPointMode": "connected",
+			 "percentage": false,
+			 "pointradius": 5,
+			 "points": false,
+			 "renderer": "flot",
+			 "seriesOverrides": [],
+			 "span": 6,
+			 "stack": false,
+			 "steppedLine": false,
+			 "targets": [
+			     {
+				 "refId": "A",
+				 "target": "cactiStyle(aliasByNode(highestCurrent(scale(services.federator.api[0-9]*.search.max,0.000001),10),2))",
+				 "textEditor": true
+			     }
+			 ],
+			 "timeFrom": null,
+			 "timeShift": null,
+			 "title": "Max Reponse Time by Host - $edge1",
+			 "tooltip": {
+			     "msResolution": false,
+			     "shared": true,
+			     "value_type": "cumulative"
+			 },
+			 "type": "graph",
+			 "xaxis": {
+			     "show": true
+			 },
+			 "yaxes": [
+			     {
+				 "format": "short",
+				 "label": null,
+				 "logBase": 1,
+				 "max": null,
+				 "min": null,
+				 "show": true
+			     },
+			     {
+				 "format": "short",
+				 "label": null,
+				 "logBase": 1,
+				 "max": null,
+				 "min": null,
+				 "show": true
+			     }
+			 ]
+		     },
+		     {
+			 "aliasColors": {},
+			 "bars": false,
+			 "datasource": "$edge2",
+			 "editable": true,
+			 "error": false,
+			 "fill": 1,
+			 "grid": {
+			     "threshold1": null,
+			     "threshold1Color": "rgba(216, 200, 27, 0.27)",
+			     "threshold2": null,
+			     "threshold2Color": "rgba(234, 112, 112, 0.22)"
+			 },
+			 "id": 6,
+			 "isNew": true,
+			 "legend": {
+			     "avg": false,
+			     "current": false,
+			     "max": false,
+			     "min": false,
+			     "show": true,
+			     "total": false,
+			     "values": false
+			 },
+			 "lines": true,
+			 "linewidth": 2,
+			 "links": [],
+			 "nullPointMode": "connected",
+			 "percentage": false,
+			 "pointradius": 5,
+			 "points": false,
+			 "renderer": "flot",
+			 "seriesOverrides": [],
+			 "span": 6,
+			 "stack": false,
+			 "steppedLine": false,
+			 "targets": [
+			     {
+				 "refId": "A",
+				 "target": "cactiStyle(aliasByNode(highestCurrent(scale(services.federator.api[0-9]*.search.max,0.000001),10),2))",
+				 "textEditor": true
+			     }
+			 ],
+			 "timeFrom": null,
+			 "timeShift": null,
+			 "title": "Max Reponse Time by Host - $edge2",
+			 "tooltip": {
+			     "msResolution": false,
+			     "shared": true,
+			     "value_type": "cumulative"
+			 },
+			 "type": "graph",
+			 "xaxis": {
+			     "show": true
+			 },
+			 "yaxes": [
+			     {
+				 "format": "short",
+				 "label": null,
+				 "logBase": 1,
+				 "max": null,
+				 "min": null,
+				 "show": true
+			     },
+			     {
+				 "format": "short",
+				 "label": null,
+				 "logBase": 1,
+				 "max": null,
+				 "min": null,
+				 "show": true
+			     }
+			 ]
+		     }
+		 
+		 ]
+		 }
+	 ,
+ #+END_SRC
+*********** QAS Reponse Time
+ #+BEGIN_SRC json :tangle ./grafana-dashboards/$10.json
+   {
+       "title": "New row",
+       "height": "250px",
+       "editable": true,
+       "collapse": false,
+       "panels": [
+	   {
+	       "aliasColors": {},
+	       "bars": false,
+	       "datasource": "$edge1",
+	       "editable": true,
+	       "error": false,
+	       "fill": 1,
+	       "grid": {
+		   "threshold1": null,
+		   "threshold1Color": "rgba(216, 200, 27, 0.27)",
+		   "threshold2": null,
+		   "threshold2Color": "rgba(234, 112, 112, 0.22)"
+	       },
+	       "id": 7,
+	       "isNew": true,
+	       "legend": {
+		   "avg": false,
+		   "current": false,
+		   "max": false,
+		   "min": false,
+		   "show": true,
+		   "total": false,
+		   "values": false
+	       },
+	       "lines": true,
+	       "linewidth": 2,
+	       "links": [],
+	       "nullPointMode": "connected",
+	       "percentage": false,
+	       "pointradius": 5,
+	       "points": false,
+	       "renderer": "flot",
+	       "seriesOverrides": [],
+	       "span": 6,
+	       "stack": false,
+	       "steppedLine": false,
+	       "targets": [
+		   {
+		       "refId": "A",
+		       "target": "cactiStyle(alias(averageSeries(scale(services.federator.api[0-9]*.search.qas.95,0.000001)),'95th'))
+   ",
+		       "textEditor": true
+		   }
+	       ],
+	       "timeFrom": null,
+	       "timeShift": null,
+	       "title": "QAS Response Time - $edge1",
+	       "tooltip": {
+		   "msResolution": false,
+		   "shared": true,
+		   "value_type": "cumulative"
+	       },
+	       "type": "graph",
+	       "xaxis": {
+		   "show": true
+	       },
+	       "yaxes": [
+		   {
+		       "format": "short",
+		       "label": null,
+		       "logBase": 1,
+		       "max": null,
+		       "min": null,
+		       "show": true
+		   },
+		   {
+		       "format": "short",
+		       "label": null,
+		       "logBase": 1,
+		       "max": null,
+		       "min": null,
+		       "show": true
+		   }
+	       ]
+	   },
+	   {
+	       "aliasColors": {},
+	       "bars": false,
+	       "datasource": "$edge2",
+	       "editable": true,
+	       "error": false,
+	       "fill": 1,
+	       "grid": {
+		   "threshold1": null,
+		   "threshold1Color": "rgba(216, 200, 27, 0.27)",
+		   "threshold2": null,
+		   "threshold2Color": "rgba(234, 112, 112, 0.22)"
+	       },
+	       "id": 8,
+	       "isNew": true,
+	       "legend": {
+		   "avg": false,
+		   "current": false,
+		   "max": false,
+		   "min": false,
+		   "show": true,
+		   "total": false,
+		   "values": false
+	       },
+	       "lines": true,
+	       "linewidth": 2,
+	       "links": [],
+	       "nullPointMode": "connected",
+	       "percentage": false,
+	       "pointradius": 5,
+	       "points": false,
+	       "renderer": "flot",
+	       "seriesOverrides": [],
+	       "span": 6,
+	       "stack": false,
+	       "steppedLine": false,
+	       "targets": [
+		   {
+		       "refId": "A",
+		       "target": "cactiStyle(alias(averageSeries(scale(services.federator.api[0-9]*.search.qas.95,0.000001)),'95th'))
+   ",
+		       "textEditor": true
+		   }
+	       ],
+	       "timeFrom": null,
+	       "timeShift": null,
+	       "title": "QAS Response Time - $edge2",
+	       "tooltip": {
+		   "msResolution": false,
+		   "shared": true,
+		   "value_type": "cumulative"
+	       },
+	       "type": "graph",
+	       "xaxis": {
+		   "show": true
+	       },
+	       "yaxes": [
+		   {
+		       "format": "short",
+		       "label": null,
+		       "logBase": 1,
+		       "max": null,
+		       "min": null,
+		       "show": true
+		   },
+		   {
+		       "format": "short",
+		       "label": null,
+		       "logBase": 1,
+		       "max": null,
+		       "min": null,
+		       "show": true
+		   }
+	       ]
+	   }
+       ]
+   },
+ #+END_SRC
+*********** Empty Rows
+ #+BEGIN_SRC json :tangle ./grafana-dashboards/$10.json
+	
+		 {
+		     "title": "New row",
+		     "height": "250px",
+		     "editable": true,
+		     "collapse": false,
+		     "panels": []
+		 },
+		 {
+		     "title": "New row",
+		     "height": "250px",
+		     "editable": true,
+		     "collapse": false,
+		     "panels": []
+		 },
+		 {
+		     "title": "New row",
+		     "height": "250px",
+		     "editable": true,
+		     "collapse": false,
+		     "panels": []
+		 }
+	     ],
+ #+END_SRC
+*********** Menu Options
+ #+BEGIN_SRC json :tangle ./grafana-dashboards/$10.json
+	     "time": {
+		 "from": "now-24h",
+		 "to": "now"
+	     },
+	     "timepicker": {
+		 "refresh_intervals": [
+		     "5s",
+		     "10s",
+		     "30s",
+		     "1m",
+		     "5m",
+		     "15m",
+		     "30m",
+		     "1h",
+		     "2h",
+		     "1d"
+		 ],
+		 "time_options": [
+		     "5m",
+		     "15m",
+		     "1h",
+		     "6h",
+		     "12h",
+		     "24h",
+		     "2d",
+		     "7d",
+		     "30d"
+		 ]
+	     },
+	     "templating": {
+		 "list": [
+		     {
+			 "current": {
+			     "text": "data_center_syd",
+			     "value": "data_center_syd"
+			 },
+			 "datasource": null,
+			 "hide": 0,
+			 "includeAll": false,
+			 "multi": false,
+			 "name": "edge1",
+			 "options": [
+			     {
+				 "text": "data_center_ams",
+				 "value": "data_center_ams",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_ap1",
+				 "value": "data_center_ap1",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_ash",
+				 "value": "data_center_ash",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_atl",
+				 "value": "data_center_atl",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_bln",
+				 "value": "data_center_bln",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_bos",
+				 "value": "data_center_bos",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_chi",
+				 "value": "data_center_chi",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_dal",
+				 "value": "data_center_dal",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_den",
+				 "value": "data_center_den",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_drf",
+				 "value": "data_center_drf",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_eng",
+				 "value": "data_center_eng",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_exp",
+				 "value": "data_center_exp",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_fra",
+				 "value": "data_center_fra",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_hkg",
+				 "value": "data_center_hkg",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_hou",
+				 "value": "data_center_hou",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_kcy",
+				 "value": "data_center_kcy",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_lab",
+				 "value": "data_center_lab",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_lax",
+				 "value": "data_center_lax",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_lon",
+				 "value": "data_center_lon",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_man",
+				 "value": "data_center_man",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_mia",
+				 "value": "data_center_mia",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_msp",
+				 "value": "data_center_msp",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_nyc",
+				 "value": "data_center_nyc",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_osa",
+				 "value": "data_center_osa",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_prn",
+				 "value": "data_center_prn",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_sea",
+				 "value": "data_center_sea",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_sin",
+				 "value": "data_center_sin",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_sjc",
+				 "value": "data_center_sjc",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_stg",
+				 "value": "data_center_stg",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_syd",
+				 "value": "data_center_syd",
+				 "selected": true
+			     },
+			     {
+				 "text": "data_center_tyo",
+				 "value": "data_center_tyo",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_us1",
+				 "value": "data_center_us1",
+				 "selected": false
+			     }
+			 ],
+			 "query": "graphite",
+			 "refresh": 1,
+			 "regex": "",
+			 "type": "datasource"
+		     },
+		     {
+			 "current": {
+			     "text": "data_center_stg",
+			     "value": "data_center_stg"
+			 },
+			 "datasource": null,
+			 "hide": 0,
+			 "includeAll": false,
+			 "multi": false,
+			 "name": "edge2",
+			 "options": [
+			     {
+				 "text": "data_center_ams",
+				 "value": "data_center_ams",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_ap1",
+				 "value": "data_center_ap1",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_ash",
+				 "value": "data_center_ash",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_atl",
+				 "value": "data_center_atl",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_bln",
+				 "value": "data_center_bln",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_bos",
+				 "value": "data_center_bos",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_chi",
+				 "value": "data_center_chi",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_dal",
+				 "value": "data_center_dal",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_den",
+				 "value": "data_center_den",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_drf",
+				 "value": "data_center_drf",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_eng",
+				 "value": "data_center_eng",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_exp",
+				 "value": "data_center_exp",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_fra",
+				 "value": "data_center_fra",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_hkg",
+				 "value": "data_center_hkg",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_hou",
+				 "value": "data_center_hou",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_kcy",
+				 "value": "data_center_kcy",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_lab",
+				 "value": "data_center_lab",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_lax",
+				 "value": "data_center_lax",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_lon",
+				 "value": "data_center_lon",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_man",
+				 "value": "data_center_man",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_mia",
+				 "value": "data_center_mia",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_msp",
+				 "value": "data_center_msp",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_nyc",
+				 "value": "data_center_nyc",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_osa",
+				 "value": "data_center_osa",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_prn",
+				 "value": "data_center_prn",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_sea",
+				 "value": "data_center_sea",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_sin",
+				 "value": "data_center_sin",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_sjc",
+				 "value": "data_center_sjc",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_stg",
+				 "value": "data_center_stg",
+				 "selected": true
+			     },
+			     {
+				 "text": "data_center_syd",
+				 "value": "data_center_syd",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_tyo",
+				 "value": "data_center_tyo",
+				 "selected": false
+			     },
+			     {
+				 "text": "data_center_us1",
+				 "value": "data_center_us1",
+				 "selected": false
+			     }
+			 ],
+			 "query": "graphite",
+			 "refresh": 1,
+			 "regex": "",
+			 "type": "datasource"
+		     }
+		 ]
+	     },
+	     "annotations": {
+		 "list": [
+		     {
+			 "datasource": "$edge1",
+			 "enable": true,
+			 "iconColor": "rgba(255, 96, 96, 1)",
+			 "name": "deploy_edge1",
+			 "tags": "deployment",
+			 "target": "events.shepherd.API.federator"
+		     },
+		     {
+			 "datasource": "$edge2",
+			 "enable": true,
+			 "iconColor": "rgb(96, 100, 255)",
+			 "name": "deployment_edge2",
+			 "tags": "deployment",
+			 "target": "events.shepherd.API.federator"
+		     }
+		 ]
+	     },
+	     "schemaVersion": 12,
+	     "version": 23,
+	     "links": []
+	 }
+	}
+
+  #+END_SRC
+

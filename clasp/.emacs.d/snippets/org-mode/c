@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: c
+# key: cwfwefwefe
+# --
+#+BEGIN_SRC ${1:-emacs-lisp-js-sh-sed}
+${2}
+#+END_SRC

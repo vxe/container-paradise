@@ -1,0 +1,7 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: bash-find-zombie
+# key: bashfindzombie
+# binding: direct-keybinding
+# --
+ps aux | grep 'Z'
+pstree -p -s <zombie PID>

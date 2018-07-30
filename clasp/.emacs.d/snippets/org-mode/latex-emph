@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: latex-emph
+# key: latex-emph
+# --
+\emph{$1}$0

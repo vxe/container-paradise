@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: cargo-fast-forward-bucket
+# key: cargo-fast-forward-bucket
+# --
+/opt/parsec/bin/cargo-cast.py -s 'sss+cargo://cargo.$1.parsec.apple.com/SSS_$2/${3:row}/${4:bucket}' -c 'a=channel_pos&name=*&st=-1'

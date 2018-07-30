@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: USE-retransmits
+# key: USEreransmittspokpk
+# --
+sar -n TCP,ETCP 1

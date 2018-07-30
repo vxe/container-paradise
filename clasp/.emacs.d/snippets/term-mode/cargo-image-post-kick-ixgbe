@@ -1,0 +1,26 @@
+# -*- mode: snippet -*-
+# name: cargo-image-post-install-ixgbe
+# key: cargoimpostinstallixgbe
+# --
+function cargo-image-post-install(){
+
+
+if [[ $# -eq 0 ]] ; then
+echo 'usage: cargo-image-post-install EDGE'
+return 0
+else
+local EDGE=\$1
+
+
+
+#sudo apt-get -y install ixgbe-dkms;
+
+#modinfo ixgbe | awk '/^version/{print \$2}';
+
+#sudo modprobe -r ixgbe && sudo modprobe ixgbe
+
+sudo /opt/ops/bin/runner.py -f /var/run/lock/rsync_shared-data_mirror_libtokenizer -- /usr/bin/rsync -a --size-only --exclude=**/.git* --delete-after sync0001.$EDGE.parsec.apple.com::shared-data/mirror/libtokenizer/ /opt/shared-data/mirror/libtokenizer/ 2>&1 | /usr/bin/logger -t rsync_shared-data_mirror_libtokenizer
+
+fi
+}
+cargo-image-post-install

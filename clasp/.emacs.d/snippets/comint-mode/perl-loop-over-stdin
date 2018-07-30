@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: perl-loop-over-stdin
+# key: perlloopoverstdin
+# --
+while(<>){
+$1;

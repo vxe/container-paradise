@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: find-bad-disk
+# key: findbaddisk
+# --
+dmesg -T | grep -i error | grep 'sd[a-z]' | wc -l

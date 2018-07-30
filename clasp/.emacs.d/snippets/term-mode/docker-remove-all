@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: docker-remove-all
+# key: docker-remove-all
+# --
+docker rmi $(docker images -q)

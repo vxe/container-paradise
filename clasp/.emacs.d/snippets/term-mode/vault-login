@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: vault-login
+# key: vaultlogin
+# --
+export VAULT_ADDR=https://vault.parsec.apple.com:8200; vault auth -method=ldap username=vijay_edwin

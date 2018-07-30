@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: tailf-cargo-log
+# key: tailfcargolog
+# --
+tail -f /var/log/cargo.log

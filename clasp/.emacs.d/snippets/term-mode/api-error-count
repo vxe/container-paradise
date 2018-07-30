@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: api-error-count
+# key: apierrorcount
+# --
+pdsh -f55 -Nw 'api00[01-55].stg' "cat /var/log/shepherd/API\=federator.log | grep ^E | while read -a cols; do echo \\${cols[@]:3\}; done " \
+ | sort | uniq -c | sort -n | perl -e 'print reverse <>' | head -50

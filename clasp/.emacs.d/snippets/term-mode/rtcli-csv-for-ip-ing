@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: rtcli-csv-for-ip-ing
+# key: rtcli-csv-for-ip-ing
+# --
+awk -F, '{print \$2 "," \$11 "," \$13 "," \$7 "," \$8}' 

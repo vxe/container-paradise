@@ -1,0 +1,67 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: outage
+# key: <outage
+# binding: direct-keybinding
+# --
+# -*- mode:org -*-
+#+TITLE: ${1:TITLE}
+#+STARTUP: indent
+#+OPTIONS: toc:nil
+#+SEQ_TODO: STUFF(m) NEXT(n) | DONE(d)
+
+* OUTAGE TITLE
+** Diagnosis
+*** Symptom: [Name] - [C-u C-!]
+**** Possible Cause(s)
+***** 
+***** 
+***** 
+***** 
+***** 
+
+*** Symptom: [Name] - [C-u C-!]
+**** Possible Cause(s)
+***** 
+***** 
+***** 
+***** 
+****** 
+*** Symptom: [Name] - [C-u C-!]
+**** Possible Cause(s)
+***** 
+***** 
+***** 
+***** 
+***** 
+
+*** Symptom: [Name] - [C-u C-!]
+**** Possible Cause(s)
+***** 
+***** 
+***** 
+***** 
+***** 
+*** Symptom: [Name] - [C-u C-!]
+**** Possible Cause(s)
+***** 
+***** 
+***** 
+***** 
+***** 
+*** Symptom:  [Name] - [C-u C-!]
+**** Possible Cause(s)
+***** 
+***** 
+***** 
+***** 
+***** 
+
+** Corrective Action
+*** [C-u C-!]
+**** Results
+*** [C-u C-!]
+**** Results
+*** [C-u C-!]
+**** Results
+** Summary
+

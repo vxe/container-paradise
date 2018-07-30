@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: kick-hadoop-data-node
+# key: kickhadoopdata-node
+# binding: direct-keybinding
+# --
+kickstart -k -1 -s [trusty|saucy] psXXXX.prn.parsec.apple.com

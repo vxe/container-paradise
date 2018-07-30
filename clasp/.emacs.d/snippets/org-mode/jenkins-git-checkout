@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: jenkins-git-checkout
+# key: jenkins-git-checkout
+# --
+git url: 'git@github.parsec.apple.com:${1:org}/${2:repo}.git', branch: '$3' , credentialsId: 'parsec_jenkins_ssh_auth'

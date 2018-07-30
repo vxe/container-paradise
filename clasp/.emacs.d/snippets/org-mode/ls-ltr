@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: ls-ltr
+# key: <ls
+# --
+"ls -ltr ${1:/var/log/shepherd} "

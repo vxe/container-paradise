@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: no-table-of-contents
+# key: notoc
+# --
+#+OPTIONS: toc:nil

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: elisp-module-header
+# key: <emodheader
+# --
+#include <emacs-module.h>

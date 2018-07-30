@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: rabbit-restart-mgmt
+# key: rabbitrestartmgmt
+# --
+sudo rabbitmqctl eval 'application:stop(rabbitmq_management).'

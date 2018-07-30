@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: switchshowport
+# key: switchshowport
+# --
+sudo lldpcli show neigh

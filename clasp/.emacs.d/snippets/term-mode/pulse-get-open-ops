@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: pulse-get-open-ops
+# key: pulsegetopentops
+# --
+curl -s "https://pulse.parsec.apple.com/api/events?apikey=sphygmology&type=operation&status=open"

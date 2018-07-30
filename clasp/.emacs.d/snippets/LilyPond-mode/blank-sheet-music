@@ -1,0 +1,26 @@
+# -*- mode: snippet -*-
+# name: blank-sheet-music
+# key: blank-sheet-music
+# --
+#(set-global-staff-size 30)
+
+\bookOutputName "output/blank-sheet-music"
+
+\score {
+  {
+    \repeat unfold 12 { s1 \break }
+  }
+  \layout {
+    indent = 0\in
+    \context {
+      \Staff
+      \remove "Time_signature_engraver"
+      \remove "Clef_engraver"
+      \remove "Bar_engraver"
+    }
+    \context {
+      \Score
+      \remove "Bar_number_engraver"
+    }
+  }
+}

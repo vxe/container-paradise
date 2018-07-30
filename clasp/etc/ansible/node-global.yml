@@ -1,0 +1,31 @@
+- name: node-modules
+  hosts: localhost
+  tasks:
+    - name: Install "re-natal" node.js package globally.
+      npm:
+        name: re-natal
+        global: yes
+    - name: Install "react-native-cli" node.js package globally.
+      npm:
+        name: react-native-cli
+        global: yes
+    - name: Install "tern" node.js package globally.
+      npm:
+        name: tern
+        global: yes
+    - name: Install "flow language server" node.js package globally.
+      npm:
+        name: flow-language-server
+        global: yes
+    - name: Install "express-generator" node.js package globally.
+      npm:
+        name: express-generator
+        global: yes
+
+    - name: Install "express-generator" node.js package globally.
+      npm:
+        name: pure-prompt
+        global: yes
+
+
+        

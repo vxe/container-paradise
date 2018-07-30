@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: ipmitool-boot-to-bios
+# key: ipmitoolboottobios
+# binding: direct-keybinding
+# --
+ipmitool -U Administrator -P sv2bsv2b -H ${1:ps-name}-oob.${2:edge}.parsec.apple.com chassis bootdevbiosSet Boot Device to bios

@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: defcommand
+# key: <defc
+# --
+(defcommand ${1:command-name} (${2:var})
+   ((:${3:var-type} "${4:var-prompt}: "))
+   "${5:docstring}"
+   ${6:teh-stufz})

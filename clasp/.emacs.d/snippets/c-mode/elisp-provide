@@ -1,0 +1,16 @@
+# -*- mode: snippet -*-
+# name: elisp-provide
+# key: <eprovide
+# --
+/* Provide FEATURE to Emacs.  */
+static void
+provide (emacs_env *env, const char *feature)
+{
+  /* call 'provide' with FEATURE converted to a symbol */
+
+  emacs_value Qfeat = env->intern (env, feature);
+  emacs_value Qprovide = env->intern (env, "provide");
+  emacs_value args[] = { Qfeat };
+
+  env->funcall (env, Qprovide, 1, args);
+}

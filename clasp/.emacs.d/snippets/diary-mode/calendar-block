@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: landscape-calendar
+# key: landscapecalendar
+# --
+\usepackage{geometry}
+\geometry{legalpaper, landscape, margin=1in}

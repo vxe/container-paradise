@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: rolename
+# key: rolename
+# --
+pdsh -w 'ops0001.prn' "rolename -l $1"

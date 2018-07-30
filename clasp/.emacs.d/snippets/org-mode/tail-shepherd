@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: tail-shepherd
+# key: <tailshep
+# --
+tail -$1 /var/log/shepherd/API=$2

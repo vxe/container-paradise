@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: radar
+# key: <radar
+# --
+# -*- mode:org -*-
+#+TITLE: ${1:radarnumber}
+#+STARTUP: indent
+#+OPTIONS: author:nil 

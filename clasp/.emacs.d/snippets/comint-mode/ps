@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: ps
+# key: ps
+# --
+ps -eaf | grep

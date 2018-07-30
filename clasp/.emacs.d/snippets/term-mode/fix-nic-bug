@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: fix-nic-bug
+# key: fixnicbugpweo
+# --
+apt-get install -y ixgbe-dkms ; modinfo ixgbe | grep version | awk -F: '{print \$2}' | head -1

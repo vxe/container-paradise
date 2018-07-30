@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: lein-figwheel-repl
+# key: lein-figwheel-repl
+# --
+lein figwheel

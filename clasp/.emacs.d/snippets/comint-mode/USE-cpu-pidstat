@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: USE-cpu-pidstat
+# key: USEwefwefffpidstatpok
+# --
+pidstat 1

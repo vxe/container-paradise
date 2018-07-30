@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: perl-remove-blank-lines
+# key: perlremoveblanklines
+# --
+perl -ne 'print unless ^$'

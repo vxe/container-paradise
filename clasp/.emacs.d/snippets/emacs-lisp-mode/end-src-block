@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: end-src-block
+# key: endsrcblock
+# binding: direct-keybinding
+# --
+#+end_src

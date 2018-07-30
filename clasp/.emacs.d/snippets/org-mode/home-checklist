@@ -1,0 +1,28 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: home-checklist
+# key: homechecklist
+# binding: direct-keybinding
+# --
+* in
+  - gnus
+  - mailing lists
+  - github
+  - irc
+
+* deal with finances
+- import finances in to Quicken
+* deal with non programming inboxes
+- gmail  
+- facebook
+- twitter
+* emacs
+- melpa
+- linux testing
+* Administrative
+
+
+  
+* Music
+- YouTube
+- BeatPort
+- LogicPro

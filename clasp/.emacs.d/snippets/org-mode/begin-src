@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: begin-src
+# key: beginsrc
+# --
+#+BEGIN_SRC ${1:emacs-lisp,sh,python,perl,awk,scheme,lisp,C,C++}

@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: latex-block
+# key: bl
+# --
+\begin{block}{$1}
+        $0
+\end{block}

@@ -1,0 +1,6 @@
+# -*- coding: utf-8 -*-
+# name: print
+# key: <println
+# --
+(println $1)
+$0

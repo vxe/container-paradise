@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: ps-mem-usage
+# key: psmemusage
+# --
+echo %MEM %CPU    VSZ   PID CMD;ps -eo pmem,pcpu,vsize,pid,cmd | sort -k 1 -nr | head -5

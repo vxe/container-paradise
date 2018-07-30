@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: kick-raid-0
+# key: kickraid0
+# binding: direct-keybinding
+# --
+kickstart.sh -a -k -r0 ${1:rolename}${2:number}.${3:edge}.parsec.apple.com 

@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: dot-digraph-basic
+# key: dotdigraphbasic
+# --
+digraph ${1:name} {
+${0}
+
+}

@@ -1,0 +1,3044 @@
+# -*- mode:org -*-
+#+TITLE: dot files
+#+STARTUP: indent
+#+OPTIONS: toc:nil
+* Shell and System Utilities
+** bash
+*** .bash_profile
+**** terminal config
+***** 'set' commands
+****** don't swallow error codes in pipelines
+     #+BEGIN_SRC shell :tangle ~/.bash_profile
+     set -o pipefail
+     #+END_SRC
+****** throw errors on uninitialized variables
+     #+BEGIN_SRC shell :tangle ~/.bash_profile
+       # set -u
+     #+END_SRC
+****** enable history file
+#+BEGIN_SRC shell :tangle ~/.bash_profile
+set -o history
+#+END_SRC
+**** environment variables 
+***** PATH
+****** ~/bin
+   #+BEGIN_SRC shell :tangle ~/.bash_profile
+ export PATH="$HOME/bin:$PATH"
+   #+END_SRC 
+****** golang binary
+     #+BEGIN_SRC shell :tangle ~/.bash_profile
+     export PATH=$PATH:/usr/local/opt/go/libexec/bin
+     #+END_SRC
+****** anaconda
+#+BEGIN_SRC 
+
+#+END_SRC
+***** CLASSPATH
+****** directory for individual classes
+      #+BEGIN_SRC shell :tangle ~/.bash_profile
+   export CLASSPATH=~/.emacs.d/lib
+      #+END_SRC
+****** jars
+Basically the goal here is just to drop jars into ./opt have them
+absorbed into the classpath 
+******* ~/.emacs.d/opt
+#+BEGIN_SRC shell :tangle ~/.bash_profile
+  for jar in `find ~/.emacs.d/bin -iname '*.jar'`
+  do
+      CLASSPATH=${CLASSPATH}:${jar}
+  done
+#+END_SRC
+***** GOPATH
+ #+BEGIN_SRC shell :tangle ~/.bash_profile
+   mkdir -p ~/.emacs.d/.go
+   export GOPATH="$HOME/.emacs.d/.go"
+   export PATH="$PATH:$GOPATH/bin"
+ #+END_SRC
+***** GOBIN
+#+BEGIN_SRC shell :tangle ~/.bash_profile
+export GOBIN="$HOME/.emacs.d/bin"
+#+END_SRC
+***** TERM
+ #+BEGIN_SRC shell :tangle ~/.bash_profile
+ export TERM=xterm-256color
+ #+END_SRC
+***** PYTHONSTARTUP
+ #+BEGIN_SRC shell :tangle ~/.bash_profile
+ export PYTHONSTARTUP="$HOME/.pythonrc.py"
+ #+END_SRC
+***** LTDL_LIBRARY_PATH
+#+BEGIN_SRC shell :tangle ~/.bash_profile
+export LTDL_LIBRARY_PATH="$HOME/.emacs.d/lib"
+#+END_SRC
+***** homebrew
+#+BEGIN_SRC shell :tangle ~/.bash_profile
+  if [[ `uname` == "Darwin" ]]
+  then
+      if [[ ! `which brew` ]]
+      then
+          /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+      fi
+  fi
+#+END_SRC
+
+#+RESULTS:
+**** system dependencies
+***** directory structure
+#+BEGIN_SRC shell :tangle ~/.bash_profile
+mkdir -p ~/src
+mkdir -p ~/opt
+#+END_SRC
+***** dynamic libraries
+#+BEGIN_SRC shell :tangle ~/.bash_profile
+  if [[ `uname` == "Darwin" ]]
+  then
+      if [[ ! `locate libev` ]]
+      then
+          brew install wget
+      fi
+  fi
+#+END_SRC
+***** applications
+****** homebrew
+#+BEGIN_SRC shell :tangle ~/.bash_profile
+  if [[ `uname` == "Darwin" ]]
+  then
+      if [[ ! `which wget` ]]
+      then
+          brew install wget
+      fi
+  fi
+
+
+  if [[ `uname` == "Darwin" ]]
+  then
+      if [[ ! `which autoreconf` ]]
+      then
+          brew install automake
+      fi
+  fi
+
+  if [[ `uname` == "Darwin" ]]
+  then
+      if [[ ! `which lily-image-commands` ]]
+      then
+          brew cask install lilypond
+      fi
+  fi
+
+
+  if [[ `uname` == "Darwin" ]]
+  then
+      if [[ ! `which makeinfo` ]]
+      then
+          brew install texinfo
+      fi
+  fi
+
+  if [[ `uname` == "Darwin" ]]
+  then
+      if [[ ! `brew cask list | grep mactex` ]]
+      then
+           brew cask install mactex
+           cd `find /Applications/TeX | grep 'bin$' | grep -v 'filltex'`  
+           ls -l | awk '{print $9}' | grep -v '[.]' | while read line
+           do
+               echo ln -s $PWD/$line /usr/local/bin/$line
+           done
+
+      fi
+  fi
+
+
+
+  if [[ `uname` == "Darwin" ]]
+  then
+      if [[ ! `which maxima` ]]
+      then
+          brew install maxima
+      fi
+  fi
+
+
+  if [[ `uname` == "Darwin" ]]
+  then
+      if [[ ! `which haproxy` ]]
+      then
+          brew install haproxy
+      fi
+  fi
+
+
+  if [[ `uname` == "Darwin" ]]
+  then
+      if [[ ! `which mailutils` ]]
+      then
+          brew install mailutils
+      fi
+  fi
+
+  if [[ `uname` == "Darwin" ]]
+  then
+      if [[ ! `which cask` ]]
+      then
+          brew install cask
+      fi
+  fi
+
+  if [[ `uname` == "Darwin" ]]
+  then
+      if [[ ! `which erl` ]]
+      then
+          brew install erlang
+      fi
+  fi
+
+  if [[ `uname` == "Darwin" ]]
+  then
+      if [[ ! `which go` ]]
+      then
+          brew install golang
+      fi
+  fi
+
+  if [[ `uname` == "Darwin" ]]
+  then
+      if [[ ! `which notmuch` ]]
+      then
+          brew install notmuch
+      fi
+  fi
+
+  if [[ `uname` == "Darwin" ]]
+  then
+      if [[ ! `which ag` ]]
+      then
+          brew install ag
+      fi
+  fi
+
+  if [[ `uname` == "Darwin" ]]
+  then
+      if [[ ! `which mbsync` ]]
+      then
+          brew install isync
+      fi
+  fi
+
+  if [[ `uname` == "Darwin" ]]
+  then
+      if [[ ! `which aspell` ]]
+      then
+          brew install aspell
+      fi
+  fi
+
+  if [[ `uname` == "Darwin" ]]
+  then
+      if [[ ! `which groovy` ]]
+      then
+          brew install groovy
+      fi
+  fi
+
+  if [[ `uname` == "Darwin" ]]
+  then
+      if [[ ! `which mvn` ]]
+      then
+          if [[ `which java` ]]
+          then
+              brew install maven
+          fi
+      fi
+  fi
+
+
+  if [[ `uname` == "Darwin" ]]
+  then
+      if [[ ! `which npm` ]]
+      then
+          brew install npm
+      fi
+  fi
+
+
+  if [[ `uname` == "Darwin" ]]
+  then
+      if [[ ! `which vault` ]]
+      then
+          brew install vault
+      fi
+  fi
+
+  if [[ `uname` == "Darwin" ]]
+  then
+      if [[ ! `which sbcl` ]]
+      then
+          brew install sbcl
+      fi
+  fi
+
+    if [[ `uname` == "Darwin" ]]
+    then
+        if [[ ! `which cmake` ]]
+        then
+            brew install cmake
+        fi
+    fi
+
+
+    if [[ `uname` == "Darwin" ]]
+    then
+        if [[ ! `which swipl` ]]
+        then
+            brew install swi-prolog
+        fi
+    fi
+
+    if [[ `uname` == "Darwin" ]]
+    then
+        if [[ ! `which guile` ]]
+        then
+            brew install guile
+        fi
+    fi
+
+
+    if [[ `uname` == "Darwin" ]]
+    then
+        if [[ ! `which lfe` ]]
+        then
+            brew install lfe
+        fi
+    fi
+
+
+    if [[ `uname` == "Darwin" ]]
+    then
+        if [[ ! `which telnet` ]]
+        then
+            brew install telnet
+        fi
+    fi
+
+
+
+
+
+    if [[ `uname` == "Darwin" ]]
+    then
+        if [[ ! `locate llvm-config` ]]
+        then
+            brew install llvm --with-libcxx --with-clang --without-assertions --with-rtti
+            brew link llvm
+            if [[ -e /usr/local/opt/llvm/bin/llvm-config ]]
+            then
+                export PATH="/usr/local/opt/llvm/bin:$PATH"
+            fi
+        fi
+    fi
+
+#+END_SRC
+****** python modules
+#+BEGIN_SRC shell :tangle ~/.bash_profile
+  if [[ `uname` == "Darwin" ]]
+  then
+      if [[ ! `which pip` ]]
+      then
+          sudo easy_install pip
+      fi
+  fi
+
+  if [[ `uname` == "Darwin" ]]
+  then
+      if [[ ! `which virtualenv` ]]
+      then
+          sudo pip install virtualenv
+      fi
+  fi
+#+END_SRC
+******* create emacs virtualenv and switch to it
+#+BEGIN_SRC shell :tangle ~/.bash_profile
+  # create
+    if [[ ! -e ~/.emacs.d/var ]]; then mkdir -p ~/.emacs.d/var; if [[ ! -e ~/.emacs.d/var/emacs ]]; then cd ~/.emacs.d/var/ ; virtualenv emacs; fi; fi
+  # switch to
+
+    if [[ -e ~/.emacs.d/var/emacs ]]; then source ~/.emacs.d/var/emacs/bin/activate; fi
+#+END_SRC
+
+****** erlang packages
+****** golang binaries
+******* gocode
+#+BEGIN_SRC shell :tangle ~/.bash_profile
+  if [[ `uname` == "Darwin" ]]
+  then
+      if [[ ! `which gocode` ]]
+      then
+          go get -u github.com/nsf/gocode
+      fi
+  fi
+
+#+END_SRC
+******* godoc
+#+BEGIN_SRC shell :tangle ~/.bash_profile
+  if [[ `uname` == "Darwin" ]]
+  then
+      if [[ ! `which godoc` ]]
+      then
+          go get github.com/rogpeppe/godef
+      fi
+  fi
+#+END_SRC
+****** emacs 3rd party dependencies
+******* Eclipse JDT Language Server
+#+BEGIN_SRC shell :tangle ~/.bash_profile
+  if [[ `uname` == "Darwin" ]]
+  then
+      if [[ ! `find $HOME/.emacs.d/eclipse.jdt.ls/server/jdt-language-server-latest.tar.gz` ]]
+      then
+  mkdir -p ~/.emacs.d/eclipse.jdt.ls/server/; cd ~/.emacs.d/eclipse.jdt.ls/server/; wget http://download.eclipse.org/jdtls/snapshots/jdt-language-server-latest.tar.gz; tar xvf jdt-language-server-latest.tar.gz; 
+      fi
+  fi
+
+
+#+END_SRC
+
+***** personal repositories
+****** erlang
+#+BEGIN_SRC shell :tangle ~/.bash_profile
+if [[ ! -e ~/opt/vxerlang ]]; then cd ~/opt; git clone https://github.com/vxe/vxerlang.git; fi
+#+END_SRC
+****** clojure
+#+BEGIN_SRC shell :tangle ~/.bash_profile
+if [[ ! -e ~/opt/clj-vxe ]]; then cd ~/opt; git clone https://github.com/vxe/clj-vxe.git; fi   
+#+END_SRC
+****** javascript
+#+BEGIN_SRC shell :tangle ~/.bash_profile
+if [[ ! -e ~/opt/vxe.js ]]; then cd ~/opt; git clone https://github.com/vxe/vxe.js.git; fi
+#+END_SRC
+**** global functions
+***** emacs directory follow
+     #+BEGIN_SRC shell :tangle ~/.bash_profile
+       chpwd() {
+	   print -P "\033AnSiTc %d";
+       }
+
+       # print -P "\033AnSiTu %n"
+       # print -P "\033AnSiTc %d"
+
+     #+END_SRC
+***** install fancy prompt
+ #+BEGIN_SRC shell :tangle ~/.bash_profile
+   function install-fancy-prompt() {
+       (cd /tmp && git clone --depth 1 --config core.autocrlf=false https://github.com/twolfson/sexy-bash-prompt && cd sexy-bash-prompt && make install) && source ~/.bashrc
+   } 
+
+  if [[ ! -e ~/.bash_prompt ]]
+  then
+      install-fancy-prompt
+
+  fi
+ #+END_SRC
+**** source external scripts
+***** nvm
+#+BEGIN_SRC shell :tangle ~/.bash_profile
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+#+END_SRC
+***** load .bashrc
+#+BEGIN_SRC shell :tangle ~/.bash_profile
+source ~/.bashrc
+#+END_SRC
+***** load bash_work
+    #+BEGIN_SRC shell :tangle ~/.bash_profile
+      if [[ ! -e "~/.bash_work" ]]
+      then
+	  touch ~/.bash_work
+	  source ~/.bash_work
+      else
+	  source ~/.bash_work
+      fi
+    #+END_SRC
+*** .bashrc
+#+BEGIN_SRC shell :tangle ~/.bashrc
+  source ~/.bash_prompt
+#+END_SRC
+**** aliases
+***** ls colorization
+    #+BEGIN_SRC shell :tangle ~/.bashrc
+      ## Colorize the ls output ##
+      alias ls='ls -G'
+
+      ## Use a long listing format ##
+      alias ll='ls -la'
+
+      ## Show hidden files ##
+      alias l.='ls -d .* --color=auto'
+    #+END_SRC
+****** set color
+     #+BEGIN_SRC shell :tangle ~/.bashrc
+       export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
+     #+END_SRC
+***** clush sudo hack
+#+BEGIN_SRC shell :tangle ~/.bashrc
+alias clush='clush -o "-A"'
+#+END_SRC
+**** functions
+***** source guix profile
+#+BEGIN_SRC shell :tangle ~/.bashrc
+  function source-guix-profile (){
+      GUIX_PROFILE=$HOME/.guix-profile 
+      source $GUIX_PROFILE/etc/profile
+  }
+#+END_SRC
+***** start guix daemon
+#+BEGIN_SRC shell :tangle ~/.bashrc
+  function start-guix-daemon (){
+       ~root/.guix-profile/bin/guix-daemon --build-users-group=guixbuild &
+  }
+#+END_SRC
+
+** zsh
+*** .zshenv
+**** CLASSPATH
+***** directory for individual classes
+      #+BEGIN_SRC shell :tangle ~/.zshenv
+   export CLASSPATH=~/.emacs.d/lib
+      #+END_SRC
+***** jars
+Basically the goal here is just to drop jars into ./opt have them
+absorbed into the classpath 
+****** ~/.emacs.d/opt
+#+BEGIN_SRC shell :tangle ~/.zshenv
+  for jar in `find ~/.emacs.d/bin -iname '*.jar'`
+  do
+      CLASSPATH=${CLASSPATH}:${jar}
+  done
+#+END_SRC
+**** CPPFLAGS
+#+BEGIN_SRC shell :tangle ~/.zshenv
+export CPPFLAGS="$CPPFLAGS -I/usr/local/opt/icu4c/include"
+#+END_SRC
+**** GUILE_LOAD_PATH
+#+BEGIN_SRC shell :tangle ~/.zshenv
+
+#+END_SRC
+**** GOBIN
+#+BEGIN_SRC shell :tangle ~/.zshenv
+export GOBIN="$HOME/.emacs.d/bin"
+#+END_SRC
+**** GOPATH
+ #+BEGIN_SRC shell :tangle ~/.zshenv
+   mkdir -p ~/.emacs.d/.go
+   export GOPATH="$HOME/.emacs.d/.go"
+   export PATH="$PATH:$GOPATH/bin"
+ #+END_SRC
+**** GSL_VERSION
+#+BEGIN_SRC shell :tangle ~/.zshenv
+export GSL_VERSION="2.4"
+#+END_SRC
+**** history file
+#+BEGIN_SRC shell :tangle ~/.zshenv
+export SAVEHIST=1000000
+export HISTFILE=~/.zhistory
+#+END_SRC
+**** LDFLAGS
+#+BEGIN_SRC shell :tangle ~/.zshenv
+export LDFLAGS="$LDFLAGS  -L/usr/local/opt/icu4c/lib"
+#+END_SRC
+**** LTDL_LIBRARY_PATH
+#+BEGIN_SRC shell :tangle ~/.zshenv
+export LTDL_LIBRARY_PATH="$HOME/.emacs.d/lib"
+#+END_SRC
+**** PATH
+***** ~/bin
+   #+BEGIN_SRC shell :tangle ~/.zshenv
+ export PATH="$HOME/bin:$PATH"
+   #+END_SRC 
+***** golang binary
+     #+BEGIN_SRC shell :tangle ~/.zshenv
+     export PATH=$PATH:/usr/local/opt/go/libexec/bin
+     #+END_SRC
+***** rebar3
+     #+BEGIN_SRC shell :tangle ~/.zshenv
+     export PATH=$PATH:$HOME/.emacs.d/opt/rebar3
+     #+END_SRC
+***** ndenv
+#+BEGIN_SRC shell :tangle ~/.zshenv
+export PATH="$HOME/.ndenv/bin:$PATH"
+#+END_SRC
+***** anaconda
+#+BEGIN_SRC shell :tangle ~/.zshenv
+export PATH="$HOME/anaconda2/bin:$PATH"
+#+END_SRC
+**** PKG_CONFIG_PATH
+#+BEGIN_SRC shell :tangle ~/.zshenv
+export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/local/opt/icu4c/lib/pkgconfig"
+export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/local/Cellar/zlib/1.2.8/lib/pkgconfig:/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig"
+#+END_SRC
+**** PS2
+#+BEGIN_SRC shell :tangle ~/.zshenv
+  export PS2=''
+#+END_SRC
+**** PYTHONSTARTUP
+ #+BEGIN_SRC shell :tangle ~/.zshenv
+ export PYTHONSTARTUP="$HOME/.python.d/init.py"
+ #+END_SRC
+**** TERM
+ #+BEGIN_SRC shell :tangle ~/.zshenv
+ export TERM=xterm-256color
+ #+END_SRC
+*** .zprofile
+**** terminal config
+***** 'set' commands
+****** don't swallow error codes in pipelines
+     #+BEGIN_SRC sh  :tangle ~/.zprofile
+     set -o pipefail
+     #+END_SRC
+****** throw errors on uninitialized variables
+     #+BEGIN_SRC sh :tangle ~/.zprofile
+       # set -u
+     #+END_SRC
+
+**** applications
+***** homebrew helpers
+******** install checking for existing by using which
+#+BEGIN_SRC sh :tangle ~/.zprofile
+function install-which(){
+    if [[ `uname` == "Darwin" ]]
+    then
+        if [[ `which $1` > 0 ]]
+        then
+            brew install $1
+        fi
+    fi
+
+}
+#+END_SRC
+******** install checking for existing by using brew list
+#+BEGIN_SRC sh :tangle ~/.zprofile
+function install-brew(){
+  if [[ `uname` == "Darwin" ]]
+  then
+      if [[ ! `brew list | grep $1` > 0 ]]
+      then
+          brew install $1
+      fi
+  fi
+}
+#+END_SRC
+******** install checking for existance by using locate
+#+BEGIN_SRC sh :tangle ~/.zprofile
+function install-locate() {
+
+  if [[ `uname` == "Darwin" ]]
+  then
+      if [[ ! `locate $1` ]]
+      then
+          brew install $1
+      fi
+  fi
+
+}
+#+END_SRC
+***** github
+****** zsh-git-prompt
+this assume haskell ecosystem, aka cabal and stack are installed
+ #+BEGIN_SRC sh :tangle ~/.zprofile
+    # function install-fancy-prompt() {
+    #     (cd $HOME/.zsh.d && https://github.com/olivierverdier/zsh-git-prompt.git) && source ~/.zh
+    # } 
+
+   if [[ ! -e ~/.zsh.d/zsh-git-prompt ]]
+   then
+       cd ~/.zsh.d ; git clone https://github.com/olivierverdier/zsh-git-prompt.git
+       cd ~/.zsh.d/zsh-git-prompt
+       stack build && stack install
+       export GIT_PROMPT_EXECUTABLE="haskell"
+   fi
+
+
+   # if [[ ! -e ~/.zsh.d/powerlevel9k ]]
+   # then
+   #     cd ~/.zsh.d ; git clone https://github.com/bhilburn/powerlevel9k.git
+   #     echo 'source  ~/.zsh.d/powerlevel9k/powerlevel9k.zsh-theme' >> ~/.zprompt
+   #     brew tap caskroom/fonts
+   #     brew cask install font-hack-nerd-font
+   # fi
+
+
+
+
+
+
+ #+END_SRC
+******* haskell
+
+****** rebar3
+#+BEGIN_SRC sh :tangle ~/.zprofile
+  if [[ ! -e $HOME/.emacs.d/opt/rebar3 ]]
+  then
+  cd ~/.emacs.d/opt
+  git clone https://github.com/erlang/rebar3.git
+  cd rebar3
+  ./bootstrap
+  fi
+#+END_SRC
+****** TODO distel - install
+***** emacs 3rd party dependencies
+****** Eclipse JDT Language Server
+#+BEGIN_SRC sh :tangle ~/.zprofile
+  if [[ `uname` == "Darwin" ]]
+  then
+      if [[ ! `find $HOME/.emacs.d/eclipse.jdt.ls/server/jdt-language-server-latest.tar.gz` ]]
+      then
+  mkdir -p ~/.emacs.d/eclipse.jdt.ls/server/; cd ~/.emacs.d/eclipse.jdt.ls/server/; wget http://download.eclipse.org/jdtls/snapshots/jdt-language-server-latest.tar.gz; tar xvf jdt-language-server-latest.tar.gz; 
+      fi
+  fi
+
+
+#+END_SRC
+****** java-repl
+#+BEGIN_SRC  sh :tangle ~/.zprofile
+  if [[ `uname` == "Darwin" ]]
+  then
+      if [[ ! `find $HOME/.emacs.d/opt/java-repl` ]]
+      then
+          cd ~/.emacs.d/opt
+          git clone https://github.com/albertlatacz/java-repl.git; 
+          cd ~/.emacs.d/opt/java-repl;
+          gradle shadowJar;          
+      fi
+  fi
+
+alias java-repl="java -jar ~/.emacs.d/opt/java-repl/build/libs/javarepl-dev.jar"
+#+END_SRC
+****** pdf tools
+******* dependencies
+#+BEGIN_SRC sh 
+  # if [[ `uname` == "Darwin" ]]
+  # then
+  #     if [[ ! `brew list | grep poppler` > 0 ]]
+  #     then
+  #         brew install poppler
+  #     fi
+  # fi
+
+install-brew poppler &
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/Cellar/zlib/1.2.8/lib/pkgconfig:/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig
+
+#+END_SRC
+******* server
+#+BEGIN_SRC sh :tangle ~/.zprofile
+  if [[ `uname` == "Darwin" ]]
+  then
+      if [[ `which epdfinfo` > 0 ]]
+      then
+          cd ~/Downloads;
+          git clone https://github.com/politza/pdf-tools.git
+          cd ~/Downloads/pdf-tools/servce;
+          autoreconf -i;
+          ./configure
+          make && sudo make install
+      fi
+  fi
+
+#+END_SRC
+****** quicklisp
+#+BEGIN_SRC sh :tangle ~/.zprofile
+if [[ ! -e ~/.emacs.d/opt/quicklisp.lisp ]]
+then
+cd ~/.emacs.d/opt
+curl -O https://beta.quicklisp.org/quicklisp.lispcurl -O https://beta.quicklisp.org/quicklisp.lisp
+sbcl --load quicklisp.lisp
+fi
+#+END_SRC
+
+#+RESULTS:
+
+***** compiled code
+****** ctags
+#+BEGIN_SRC sh :tangle ~/.zprofile
+  if [[ `uname` == "Darwin" ]]
+  then
+      if [[ ! `which ctags` ]]
+      then
+          cd ~/Downloads
+          wget "https://downloads.sourceforge.net/project/ctags/ctags/5.8/ctags58.zip?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fctags%2Ffiles%2Fctags%2F5.8%2Fctags58.zip%2Fdownload%3Fuse_mirror%3Dayera&ts=1527406736&use_mirror=ayera"
+          unzip ctags58.zip
+          cd ctags58
+          ./configure
+          make && sudo make install
+      fi
+  fi
+
+
+#+END_SRC
+****** gsl
+#+BEGIN_SRC sh :tangle ~/.zprofile
+# wget http://mirrors.syringanetworks.net/gnu/gsl/gsl-$GSL_VERSION.tar.gz
+#+END_SRC
+****** TODO heroic - get compile steps
+https://spotify.github.io/heroic/#!/docs/getting_started/compile
+****** zshdb
+#+BEGIN_SRC sh :tangle ~/.zprofile
+  if [[ `uname` == "Darwin" ]]
+  then
+      if [[ ! -e "$HOME/.zsh.d/zshdb" ]]
+      then
+          cd ~/.zsh.d/
+          git clone git://github.com/rocky/zshdb.git
+          cd zshdb
+          ./autogen.sh  # Add configure options. See ./configure --help
+          ./configure
+          make && sudo make install
+
+      fi
+  fi
+
+#+END_SRC
+**** programming environment dependencies
+***** shared libraries
+***** python applications change this to ansible
+see .pythonrc.py for dependencies
+#+BEGIN_SRC sh :tangle ~/.zprofile
+  if [[ `uname` == "Darwin" ]]
+  then
+      if [[ ! `which pip` ]]
+      then
+          sudo easy_install pip
+      fi
+  fi
+
+  if [[ `uname` == "Darwin" ]]
+  then
+      if [[ ! `which virtualenv` ]]
+      then
+          sudo pip install virtualenv
+      fi
+  fi
+#+END_SRC
+****** create emacs virtualenv and switch to it
+#+BEGIN_SRC sh :tangle ~/.zprofile
+  # create
+    if [[ ! -e ~/.emacs.d/var ]]; then mkdir -p ~/.emacs.d/var; if [[ ! -e ~/.emacs.d/var/emacs ]]; then cd ~/.emacs.d/var/ ; virtualenv emacs; fi; fi
+  # switch to
+
+    if [[ -e ~/.emacs.d/var/emacs ]]; then source ~/.emacs.d/var/emacs/bin/activate; fi
+#+END_SRC
+***** rbenv
+****** rbenv install
+#+BEGIN_SRC sh :tangle ~/.zprofile
+  if [[ `uname` == "Darwin" ]]
+  then
+      if [[ ! `rbenv --version` ]]
+      then
+          brew install rbenv
+      fi
+  fi
+
+#+END_SRC
+****** enable rbenv
+******* zprofile
+#+BEGIN_SRC sh :tangle ~/.zprofile
+eval "$(rbenv init -)"
+#+END_SRC
+******* zshrc
+#+BEGIN_SRC sh :tangle ~/.zshrc
+eval "$(rbenv init -)"
+#+END_SRC
+******* set ruby version
+#+BEGIN_SRC sh :tangle ~/.zshrc
+export RUBY_VERSION=2.5.1
+#+END_SRC
+
+******* switch from system ruby
+#+BEGIN_SRC sh :tangle ~/.zshrc
+  if [[ `which ruby | grep usr` ]]
+  then
+      rbenv install $RUBY_VERSION
+  fi
+
+rbenv global $RUBY_VERSION
+#+END_SRC
+***** golang binaries
+****** color
+#+BEGIN_SRC sh :tangle ~/.zprofile
+  if [[ `uname` == "Darwin" ]]
+  then
+      if [[ ! `find $GOPATH -maxdepth 4 | grep color` ]]
+      then
+      go get github.com/fatih/color 
+      fi
+  fi
+
+
+
+#+END_SRC
+****** dep
+#+BEGIN_SRC sh :tangle ~/.zprofile
+  if [[ `uname` == "Darwin" ]]
+  then
+      if [[ ! `which dep` ]]
+      then
+          brew install dep
+      fi
+  fi
+#+END_SRC
+****** gocode
+#+BEGIN_SRC sh :tangle ~/.zprofile
+  if [[ `uname` == "Darwin" ]]
+  then
+      if [[ ! `which gocode` ]]
+      then
+          go get -u github.com/nsf/gocode &
+      fi
+  fi
+
+#+END_SRC
+****** godoc
+#+BEGIN_SRC sh :tangle ~/.zprofile
+  if [[ `uname` == "Darwin" ]]
+  then
+      if [[ ! `which godoc` ]]
+      then
+          go get github.com/rogpeppe/godef &
+      fi
+  fi
+#+END_SRC
+****** golang-set
+#+BEGIN_SRC sh :tangle ~/.zprofile
+  if [[ `uname` == "Darwin" ]]
+  then
+      if [[ ! `find $GOPATH -maxdepth 4 | grep golang-set` ]]
+      then
+      go get github.com/deckarep/golang-set 
+      fi
+  fi
+
+
+#+END_SRC
+****** now
+#+BEGIN_SRC sh :tangle ~/.zprofile
+  if [[ `uname` == "Darwin" ]]
+  then
+      if [[ ! `find $GOPATH -maxdepth 4 | grep now` ]]
+      then
+      go get -u github.com/jinzhu/now 
+      fi
+  fi
+
+
+
+#+END_SRC
+****** nsp
+#+BEGIN_SRC sh :tangle ~/.zprofile
+  if [[ `uname` == "Darwin" ]]
+  then
+      if [[ ! `find $GOPATH -maxdepth 4 | grep nsq` ]]
+      then
+      go get -u github.com/nsqio/nsq
+      fi
+  fi
+#+END_SRC
+***** local::lib
+****** local::lib
+#+BEGIN_SRC sh :tangle ~/.zprofile 
+  if [[ `uname` == "Darwin" ]]
+  then
+      if [[ `find $HOME -maxdepth 1 -name perl5` > 0 ]]
+      then
+          sudo cpan local::lib
+      fi
+  fi
+
+#+END_SRC
+******* enable local::lib
+******** zprofile
+#+BEGIN_SRC sh :tangle ~/.zprofile 
+eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
+#+END_SRC
+
+******** zshhrc
+#+BEGIN_SRC sh :tangle ~/.zshrc
+eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
+#+END_SRC
+
+******** set up bin directory
+#+BEGIN_SRC sh :tangle ~/.zprofile
+mkdir -p "$HOME/perl5/bin"
+
+if [[ ! -w "$HOME/perl5" ]]
+then
+sudo chmod -R a+w "$HOME/perl5"
+fi
+#+END_SRC
+****** App::cpanminus
+#+BEGIN_SRC sh :tangle ~/.zprofile 
+  if [[ `uname` == "Darwin" ]]
+  then
+      if [[ ! `perldoc -l 'App::cpanminus'` ]]
+      then
+          sudo cpan App::cpanminus
+      fi
+  fi
+
+#+END_SRC
+***** guile modules
+#+BEGIN_SRC sh :tangle ~/.zprofile 
+  mkdir -p ~/.guile.d/lib/sicp
+
+
+  if [[ ! -e ~/.guile.d/lib/sicp/allcode.tar.gz ]]
+  then
+      cd ~/.guile.d/lib/sicp
+      wget https://mitpress.mit.edu/sites/default/files/sicp/code/allcode.tar.gz
+      tar xvf allcode.tar.gz
+  fi
+#+END_SRC
+
+#+RESULTS:
+***** sh scripts
+****** load .zwork
+    #+BEGIN_SRC sh :tangle ~/.zprofile
+      if [[ ! -e "~/.zwork" ]]
+      then
+	  touch ~/.zwork
+	  source ~/.zwork
+      else
+	  source ~/.zwork
+      fi
+    #+END_SRC
+*** .zshrc
+**** aliases
+***** ls colorization
+    #+BEGIN_SRC shell :tangle ~/.zshrc
+      ## Colorize the ls output ##
+      alias ls='ls -G'
+
+      ## Use a long listing format ##
+      alias ll='ls -la'
+
+      ## Show hidden files ##
+      alias l.='ls -d .* --color=auto'
+    #+END_SRC
+****** set color
+     #+BEGIN_SRC shell :tangle ~/.zshrc
+       export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
+     #+END_SRC
+***** clush sudo hack
+#+BEGIN_SRC shell :tangle ~/.zshrc
+alias clush='clush -o "-A"'
+#+END_SRC
+***** java-repl
+#+BEGIN_SRC shell :tangle ~/.zshrc
+alias java-repl="java -jar ~/.emacs.d/opt/java-repl/build/libs/javarepl-dev.jar"
+#+END_SRC
+**** functions
+***** start collectd
+#+BEGIN_SRC sh :tangle ~/.zshrc
+  function start-collectd(){
+      /usr/local/sbin/collectd -f -C /usr/local/etc/collectd.conf &
+  }
+#+END_SRC
+***** interactive kill
+#+BEGIN_SRC sh :tangle ~/.zshrc
+  function ikill () {
+      let to_kill=`ps -eaf | grep $1 | yank`
+      sudo kill -9 $to_kill
+  }  
+#+END_SRC
+***** redo
+rerun command from history
+#+BEGIN_SRC sh :tangle ~/.zshrc
+  function redo() {
+       history 0 | awk '{$1=""; print $0}' | peco | yank -l
+  }
+#+END_SRC
+**** hacks
+***** enable follow dir in emacs shells
+    #+BEGIN_SRC shell :tangle ~/.zshrc
+      if [ -n "$INSIDE_EMACS" ]; then
+        chpwd() { print -P "\033AnSiTc %d" }
+        print -P "\033AnSiTu %n"
+        print -P "\033AnSiTc %d"
+      fi  
+
+          # ## emacs
+          #   chpwd() { print -P "\033AnSiTc %d" }
+
+          #   print -P "\033AnSiTu %n"
+          #   print -P "\033AnSiTc %d"   
+    #+END_SRC
+***** load ndenv
+#+BEGIN_SRC shell :tangle ~/.zshrc
+eval "$(ndenv init -)" 
+#+END_SRC
+**** prompt
+#+BEGIN_SRC shell :tangle ~/.zshrc
+source ~/.zsh.d/zsh-git-prompt/zshrc.sh
+source ~/.zprompt
+#+END_SRC
+**** system configuration
+***** enable history
+#+BEGIN_SRC sh :tangle ~/.zshrc
+export SAVEHIST=10000
+export HISTSIZE=10000
+export HISTFILE=~/.zsh_history
+#+END_SRC
+**** application configuration
+#+BEGIN_SRC sh :tangle ~/.zshrc
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/vedwin/opt/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/vedwin/opt/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/vedwin/opt/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/vedwin/opt/google-cloud-sdk/completion.zsh.inc'; fi
+
+#+END_SRC
+*** .zlogout
+*** .zprompt
+**** zsh-git-prompt
+#+BEGIN_SRC shell :tangle ~/.zprompt
+    # PROMPT='%@%B%m%~%b$(git_super_status) %# '
+    # PROMPT=$'[%*] %B%n@%m%b:%~ $(git_super_status) \n%# '
+  PROMPT=$'[%*] %F{green}%B%n%b%f%F{yellow} at %f%F{red}%m%f:%~ $(git_super_status) \n%# '
+#+END_SRC
+**** powerline
+#+BEGIN_SRC shell :tangle ~/.zprompt
+    # PROMPT='%B%m%~%b$(git_super_status) %# '
+  # source  ~/.zsh.d/powerlevel9k/powerlevel9k.zsh-theme
+
+  # export POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir rbenv vcs)
+  # export POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time)
+
+#+END_SRC
+*** .zwork
+#+BEGIN_SRC shell :tangle ~/.zshrc
+  if [[ -e ~/.zwork ]]
+  then
+      source ~/.zwork
+  fi
+
+#+END_SRC
+*** framework configs
+**** [[file:antigen.org][antigen]]
+**** [[file:zprezto.org][zprezto]]
+** dot files
+*** .tmux.conf
+#+BEGIN_SRC shell :tangle ~/.tmux.conf
+set-option -g history-limit 300000000
+set -g status off
+
+unbind-key C-b
+set -g prefix 'C-t'
+bind-key 'C-t' send-prefix
+#+END_SRC
+*** .screenrc
+#+BEGIN_SRC shell :tangle ~/.screenrc
+escape ^\\
+vbell off
+defscrollback 1000000
+hardstatus alwayslastline 
+#caption always "%{= kw}%-w%{= BW}%n %t%{-}%+w %-= @%H - %LD %d %LM - %c"
+#caption always "%{-b ..}%-w%{+b ..}[[%n%f*%t]]%{-}%+w"
+hardstatus string '%{gk}[%{wk}%?%-Lw%?%{=b kR}(%{W}%n*%f %t%?(%u)%?%{=b kR})%{= w}%?%+Lw%?%? %{g}][%{d}%l%{g}][ %{= w}%Y/%m/%d %0C:%s%a%{g} ]%{W}'
+#+END_SRC
+*** .vimrc
+**** turn off vi compatability
+ #+BEGIN_SRC vim :tangle ~/.vimrc
+ set nocompatible
+ #+END_SRC
+**** add line numbers
+   #+BEGIN_SRC vim :tangle ~/.vimrc
+set number   
+   #+END_SRC
+**** turn off terminal bell
+#+BEGIN_SRC vim :tangle ~/.vimrc
+set visualbell
+#+END_SRC
+*** .wgetrc
+#+BEGIN_SRC shell :tangle ~/.wgetrc
+# Use the server-provided last modification date, if available
+timestamping = on
+
+# Do not go up in the directory structure when downloading recursively
+no_parent = on
+
+# Wait 60 seconds before timing out. This applies to all timeouts: DNS, connect and read. (The default read timeout is 15 minutes!)
+timeout = 60
+
+# Retry a few times when a download fails, but don’t overdo it. (The default is 20!)
+tries = 3
+
+# Retry even when the connection was refused
+retry_connrefused = on
+
+# Use the last component of a redirection URL for the local file name
+trust_server_names = on
+
+# Follow FTP links from HTML documents by default
+follow_ftp = on
+
+# Add a `.html` extension to `text/html` or `application/xhtml+xml` files that lack one, or a `.css` extension to `text/css` files that lack one
+adjust_extension = on
+
+# Use UTF-8 as the default system encoding
+# Disabled as it makes `wget` builds that don’t support this feature unusable.
+# Does anyone know how to conditionally configure a wget setting?
+# http://unix.stackexchange.com/q/34730/6040
+#local_encoding = UTF-8
+
+# Ignore `robots.txt` and `<meta name=robots content=nofollow>`
+robots = off
+
+# Print the HTTP and FTP server responses
+server_response = on
+
+# Disguise as IE 9 on Windows 7
+user_agent = Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)
+#+END_SRC
+*** .gdbinit
+**** theme
+#+BEGIN_SRC shell :tangle ~/.gdbinit
+set $COLOREDPROMPT = 1
+set $SETCOLOR1STLINE = 0
+set confirm off
+set verbose off
+set history filename ~/.gdb_history
+set history save
+
+# color codes
+set $BLACK = 0
+set $RED = 1
+set $GREEN = 2
+set $YELLOW = 3
+set $BLUE = 4
+set $MAGENTA = 5
+set $CYAN = 6
+set $WHITE = 7
+#+END_SRC
+**** guile scripts
+#+BEGIN_SRC shell :tangle ~/.gdbinit
+set auto-load guile-scripts on 
+#+END_SRC
+**** python scripts
+#+BEGIN_SRC shell :tangle ~/.gdbinit
+set auto-load python-scripts on
+#+END_SRC
+**** osx bullshit
+#+BEGIN_SRC shell :tangle ~/.gdbinit
+set startup-with-shell off
+#+END_SRC
+*** .ctags
+#+BEGIN_SRC shell :tangle ~/.ctags
+--langdef=puppet
+--langmap=puppet:.pp
+--regex-puppet=/^class[ \t]*([:a-zA-Z0-9_\-]+)[ \t]*/\1/d,definition/
+--regex-puppet=/^site[ \t]*([a-zA-Z0-9_\-]+)[ \t]*/\1/d,definition/
+--regex-puppet=/^node[ \t]*([a-zA-Z0-9_\-]+)[ \t]*/\1/d,definition/
+--regex-puppet=/^define[ \t]*([:a-zA-Z0-9_\-]+)[ \t]*/\1/d,definition/
+#+END_SRC
+** hadoop
+*** hadoop-env.sh
+#+BEGIN_SRC shell 
+#
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Set Hadoop-specific environment variables here.
+
+##
+## THIS FILE ACTS AS THE MASTER FILE FOR ALL HADOOP PROJECTS.
+## SETTINGS HERE WILL BE READ BY ALL HADOOP COMMANDS.  THEREFORE,
+## ONE CAN USE THIS FILE TO SET YARN, HDFS, AND MAPREDUCE
+## CONFIGURATION OPTIONS INSTEAD OF xxx-env.sh.
+##
+## Precedence rules:
+##
+## {yarn-env.sh|hdfs-env.sh} > hadoop-env.sh > hard-coded defaults
+##
+## {YARN_xyz|HDFS_xyz} > HADOOP_xyz > hard-coded defaults
+##
+
+# Many of the options here are built from the perspective that users
+# may want to provide OVERWRITING values on the command line.
+# For example:
+#
+#  JAVA_HOME=/usr/java/testing hdfs dfs -ls
+#
+# Therefore, the vast majority (BUT NOT ALL!) of these defaults
+# are configured for substitution and not append.  If append
+# is preferable, modify this file accordingly.
+
+###
+# Generic settings for HADOOP
+###
+
+# Technically, the only required environment variable is JAVA_HOME.
+# All others are optional.  However, the defaults are probably not
+# preferred.  Many sites configure these options outside of Hadoop,
+# such as in /etc/profile.d
+
+# The java implementation to use. By default, this environment
+# variable is REQUIRED on ALL platforms except OS X!
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home"
+
+# Location of Hadoop.  By default, Hadoop will attempt to determine
+# this location based upon its execution path.
+# export HADOOP_HOME=
+
+# Location of Hadoop's configuration information.  i.e., where this
+# file is living. If this is not defined, Hadoop will attempt to
+# locate it based upon its execution path.
+#
+# NOTE: It is recommend that this variable not be set here but in
+# /etc/profile.d or equivalent.  Some options (such as
+# --config) may react strangely otherwise.
+#
+# export HADOOP_CONF_DIR=${HADOOP_HOME}/etc/hadoop
+
+# The maximum amount of heap to use (Java -Xmx).  If no unit
+# is provided, it will be converted to MB.  Daemons will
+# prefer any Xmx setting in their respective _OPT variable.
+# There is no default; the JVM will autoscale based upon machine
+# memory size.
+# export HADOOP_HEAPSIZE_MAX=
+
+# The minimum amount of heap to use (Java -Xms).  If no unit
+# is provided, it will be converted to MB.  Daemons will
+# prefer any Xms setting in their respective _OPT variable.
+# There is no default; the JVM will autoscale based upon machine
+# memory size.
+# export HADOOP_HEAPSIZE_MIN=
+
+# Enable extra debugging of Hadoop's JAAS binding, used to set up
+# Kerberos security.
+# export HADOOP_JAAS_DEBUG=true
+
+# Extra Java runtime options for all Hadoop commands. We don't support
+# IPv6 yet/still, so by default the preference is set to IPv4.
+#export HADOOP_OPTS="-Djava.net.preferIPv4Stack=true"
+export HADOOP_OPTS="$HADOOP_OPTS -Djava.net.preferIPv4Stack=true -Djava.security.krb5.realm= -Djava.security.krb5.kdc="
+# For Kerberos debugging, an extended option set logs more invormation
+# export HADOOP_OPTS="-Djava.net.preferIPv4Stack=true -Dsun.security.krb5.debug=true -Dsun.security.spnego.debug"
+
+# Some parts of the shell code may do special things dependent upon
+# the operating system.  We have to set this here. See the next
+# section as to why....
+export HADOOP_OS_TYPE=${HADOOP_OS_TYPE:-$(uname -s)}
+
+
+# Under certain conditions, Java on OS X will throw SCDynamicStore errors
+# in the system logs.
+# See HADOOP-8719 for more information.  If one needs Kerberos
+# support on OS X, one will want to change/remove this extra bit.
+case ${HADOOP_OS_TYPE} in
+  Darwin*)
+    export HADOOP_OPTS="${HADOOP_OPTS} -Djava.security.krb5.realm= "
+    export HADOOP_OPTS="${HADOOP_OPTS} -Djava.security.krb5.kdc= "
+    export HADOOP_OPTS="${HADOOP_OPTS} -Djava.security.krb5.conf= "
+  ;;
+esac
+
+# Extra Java runtime options for some Hadoop commands
+# and clients (i.e., hdfs dfs -blah).  These get appended to HADOOP_OPTS for
+# such commands.  In most cases, # this should be left empty and
+# let users supply it on the command line.
+# export HADOOP_CLIENT_OPTS=""
+
+#
+# A note about classpaths.
+#
+# By default, Apache Hadoop overrides Java's CLASSPATH
+# environment variable.  It is configured such
+# that it sarts out blank with new entries added after passing
+# a series of checks (file/dir exists, not already listed aka
+# de-deduplication).  During de-depulication, wildcards and/or
+# directories are *NOT* expanded to keep it simple. Therefore,
+# if the computed classpath has two specific mentions of
+# awesome-methods-1.0.jar, only the first one added will be seen.
+# If two directories are in the classpath that both contain
+# awesome-methods-1.0.jar, then Java will pick up both versions.
+
+# An additional, custom CLASSPATH. Site-wide configs should be
+# handled via the shellprofile functionality, utilizing the
+# hadoop_add_classpath function for greater control and much
+# harder for apps/end-users to accidentally override.
+# Similarly, end users should utilize ${HOME}/.hadooprc .
+# This variable should ideally only be used as a short-cut,
+# interactive way for temporary additions on the command line.
+# export HADOOP_CLASSPATH="/some/cool/path/on/your/machine"
+
+# Should HADOOP_CLASSPATH be first in the official CLASSPATH?
+# export HADOOP_USER_CLASSPATH_FIRST="yes"
+
+# If HADOOP_USE_CLIENT_CLASSLOADER is set, the classpath along
+# with the main jar are handled by a separate isolated
+# client classloader when 'hadoop jar', 'yarn jar', or 'mapred job'
+# is utilized. If it is set, HADOOP_CLASSPATH and
+# HADOOP_USER_CLASSPATH_FIRST are ignored.
+# export HADOOP_USE_CLIENT_CLASSLOADER=true
+
+# HADOOP_CLIENT_CLASSLOADER_SYSTEM_CLASSES overrides the default definition of
+# system classes for the client classloader when HADOOP_USE_CLIENT_CLASSLOADER
+# is enabled. Names ending in '.' (period) are treated as package names, and
+# names starting with a '-' are treated as negative matches. For example,
+# export HADOOP_CLIENT_CLASSLOADER_SYSTEM_CLASSES="-org.apache.hadoop.UserClass,java.,javax.,org.apache.hadoop."
+
+# Enable optional, bundled Hadoop features
+# This is a comma delimited list.  It may NOT be overridden via .hadooprc
+# Entries may be added/removed as needed.
+# export HADOOP_OPTIONAL_TOOLS="hadoop-azure,hadoop-aws,hadoop-aliyun,hadoop-azure-datalake,hadoop-kafka,hadoop-openstack"
+
+###
+# Options for remote shell connectivity
+###
+
+# There are some optional components of hadoop that allow for
+# command and control of remote hosts.  For example,
+# start-dfs.sh will attempt to bring up all NNs, DNS, etc.
+
+# Options to pass to SSH when one of the "log into a host and
+# start/stop daemons" scripts is executed
+# export HADOOP_SSH_OPTS="-o BatchMode=yes -o StrictHostKeyChecking=no -o ConnectTimeout=10s"
+
+# The built-in ssh handler will limit itself to 10 simultaneous connections.
+# For pdsh users, this sets the fanout size ( -f )
+# Change this to increase/decrease as necessary.
+# export HADOOP_SSH_PARALLEL=10
+
+# Filename which contains all of the hosts for any remote execution
+# helper scripts # such as workers.sh, start-dfs.sh, etc.
+# export HADOOP_WORKERS="${HADOOP_CONF_DIR}/workers"
+
+###
+# Options for all daemons
+###
+#
+
+#
+# Many options may also be specified as Java properties.  It is
+# very common, and in many cases, desirable, to hard-set these
+# in daemon _OPTS variables.  Where applicable, the appropriate
+# Java property is also identified.  Note that many are re-used
+# or set differently in certain contexts (e.g., secure vs
+# non-secure)
+#
+
+# Where (primarily) daemon log files are stored.
+# ${HADOOP_HOME}/logs by default.
+# Java property: hadoop.log.dir
+# export HADOOP_LOG_DIR=${HADOOP_HOME}/logs
+
+# A string representing this instance of hadoop. $USER by default.
+# This is used in writing log and pid files, so keep that in mind!
+# Java property: hadoop.id.str
+# export HADOOP_IDENT_STRING=$USER
+
+# How many seconds to pause after stopping a daemon
+# export HADOOP_STOP_TIMEOUT=5
+
+# Where pid files are stored.  /tmp by default.
+# export HADOOP_PID_DIR=/tmp
+
+# Default log4j setting for interactive commands
+# Java property: hadoop.root.logger
+# export HADOOP_ROOT_LOGGER=INFO,console
+
+# Default log4j setting for daemons spawned explicitly by
+# --daemon option of hadoop, hdfs, mapred and yarn command.
+# Java property: hadoop.root.logger
+# export HADOOP_DAEMON_ROOT_LOGGER=INFO,RFA
+
+# Default log level and output location for security-related messages.
+# You will almost certainly want to change this on a per-daemon basis via
+# the Java property (i.e., -Dhadoop.security.logger=foo). (Note that the
+# defaults for the NN and 2NN override this by default.)
+# Java property: hadoop.security.logger
+# export HADOOP_SECURITY_LOGGER=INFO,NullAppender
+
+# Default process priority level
+# Note that sub-processes will also run at this level!
+# export HADOOP_NICENESS=0
+
+# Default name for the service level authorization file
+# Java property: hadoop.policy.file
+# export HADOOP_POLICYFILE="hadoop-policy.xml"
+
+#
+# NOTE: this is not used by default!  <-----
+# You can define variables right here and then re-use them later on.
+# For example, it is common to use the same garbage collection settings
+# for all the daemons.  So one could define:
+#
+# export HADOOP_GC_SETTINGS="-verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps"
+#
+# .. and then use it as per the b option under the namenode.
+
+###
+# Secure/privileged execution
+###
+
+#
+# Out of the box, Hadoop uses jsvc from Apache Commons to launch daemons
+# on privileged ports.  This functionality can be replaced by providing
+# custom functions.  See hadoop-functions.sh for more information.
+#
+
+# The jsvc implementation to use. Jsvc is required to run secure datanodes
+# that bind to privileged ports to provide authentication of data transfer
+# protocol.  Jsvc is not required if SASL is configured for authentication of
+# data transfer protocol using non-privileged ports.
+# export JSVC_HOME=/usr/bin
+
+#
+# This directory contains pids for secure and privileged processes.
+#export HADOOP_SECURE_PID_DIR=${HADOOP_PID_DIR}
+
+#
+# This directory contains the logs for secure and privileged processes.
+# Java property: hadoop.log.dir
+# export HADOOP_SECURE_LOG=${HADOOP_LOG_DIR}
+
+#
+# When running a secure daemon, the default value of HADOOP_IDENT_STRING
+# ends up being a bit bogus.  Therefore, by default, the code will
+# replace HADOOP_IDENT_STRING with HADOOP_xx_SECURE_USER.  If one wants
+# to keep HADOOP_IDENT_STRING untouched, then uncomment this line.
+# export HADOOP_SECURE_IDENT_PRESERVE="true"
+
+###
+# NameNode specific parameters
+###
+
+# Default log level and output location for file system related change
+# messages. For non-namenode daemons, the Java property must be set in
+# the appropriate _OPTS if one wants something other than INFO,NullAppender
+# Java property: hdfs.audit.logger
+# export HDFS_AUDIT_LOGGER=INFO,NullAppender
+
+# Specify the JVM options to be used when starting the NameNode.
+# These options will be appended to the options specified as HADOOP_OPTS
+# and therefore may override any similar flags set in HADOOP_OPTS
+#
+# a) Set JMX options
+# export HDFS_NAMENODE_OPTS="-Dcom.sun.management.jmxremote=true -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.port=1026"
+#
+# b) Set garbage collection logs
+# export HDFS_NAMENODE_OPTS="${HADOOP_GC_SETTINGS} -Xloggc:${HADOOP_LOG_DIR}/gc-rm.log-$(date +'%Y%m%d%H%M')"
+#
+# c) ... or set them directly
+# export HDFS_NAMENODE_OPTS="-verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -Xloggc:${HADOOP_LOG_DIR}/gc-rm.log-$(date +'%Y%m%d%H%M')"
+
+# this is the default:
+# export HDFS_NAMENODE_OPTS="-Dhadoop.security.logger=INFO,RFAS"
+
+###
+# SecondaryNameNode specific parameters
+###
+# Specify the JVM options to be used when starting the SecondaryNameNode.
+# These options will be appended to the options specified as HADOOP_OPTS
+# and therefore may override any similar flags set in HADOOP_OPTS
+#
+# This is the default:
+# export HDFS_SECONDARYNAMENODE_OPTS="-Dhadoop.security.logger=INFO,RFAS"
+
+###
+# DataNode specific parameters
+###
+# Specify the JVM options to be used when starting the DataNode.
+# These options will be appended to the options specified as HADOOP_OPTS
+# and therefore may override any similar flags set in HADOOP_OPTS
+#
+# This is the default:
+# export HDFS_DATANODE_OPTS="-Dhadoop.security.logger=ERROR,RFAS"
+
+# On secure datanodes, user to run the datanode as after dropping privileges.
+# This **MUST** be uncommented to enable secure HDFS if using privileged ports
+# to provide authentication of data transfer protocol.  This **MUST NOT** be
+# defined if SASL is configured for authentication of data transfer protocol
+# using non-privileged ports.
+# This will replace the hadoop.id.str Java property in secure mode.
+# export HDFS_DATANODE_SECURE_USER=hdfs
+
+# Supplemental options for secure datanodes
+# By default, Hadoop uses jsvc which needs to know to launch a
+# server jvm.
+# export HDFS_DATANODE_SECURE_EXTRA_OPTS="-jvm server"
+
+###
+# NFS3 Gateway specific parameters
+###
+# Specify the JVM options to be used when starting the NFS3 Gateway.
+# These options will be appended to the options specified as HADOOP_OPTS
+# and therefore may override any similar flags set in HADOOP_OPTS
+#
+# export HDFS_NFS3_OPTS=""
+
+# Specify the JVM options to be used when starting the Hadoop portmapper.
+# These options will be appended to the options specified as HADOOP_OPTS
+# and therefore may override any similar flags set in HADOOP_OPTS
+#
+# export HDFS_PORTMAP_OPTS="-Xmx512m"
+
+# Supplemental options for priviliged gateways
+# By default, Hadoop uses jsvc which needs to know to launch a
+# server jvm.
+# export HDFS_NFS3_SECURE_EXTRA_OPTS="-jvm server"
+
+# On privileged gateways, user to run the gateway as after dropping privileges
+# This will replace the hadoop.id.str Java property in secure mode.
+# export HDFS_NFS3_SECURE_USER=nfsserver
+
+###
+# ZKFailoverController specific parameters
+###
+# Specify the JVM options to be used when starting the ZKFailoverController.
+# These options will be appended to the options specified as HADOOP_OPTS
+# and therefore may override any similar flags set in HADOOP_OPTS
+#
+# export HDFS_ZKFC_OPTS=""
+
+###
+# QuorumJournalNode specific parameters
+###
+# Specify the JVM options to be used when starting the QuorumJournalNode.
+# These options will be appended to the options specified as HADOOP_OPTS
+# and therefore may override any similar flags set in HADOOP_OPTS
+#
+# export HDFS_JOURNALNODE_OPTS=""
+
+###
+# HDFS Balancer specific parameters
+###
+# Specify the JVM options to be used when starting the HDFS Balancer.
+# These options will be appended to the options specified as HADOOP_OPTS
+# and therefore may override any similar flags set in HADOOP_OPTS
+#
+# export HDFS_BALANCER_OPTS=""
+
+###
+# HDFS Mover specific parameters
+###
+# Specify the JVM options to be used when starting the HDFS Mover.
+# These options will be appended to the options specified as HADOOP_OPTS
+# and therefore may override any similar flags set in HADOOP_OPTS
+#
+# export HDFS_MOVER_OPTS=""
+
+###
+# Advanced Users Only!
+###
+
+#
+# When building Hadoop, one can add the class paths to the commands
+# via this special env var:
+# export HADOOP_ENABLE_BUILD_PATHS="true"
+
+#
+# To prevent accidents, shell commands be (superficially) locked
+# to only allow certain users to execute certain subcommands.
+# It uses the format of (command)_(subcommand)_USER.
+#
+# For example, to limit who can execute the namenode command,
+# export HDFS_NAMENODE_USER=hdfs
+
+#+END_SRC
+*** core-site.xml
+#+BEGIN_SRC xml 
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+
+<!-- Put site-specific property overrides in this file. -->
+
+  <property>
+        <name>hadoop.tmp.dir</name>
+        <value>/usr/local/Cellar/hadoop/hdfs/tmp</value>
+        <description>A base for other temporary directories.</description>
+    </property>
+    <property>
+        <name>fs.default.name</name>
+        <value>hdfs://localhost:8020</value>
+    </property>
+
+<configuration>
+</configuration>
+
+#+END_SRC
+*** mapred-site.xml
+*** hdfs-site.xml
+* Language Runtime Init Files
+** .pythonrc.py - reference
+Basically this a generic python environment which hopefully can be bootstrapped wit ha ~pip install -r requirements.txt~
+*** Environment Initialization
+
+**** requirements.txt
+#+BEGIN_SRC python 
+ClusterShell==1.8
+aubio==0.4.6
+boto3==1.5.9
+# emoji==0.4.5
+flatlib==0.2.1
+haxor-news==0.4.3
+hy==0.13.1
+networkx==2.1
+nltk==3.2.5
+numpy==1.14.0
+pydatalog==0.17.1
+requests==2.18.4
+scikit-learn==0.19.1
+scipy==1.0.0
+turicreate==4.2
+rope==0.10.7
+flake8==3.5.0
+autopep8==1.3.5
+yapf==0.22.0
+ipython==5.7.0
+#+END_SRC
+**** install dependencies
+#+BEGIN_SRC python 
+    import os
+    
+    os.system("pip install -r ~/.emacs.d/var/requirements.txt")
+
+#+END_SRC
+**** imports 
+***** stdlib
+  #+BEGIN_SRC python
+    import abc
+    import aifc
+    import argparse
+    import array
+    import ast
+    import asynchat
+    import asyncore
+    import atexit
+    import audioop
+    import base64
+    import bdb
+    import binascii
+    import binhex
+    import bisect
+    #    import builtins
+    import bz2
+    import calendar
+    import cgi
+    import cgitb
+    import chunk
+    import cmath
+    import cmd
+    import code
+    import codecs
+    import codeop
+    import collections
+    import colorsys
+    import compileall
+    import contextlib
+    import copy
+    # import copyreg
+    import crypt
+    import csv
+    import ctypes
+    import curses
+    import curses.ascii
+    import curses.panel
+    import curses.textpad
+    import datetime
+    import dbm
+    import decimal
+    import difflib
+    import dis
+    import distutils
+    import doctest
+    import dummy_threading
+    import email
+    import ensurepip
+    # import enum
+    import errno
+    import fcntl
+    import filecmp
+    import fileinput
+    import fnmatch
+    import formatter
+    import fractions
+    import ftplib
+    import functools
+    import gc
+    import getopt
+    import getpass
+    import gettext
+    import glob
+    import grp
+    import gzip
+    import hashlib
+    import heapq
+    import hmac
+    # import html
+    # import html.entities
+    # import html.parser
+    # import http
+    # import http.client
+    # import http.cookiejar
+    # import http.cookies
+    # import http.server
+    import imaplib
+    import imghdr
+    import imp
+    import importlib
+    import inspect
+    import io
+    # import ipaddress
+    import itertools
+    import json
+    import keyword
+    import linecache
+    import locale
+    import logging
+    import logging.config
+    import logging.handlers
+    import macpath
+    import mailbox
+    import mailcap
+    import marshal
+    import math
+    import mimetypes
+    import mmap
+    import modulefinder
+    import multiprocessing
+    import netrc
+    import nis
+    import nntplib
+    import numbers
+    import operator
+    import optparse
+
+    import os.path
+    import parser
+    import pdb
+    import pickle
+    import pickletools
+    import pipes
+    import pkgutil
+    import platform
+    import plistlib
+    import poplib
+    import posix
+    import pprint
+    import pty
+    import pwd
+    import py_compile
+    import pyclbr
+    import pydoc
+    # import queue
+    import quopri
+    import random
+    import re
+    import readline
+    # import reprlib
+    import resource
+    import rlcompleter
+    import runpy
+    import sched
+    import select
+    import shelve
+    import shlex
+    import shutil
+    import signal
+    import site
+    import smtpd
+    import smtplib
+    import sndhdr
+    import socket
+    # import socketserver
+    import sqlite3
+    import ssl
+    import stat
+    import string
+    import stringprep
+    import struct
+    import subprocess
+    import sunau
+    import symbol
+    import symtable
+    import sys
+    import sysconfig
+    import syslog
+    import tabnanny
+    import tarfile
+    import telnetlib
+    import tempfile
+    import termios
+    import test
+    import textwrap
+    import threading
+    import time
+    import timeit
+    # import tkinter
+    # import tkinter.scrolledtext
+    # import tkinter.tix
+    # import tkinter.ttk
+    import token
+    import tokenize
+    import trace
+    import traceback
+    import tty
+    import turtle
+    import types
+    import unicodedata
+    import unittest
+    import urllib
+    import uu
+    import uuid
+    import warnings
+    import wave
+    import weakref
+    import webbrowser
+    import wsgiref
+    import xdrlib
+    # import xml.dom
+    # import xml.dom.minidom
+    # import xml.dom.pulldom
+    # import xml.etree.ElementTree
+    # import xml.parsers.expat
+    # import xml.sax
+    # import xml.sax.handler
+    # import xml.sax.saxutils
+    # import xml.sax.xmlreader
+    # import xmlrpc
+    # import xmlrpc.client
+    # import xmlrpc.server
+    import zipfile
+    import zipimport
+    import zlib
+  #+END_SRC
+***** pip
+    #+BEGIN_SRC python 
+    import pip
+    #+END_SRC
+****** install package by name
+     #+BEGIN_SRC python 
+       def pip_install(package):
+	       try:
+		       importlib.import_module(package)
+	       except ImportError:
+		       pip.main(['install', package])
+	       finally:
+		       globals()[package] = importlib.import_module(package)
+
+
+
+     #+END_SRC
+***** emoji
+
+#+BEGIN_SRC python 
+  # if sys.version_info[0] == 2 :
+  #     import emoji
+#+END_SRC
+
+*** repl customizations
+**** enable tab completion
+ #+BEGIN_SRC python 
+ try:
+     import readline
+ except ImportError:
+     print("Module readline not available.")
+ else:
+     import rlcompleter
+     readline.parse_and_bind("tab: complete")
+
+ #+END_SRC
+
+**** setup prompt
+#+BEGIN_SRC python 
+  class PromptPs1:
+      ESCAPE = '\033[%sm'
+      ENDC = ESCAPE % '0'
+      BOLD = '1;'
+      FAINT = '2;' # Not widely supported
+      ITALIC = '3;'
+      UNDERLINE = '4;'
+      SLOW_BLINK = '5;'
+      FAST_BLINK = '6;' # Not widely supported
+      COLOR = {
+          'black': '30',
+          'red': '31',
+          'green': '32',
+          'yellow': '33',
+          'blue': '34',
+          'magenta': '35',
+          'cyan': '36',
+          'white': '37',}
+      def decorate(self, format, msg):
+          format_sequence = self.ESCAPE % format
+          return format_sequence + msg + self.ENDC
+      def white_bold_underlined(self, msg):
+          return self.decorate(self.BOLD + self.UNDERLINE + self.COLOR['white'], msg)
+      def green_color(self, msg):
+          return self.decorate(self.BOLD + self.COLOR['green'], msg)
+      def __init__(self):
+          self.count = 0
+        
+      def __str__(self):
+          self.time = datetime.datetime.now().strftime("%H:%M:%S")
+          self.path = os.getcwd()
+          return "[%s] %s $ " % (self.time, self.green_color(self.path))
+
+    
+  class PromptPs2:
+      ESCAPE = '\033[%sm'
+      ENDC = ESCAPE % '0'
+      BOLD = '1;'
+      FAINT = '2;' # Not widely supported
+      ITALIC = '3;'
+      UNDERLINE = '4;'
+      SLOW_BLINK = '5;'
+      FAST_BLINK = '6;' # Not widely supported
+      COLOR = {
+          'black': '30',
+          'red': '31',
+          'green': '32',
+          'yellow': '33',
+          'blue': '34',
+          'magenta': '35',
+          'cyan': '36',
+          'white': '37',}
+      def decorate(self, format, msg):
+          format_sequence = self.ESCAPE % format
+          return format_sequence + msg + self.ENDC
+      def white_bold_underlined(self, msg):
+          return self.decorate(self.BOLD + self.UNDERLINE + self.COLOR['white'], msg)
+      def green_color(self, msg):
+          return self.decorate(self.BOLD + self.COLOR['green'], msg)
+      def yellow_color(self, msg):
+          return self.decorate(self.BOLD + self.COLOR['yellow'], msg)
+      def __init__(self):
+          self.count = 0
+      def __str__(self):
+          self.time = datetime.datetime.now().strftime("%H:%M:%S")
+          self.path = os.getcwd()
+          return "[%s] %s . " % (self.time, self.yellow_color(self.path))
+
+
+
+
+
+  sys.ps1 = PromptPs1()
+  sys.ps2 = PromptPs2()
+#+END_SRC
+
+**** convert bytes to megabytes
+ #+BEGIN_SRC python 
+ def convert_size(size_bytes):
+    if size_bytes == 0:
+	return "0B"
+    size_name = ("B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB")
+    i = int(math.floor(math.log(size_bytes, 1024)))
+    p = math.pow(1024, i)
+    s = round(size_bytes / p, 2)
+    return "%s %s" % (s, size_name[i])
+ #+END_SRC
+
+**** permutations of list
+#+BEGIN_SRC python 
+  # Python function to print permutations of a given list
+  def permutation(lst):
+    
+      # If lst is empty then there are no permutations
+      if len(lst) == 0:
+          return []
+    
+      # If there is only one element in lst then, only
+      # one permuatation is possible
+      if len(lst) == 1:
+          return [lst]
+    
+      # Find the permutations for lst if there are
+      # more than 1 characters
+    
+      l = [] # empty list that will store current permutation
+    
+      # Iterate the input(lst) and calculate the permutation
+      for i in range(len(lst)):
+          m = lst[i]
+        
+          # Extract lst[i] or m from the list.  remLst is
+          # remaining list
+          remLst = lst[:i] + lst[i+1:]
+        
+          # Generating all permutations where m is first
+          # element
+      for p in permutation(remLst):
+          l.append([m] + p)
+          return l
+
+    
+ #+END_SRC
+
+**** cd function
+   #+BEGIN_SRC python 
+     def cd (path):
+         os.chdir(os.path.expanduser (path))
+    
+
+    
+   #+END_SRC
+
+
+
+
+**** ls function
+#+BEGIN_SRC python 
+  def ls(path="."):
+      pprint.pprint(sorted(os.listdir(path)))
+      return sorted(os.listdir(path))
+#+END_SRC
+
+
+**** cat function
+#+BEGIN_SRC python 
+  def cat(file):
+      with open(file, 'r') as fin:
+          print(fin.read())
+
+#+END_SRC
+
+**** tailf function
+   #+BEGIN_SRC python 
+     def tailf(filepath):
+	 subprocess.call(['sudo','tail' ,'-f', filepath])
+   #+END_SRC
+**** mkdir function
+   #+BEGIN_SRC python 
+     def mkdir(name):
+	 os.mkdir(name)
+   #+END_SRC
+**** rm function
+   #+BEGIN_SRC python 
+     def rm(name):
+	 os.rmdir(name)
+   #+END_SRC
+**** touch function
+originally implement https://stackoverflow.com/questions/1158076/implement-touch-using-python
+#+BEGIN_SRC python 
+  def touch(fname, times=None):
+      fhandle = open(fname, 'a')
+      try:
+          os.utime(fname, times)
+      finally:
+          fhandle.close()
+#+END_SRC
+**** clear screen
+#+BEGIN_SRC python 
+  def clear():
+      os.system('clear')
+#+END_SRC
+*** Global Data
+**** Nil
+#+BEGIN_SRC python 
+Nil = None
+#+END_SRC
+**** import scikitlearn datasets
+#+BEGIN_SRC python 
+  from sklearn import datasets
+#+END_SRC
+**** music
+***** pitches
+| Note  |  Great |  Small | On-lined | Two-lined | Three-lined | Four-lined |
+|-------+--------+--------+----------+-----------+-------------+------------|
+| A     |  55.00 | 110.00 |   220.00 |    440.00 |      880.00 |    1760.00 |
+| A♯/B♭ |  58.27 | 116.54 |   233.08 |    466.16 |      932.33 |    1864.66 |
+| B/C♭  |  61.74 | 123.47 |   246.94 |    493.88 |      987.77 |    1975.53 |
+| B♯/C  |  65.41 | 130.81 |   261.63 |    523.25 |     1046.50 |    2093.00 |
+| C♯/D♭ |  69.30 | 138.59 |   277.18 |    554.37 |     1108.73 |    2217.46 |
+| D     |  73.42 | 146.83 |   293.66 |    587.33 |     1174.66 |    2349.32 |
+| D♯/E♭ |  77.78 | 155.56 |   311.13 |    622.25 |     1244.51 |    2489.02 |
+| E/F♭  |  82.41 | 164.81 |   329.63 |    659.26 |     1318.51 |    2637.02 |
+| E♯/F  |  87.31 | 174.61 |   349.23 |    698.46 |     1396.91 |    2793.83 |
+| F♯/G♭ |  92.50 | 185.00 |   369.99 |    739.99 |     1479.98 |    2959.96 |
+| G     |  98.00 | 196.00 |   392.00 |    783.99 |     1567.99 |    3135.96 |
+| G♯/A♭ | 103.83 | 207.65 |   415.30 |    830.61 |     1661.22 |    3322.44 |
+
+this 'lined' business is due to the [[https://en.wikipedia.org/wiki/Helmholtz_pitch_notation#Staff_representation][Hemholtz pitch notation]]. 
+
+
+or in data:
+
+#+BEGIN_SRC python 
+pitches={
+'a':[55.00,110.00,220.00,440.00,880.00,1760.00],
+'a_sharp':[58.27,116.54,233.08,466.16,932.33,1864.66],
+'b':[61.74,123.47,246.94,493.88,987.77,1975.53],
+'c':[65.41,130.81,261.63,523.25,1046.50,2093.00],
+'c_sharp':[69.30,138.59,277.18,554.37,1108.73,2217.46],
+'d':[73.42,146.83,293.66,587.33,1174.66,2349.32],
+'d_sharp':[77.78,155.56,311.13,622.25,1244.51,2489.02],
+'e':[82.41,164.81,329.63,659.26,1318.51,2637.02],
+'f':[87.31,174.61,349.23,698.46,1396.91,2793.83],
+'f_sharp':[92.50,185.00,369.99,739.99,1479.98,2959.96],
+'g':[98.00,196.00,392.00,783.99,1567.99,3135.96],
+'g_sharp':[103.83,207.65,415.30,830.61,1661.22,3322.44]}
+#+END_SRC
+***** scales and modes
+from one perspective modes are just the permutations of a scale.
+Restricting ourselves to the diatonic (8 note) this gives us 7
+permutations + 1 octave
+
+
+
+
+*** Dependencies
+**** sklearn
+***** SVM
+#+BEGIN_SRC python 
+from sklearn import svm
+#+END_SRC
+**** nltk
+
+#+BEGIN_SRC python :tangle ~/.pythonrc.py
+# import nltk
+# nltk.download('punkt')
+# nltk.download('averaged_perceptron_tagger')
+#+END_SRC
+**** pydatalog
+#+BEGIN_SRC python 
+from pyDatalog import pyDatalog
+#+END_SRC
+**** list operations
+***** cons
+#+BEGIN_SRC python 
+def cons(x, xs=Nil):                  
+  return lambda i: x if i == 0 else xs
+#+END_SRC
+***** car
+#+BEGIN_SRC python 
+def car(lst):
+  return lst[0]
+#+END_SRC
+***** cdr
+#+BEGIN_SRC python 
+def cdr(lst):
+  return lst[1]
+#+END_SRC
+*** Bugs
+**** readline osx [[https://github.com/jorgenschaefer/elpy/issues/887][bug]]
+#+BEGIN_SRC python 
+import readline
+import rlcompleter
+if 'libedit' in readline.__doc__:
+    readline.parse_and_bind("bind ^I rl_complete")
+else:
+    readline.parse_and_bind("tab: complete")
+
+#+END_SRC
+** .guile
+#+BEGIN_SRC scheme :tangle ~/.guile
+; -*- mode: scheme -*-
+#+END_SRC
+*** Load Modules
+**** HTTP Requests
+#+BEGIN_SRC scheme :tangle ~/.guile
+(use-modules (web request))
+#+END_SRC
+**** pattern matching
+#+BEGIN_SRC scheme :tangle ~/.guile
+(use-modules (ice-9 match))
+#+END_SRC
+**** pretty printing
+#+BEGIN_SRC scheme :tangle ~/.guile
+(use-modules (ice-9 pretty-print))
+#+END_SRC
+**** xml
+#+BEGIN_SRC scheme :tangle ~/.guile
+(use-modules (sxml simple))
+#+END_SRC
+**** expect
+#+BEGIN_SRC scheme :tangle ~/.guile
+(use-modules (ice-9 expect))
+#+END_SRC
+**** format macro
+#+BEGIN_SRC scheme :tangle ~/.guile
+(use-modules (ice-9 format))
+#+END_SRC
+**** queue
+#+BEGIN_SRC scheme :tangle ~/.guile
+(use-modules (ice-9 q))
+#+END_SRC
+*** External Dependencies
+**** TODO SLIB download and install this in an automated way
+**** guile-json
+ #+BEGIN_SRC scheme :tangle ~/.guile
+   (cond ((not (file-exists? (string-append (getenv "HOME") "/.emacs.d/src/guile-json")))
+                 (system (concat  "cd ~/.emacs.d/src;"
+                                  "rm -rf guile-json;"
+                                  "git clone https://github.com/aconchillo/guile-json.git;"
+                                  "cd guile-json;"
+                                  "autoreconf -vif;"
+                                  "./configure --prefix=$HOME/.emacs.d/;"
+                                  "make && make install;"
+                                  "make html"))
+
+                 (add-to-load-path (string-append (getenv "HOME" ) "/.emacs.d/share/guile/site")))
+
+         (#t (add-to-load-path (string-append (getenv "HOME" ) "/.emacs.d/share/guile/site"))
+             (use-modules (json))))
+ #+END_SRC
+**** schmutz
+ #+BEGIN_SRC scheme :tangle ~/.guile
+   (cond ((not (file-exists? (string-append (getenv "HOME") "/.emacs.d/lib/schmutz")))
+          (system (concat  "cd ~/.emacs.d/;"
+                           "mkdir -p lib;"
+                           "cd lib;"
+                           "git clone https://github.com/arximboldi/schmutz.git;"
+                           "cd schmutz;"
+                           "mkdir build;"
+                           "cd build;"
+                           "cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_INSTALL_PREFIX=$HOME/.emacs.d ..;"
+                           "make install"))))
+ #+END_SRC
+*** Utilities
+**** concat function
+   #+BEGIN_SRC scheme :tangle ~/.guile
+     (define (concat . args)
+       (apply string-append args))
+   #+END_SRC
+**** atom predicate
+   #+BEGIN_SRC scheme :tangle ~/.guile
+	(define (atom? x)
+	  (not
+	   (or
+	    (pair? x)
+	    (null? x))))
+   #+END_SRC
+**** cadr extensions
+     #+BEGIN_SRC scheme :tangle ~/.guile
+(define (caddddr lst)
+  (cadddr (cdr lst)))
+
+(define (cadddddr lst)
+  (caddddr (cdr lst)))
+
+(define (caddddddr lst)
+  (cadddddr (cdr lst)))
+
+(define (cadddddddr lst)
+  (caddddddr (cdr lst)))
+
+(define (caddddddddr lst)
+  (cadddddddr (cdr lst)))
+     #+END_SRC
+**** cd
+   #+BEGIN_SRC scheme :tangle ~/.guile
+     (define (cd dir)
+       (chdir dir))
+   #+END_SRC
+*** Data
+*** Dependencies
+**** SICP
+**** The Little Schemer
+**** Shared Libraries
+** .sbclrc
+*** Environment Initialization
+**** get environment variables
+#+BEGIN_SRC lisp :tangle ~/.sbclrc
+(defun getenv (x)
+    "Query the environment, as in C getenv.
+Beware: may return empty string if a variable is present but empty;
+use getenvp to return NIL in such a case."
+    (declare (ignorable x))
+    #+(or abcl clasp clisp ecl xcl) (ext:getenv x)
+    #+allegro (sys:getenv x)
+    #+clozure (ccl:getenv x)
+    #+cmucl (unix:unix-getenv x)
+    #+scl (cdr (assoc x ext:*environment-list* :test #'string=))
+    #+cormanlisp
+    (let* ((buffer (ct:malloc 1))
+           (cname (ct:lisp-string-to-c-string x))
+           (needed-size (win:getenvironmentvariable cname buffer 0))
+           (buffer1 (ct:malloc (1+ needed-size))))
+      (prog1 (if (zerop (win:getenvironmentvariable cname buffer1 needed-size))
+                 nil
+                 (ct:c-string-to-lisp-string buffer1))
+        (ct:free buffer)
+        (ct:free buffer1)))
+    #+gcl (system:getenv x)
+    #+genera nil
+    #+lispworks (lispworks:environment-variable x)
+    #+mcl (ccl:with-cstrs ((name x))
+            (let ((value (_getenv name)))
+              (unless (ccl:%null-ptr-p value)
+                (ccl:%get-cstring value))))
+    #+mkcl (#.(or (find-symbol* 'getenv :si nil) (find-symbol* 'getenv :mk-ext nil)) x)
+    #+sbcl (sb-ext:posix-getenv x)
+    #-(or abcl allegro clasp clisp clozure cmucl cormanlisp ecl gcl genera lispworks mcl mkcl sbcl scl xcl)
+    (not-implemented-error 'getenv))
+#+END_SRC
+**** packages
+***** sb-posix
+#+BEGIN_SRC lisp :tangle ~/.sbclrc
+(require :sb-posix)
+#+END_SRC
+***** quicklisp
+****** install
+#+BEGIN_SRC lisp :tangle ~/.sbclrc
+  (cond ((not (probe-file (make-pathname :name  (concatenate 'string (getenv "HOME") "/.emacs.d/var/quicklisp.lisp"))))
+         (sb-posix:chdir (concatenate 'string (getenv "HOME") "/.emacs.d/var/"))
+         (sb-ext:run-program "/usr/bin/curl" '("-O" "https://beta.quicklisp.org/quicklisp.lisp"))
+         (load (concatenate 'string (getenv "HOME") "/.emacs.d/var/quicklisp.lisp"))
+         ))
+#+END_SRC
+****** load at runtime
+#+BEGIN_SRC lisp :tangle ~/.sbclrc
+  (let ((quicklisp-init (merge-pathnames "quicklisp/setup.lisp"
+                                         (user-homedir-pathname))))
+    (when (probe-file quicklisp-init)
+      (load quicklisp-init)))
+#+END_SRC
+***** quicksearch
+   search through quicklisp
+   #+BEGIN_SRC lisp :tangle ~/.sbclrc
+   (ql:quickload "quicksearch")
+   #+END_SRC
+***** cl-project
+   declarative project generation
+   #+BEGIN_SRC lisp :tangle ~/.sbclrc
+   (ql:quickload "cl-project")
+   #+END_SRC
+***** uiop
+#+BEGIN_SRC lisp :tangle ~/.sbclrc
+(asdf:load-system :uiop)
+#+END_SRC
+***** inferior-shell
+#+BEGIN_SRC lisp :tangle ~/.sbclrc
+  (ql:quickload "inferior-shell")
+#+END_SRC
+***** cl-ppcre
+
+   #+BEGIN_SRC lisp :tangle ~/.sbclrc
+   (ql:quickload "cl-ppcre")
+   #+END_SRC
+***** cl-json
+   #+BEGIN_SRC lisp :tangle ~/.sbclrc
+   (ql:quickload "cl-json")
+   #+END_SRC
+***** local-time
+#+BEGIN_SRC lisp :tangle ~/.sbclrc
+   (ql:quickload "local-time")
+#+END_SRC
+***** cl-interpol
+   variable interpolation in strings
+   #+BEGIN_SRC lisp :tangle ~/.sbclrc
+   (ql:quickload "cl-interpol")
+   #+END_SRC
+***** drakma
+   #+BEGIN_SRC lisp :tangle ~/.sbclrc
+   (ql:quickload "drakma")
+   #+END_SRC
+***** cl-scan
+   port scanner - requires cl-crypto!
+   #+BEGIN_SRC lisp :tangle ~/.sbclrc
+   (ql:quickload "cl-scan")
+   #+END_SRC
+***** cl-fad
+   pathname library
+   #+BEGIN_SRC lisp :tangle ~/.sbclrc
+   (ql:quickload "cl-fad")
+   #+END_SRC
+***** chanl
+   channel/queue based concurrency
+   #+BEGIN_SRC lisp :tangle ~/.sbclrc
+   (ql:quickload "chanl")
+   #+END_SRC
+***** cl-heap
+   heap/priority queue implementation
+      #+BEGIN_SRC lisp :tangle ~/.sbclrc
+   (ql:quickload "cl-heap")
+   #+END_SRC
+***** cl-json
+      #+BEGIN_SRC lisp :tangle ~/.sbclrc
+   (ql:quickload "cl-json")
+   #+END_SRC
+*** Applications
+**** TODO Maxima (.maxima.mc) set this up with a hello world
+**** StumpWM (.stumpwmrc)
+*** Dependencies
+**** TODO PAIP - add all source code
+***** Chapter - 4 - GPS: The General Problem Solver
+****** 4.3 Implementation
+******* global data
+#+BEGIN_SRC lisp :tangle ~/.sbclrc
+  (defvar *state* nil "The current state: a list of conditions")
+  (defvar *ops* nil "A list of available operators")
+#+END_SRC
+******* procedures
+******** top level
+#+BEGIN_SRC lisp :tangle ~/.sbclrc
+  (defun GPS (*state* goals *ops*)
+    "General Problem Solver: achieve all goals using *ops*."
+    (if (every  #'achieve goals)
+        solved))
+#+END_SRC
+******** op functions generator
+#+BEGIN_SRC lisp :tangle ~/.sbclrc
+  (defstruct op "An operation"
+             (action nil)
+             (preconds nil)
+             (del-list nil))
+
+#+END_SRC
+******** achieve
+#+BEGIN_SRC lisp :tangle ~/.sbclrc
+  (defun achieve (goal)
+    "A goal is achieved if it already holds"
+    (or (member goal *state*)
+        (some #'apply-op
+              (find-all goal *ops* :test #'appropriate-p)
+              )
+        )
+    )
+#+END_SRC
+******** apply-op
+#+BEGIN_SRC lisp :tangle ~/.sbclrc
+  (defun apply-op (op)
+    "Print a message and update *state* if op is applicable"
+    (when (every #'achieve (op-preconds op))
+      (print (list 'executing (op-action op)))
+      (setf *state* (set-difference *state* (op-del-list op)))
+      (setf *state* (union *state* (op-add-list op)))
+      )
+    )
+#+END_SRC
+******* predicates
+#+BEGIN_SRC lisp :tangle ~/.sbclrc
+  (defun appropriate-p (goal op)
+    "An op is appropriate to a goal if it is its add list."
+    (member goal (op-add-list op)))
+#+END_SRC
+***** Chapter - 5
+***** Chapter - 6
+***** Chapter - 7
+***** Chapter - 8
+***** Chapter - 9
+***** Chapter - 10
+***** Chapter - 11
+***** Chapter - 12
+***** Chapter - 13
+***** Chapter - 14
+***** Chapter - 15
+***** Chapter - 16
+***** Chapter - 17
+***** Chapter - 18
+***** Chapter - 19
+***** Chapter - 20
+***** Chapter - 21
+***** Chapter - 22
+***** Chapter - 23
+***** Chapter - 24
+***** Chapter - 25
+**** On Lisp
+**** Land of Lisp
+**** Let Over Lambda
+**** Common Lisp Recipes
+*** Data
+*** Procedures
+**** shell-command-to-string
+#+BEGIN_SRC lisp :tangle ~/.sbclrc
+  (defun shell-command-to-string (command)
+    (inferior-shell:run/s command))
+#+END_SRC
+**** split string on regex
+#+BEGIN_SRC lisp :tangle ~/.sbclrc
+  (defun split (string regex)
+    (cl-ppcre:split regex string))
+#+END_SRC
+**** pwd
+#+BEGIN_SRC lisp :tangle ~/.sbclrc
+  (defun pwd ()
+    (uiop/os:getcwd))
+#+END_SRC
+**** concat
+#+BEGIN_SRC lisp :tangle ~/.sbclrc
+  (defun concat (&rest strings)
+    (if (listp strings)
+        (with-output-to-string (s)
+          (dolist (item strings)
+            (if (stringp item)
+                (format s "~a" item))))))
+#+END_SRC
+**** hostname
+#+BEGIN_SRC lisp :tangle ~/.sbclrc
+  (defun hostname ()
+    (uiop/os:hostname))
+#+END_SRC
+**** cd 
+#+BEGIN_SRC lisp :tangle ~/.sbclrc
+  (defun cd (path)
+    (uiop/os:chdir (uiop/pathname:unix-namestring path)))
+#+END_SRC
+**** git clone
+#+BEGIN_SRC lisp :tangle ~/.sbclrc
+  (defun git-clone (url)
+    (shell-command-to-string (concat "git clone " url)))
+#+END_SRC
+**** ls
+#+BEGIN_SRC lisp :tangle ~/.sbclrc
+  (defun ls (&optional additional-flags)
+    (shell-command-to-string (concat "ls -ltrh " additional-flags)))
+#+END_SRC
+**** file exists-p
+#+BEGIN_SRC lisp :tangle ~/.sbclrc
+  (defun dir-exists-p (dir)
+    (uiop/filesystem:directory-exists-p dir))
+#+END_SRC
+**** paip download
+#+BEGIN_SRC lisp :tangle ~/.sbclrc
+  (defun paip-download ()
+    (cond ((not (dir-exists-p (concat (getenv "HOME") "/.emacs.d/opt/paip-lisp")))
+           (cd "~/.emacs.d/opt")
+           (git-clone "https://github.com/norvig/paip-lisp.git"))))
+#+END_SRC
+**** queues
+***** create
+#+BEGIN_SRC lisp :tangle ~/.sbclrc
+(defun make-queue ()
+  "Build a new queue, with no elements."
+  (let ((q (cons nil nil)))
+    (setf (car q) q)))
+#+END_SRC
+***** add
+#+BEGIN_SRC lisp :tangle ~/.sbclrc
+(defun enqueue (item q)
+  "Insert item at the end of the queue."
+  (setf (car q)
+        (setf (rest (car q))
+              (cons item nil)))
+  q)
+#+END_SRC
+***** remove
+#+BEGIN_SRC lisp :tangle ~/.sbclrc
+(defun dequeue (q)
+  "Remove an item from the front of the queue."
+  (pop (cdr q))
+  (if (null (cdr q)) (setf (car q) q))
+  q)
+#+END_SRC
+***** first element
+#+BEGIN_SRC lisp :tangle ~/.sbclrc
+(defun front (q) (first (queue-contents q)))
+
+#+END_SRC
+***** is empty
+#+BEGIN_SRC lisp :tangle ~/.sbclrc
+(defun empty-queue-p (q) (null (queue-contents q)))
+#+END_SRC
+***** add list
+#+BEGIN_SRC lisp :tangle ~/.sbclrc
+(defun queue-nconc (q list)
+  "Add the elements of LIST to the end of the queue."
+  (setf (car q)
+        (last (setf (rest (car q)) list))))
+#+END_SRC
+** .cloujurerc
+*** profiles.clj
+#+BEGIN_SRC clojure :tangle ~/.lein/profiles.clj
+{:user {:plugins [[cider/cider-nrepl "0.18.0-SNAPSHOT"]
+		  [lein-bin "0.3.4"]
+		  [compliment "0.3.2"]]
+	:dependencies [[org.clojure/tools.nrepl "0.2.12"]]}
+ :jvm-opts ^:replace []                 ;overtone
+ }
+
+{:repl {:plugins [[cider/cider-nrepl "0.16.0-SNAPSHOT"]
+		  [refactor-nrepl "2.3.1"]]
+	:dependencies [[alembic "0.3.2"]
+		       [org.clojure/tools.nrepl "0.2.12"]]}
+ :jvm-opts ^:replace []                 ;overtone
+ }
+
+#+END_SRC
+
+#+RESULTS:
+: class clojure.lang.Compiler$CompilerExceptionclass clojure.lang.Compiler$CompilerExceptionclass clojure.lang.Compiler$CompilerExceptionclass clojure.lang.Compiler$CompilerExceptionCompilerException java.lang.RuntimeException: No such namespace: cider, compiling:(*cider-repl .emacs.d*:1:14646) 
+: CompilerException java.lang.RuntimeException: No such namespace: cider, compiling:(*cider-repl .emacs.d*:1:14646) 
+** .Rprofile
+#+BEGIN_SRC R :tangle ~/.Rprofile
+pkg_url <- "http://cran.r-project.org/bin/macosx/mavericks/contrib/3.1/Rserve_1.7-3.tgz"
+install.packages(pkg_url, repos = NULL)
+library(Rserve)
+Rserve(args="--vanilla")
+#+END_SRC
+** .spacemacs
+#+BEGIN_SRC elisp :tangle ~/.spacemacs
+;; -*- mode: emacs-lisp -*-
+;; This file is loaded by Spacemacs at startup.
+;; It must be stored in your home directory.
+
+(defun dotspacemacs/layers ()
+  "Configuration Layers declaration.
+You should not put any user code in this function besides modifying the variable
+values."
+  (setq-default
+   ;; Base distribution to use. This is a layer contained in the directory
+   ;; `+distribution'. For now available distributions are `spacemacs-base'
+   ;; or `spacemacs'. (default 'spacemacs)
+   dotspacemacs-distribution 'spacemacs
+   ;; Lazy installation of layers (i.e. layers are installed only when a file
+   ;; with a supported type is opened). Possible values are `all', `unused'
+   ;; and `nil'. `unused' will lazy install only unused layers (i.e. layers
+   ;; not listed in variable `dotspacemacs-configuration-layers'), `all' will
+   ;; lazy install any layer that support lazy installation even the layers
+   ;; listed in `dotspacemacs-configuration-layers'. `nil' disable the lazy
+   ;; installation feature and you have to explicitly list a layer in the
+   ;; variable `dotspacemacs-configuration-layers' to install it.
+   ;; (default 'unused)
+   dotspacemacs-enable-lazy-installation 'unused
+   ;; If non-nil then Spacemacs will ask for confirmation before installing
+   ;; a layer lazily. (default t)
+   dotspacemacs-ask-for-lazy-installation t
+   ;; If non-nil layers with lazy install support are lazy installed.
+   ;; List of additional paths where to look for configuration layers.
+   ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
+   dotspacemacs-configuration-layer-path '()
+   ;; List of configuration layers to load.
+   dotspacemacs-configuration-layers
+   '(
+     ;; ----------------------------------------------------------------
+     ;; Example of useful layers you may want to use right away.
+     ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
+     ;; <M-m f e R> (Emacs style) to install them.
+     ;; ----------------------------------------------------------------
+     helm
+     ;; auto-completion
+     ;; better-defaults
+     emacs-lisp
+     ;; git
+     ;; markdown
+     ;; org
+     ;; (shell :variables
+     ;;        shell-default-height 30
+     ;;        shell-default-position 'bottom)
+     ;; spell-checking
+     ;; syntax-checking
+     ;; version-control
+     )
+   ;; List of additional packages that will be installed without being
+   ;; wrapped in a layer. If you need some configuration for these
+   ;; packages, then consider creating a layer. You can also put the
+   ;; configuration in `dotspacemacs/user-config'.
+   dotspacemacs-additional-packages '()
+   ;; A list of packages that cannot be updated.
+   dotspacemacs-frozen-packages '()
+   ;; A list of packages that will not be installed and loaded.
+   dotspacemacs-excluded-packages '()
+   ;; Defines the behaviour of Spacemacs when installing packages.
+   ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
+   ;; `used-only' installs only explicitly used packages and uninstall any
+   ;; unused packages as well as their unused dependencies.
+   ;; `used-but-keep-unused' installs only the used packages but won't uninstall
+   ;; them if they become unused. `all' installs *all* packages supported by
+   ;; Spacemacs and never uninstall them. (default is `used-only')
+   dotspacemacs-install-packages 'used-only))
+
+(defun dotspacemacs/init ()
+  "Initialization function.
+This function is called at the very startup of Spacemacs initialization
+before layers configuration.
+You should not put any user code in there besides modifying the variable
+values."
+  ;; This setq-default sexp is an exhaustive list of all the supported
+  ;; spacemacs settings.
+  (setq-default
+   ;; If non nil ELPA repositories are contacted via HTTPS whenever it's
+   ;; possible. Set it to nil if you have no way to use HTTPS in your
+   ;; environment, otherwise it is strongly recommended to let it set to t.
+   ;; This variable has no effect if Emacs is launched with the parameter
+   ;; `--insecure' which forces the value of this variable to nil.
+   ;; (default t)
+   dotspacemacs-elpa-https t
+   ;; Maximum allowed time in seconds to contact an ELPA repository.
+   dotspacemacs-elpa-timeout 5
+   ;; If non nil then spacemacs will check for updates at startup
+   ;; when the current branch is not `develop'. Note that checking for
+   ;; new versions works via git commands, thus it calls GitHub services
+   ;; whenever you start Emacs. (default nil)
+   dotspacemacs-check-for-update nil
+   ;; If non-nil, a form that evaluates to a package directory. For example, to
+   ;; use different package directories for different Emacs versions, set this
+   ;; to `emacs-version'.
+   dotspacemacs-elpa-subdirectory nil
+   ;; One of `vim', `emacs' or `hybrid'.
+   ;; `hybrid' is like `vim' except that `insert state' is replaced by the
+   ;; `hybrid state' with `emacs' key bindings. The value can also be a list
+   ;; with `:variables' keyword (similar to layers). Check the editing styles
+   ;; section of the documentation for details on available variables.
+   ;; (default 'vim)
+   dotspacemacs-editing-style 'emacs
+   ;; If non nil output loading progress in `*Messages*' buffer. (default nil)
+   dotspacemacs-verbose-loading nil
+   ;; Specify the startup banner. Default value is `official', it displays
+   ;; the official spacemacs logo. An integer value is the index of text
+   ;; banner, `random' chooses a random text banner in `core/banners'
+   ;; directory. A string value must be a path to an image format supported
+   ;; by your Emacs build.
+   ;; If the value is nil then no banner is displayed. (default 'official)
+   dotspacemacs-startup-banner 'official
+   ;; List of items to show in startup buffer or an association list of
+   ;; the form `(list-type . list-size)`. If nil then it is disabled.
+   ;; Possible values for list-type are:
+   ;; `recents' `bookmarks' `projects' `agenda' `todos'."
+   ;; List sizes may be nil, in which case
+   ;; `spacemacs-buffer-startup-lists-length' takes effect.
+   dotspacemacs-startup-lists '((recents . 5)
+                                (projects . 7))
+   ;; True if the home buffer should respond to resize events.
+   dotspacemacs-startup-buffer-responsive t
+   ;; Default major mode of the scratch buffer (default `text-mode')
+   dotspacemacs-scratch-mode 'text-mode
+   ;; List of themes, the first of the list is loaded when spacemacs starts.
+   ;; Press <SPC> T n to cycle to the next theme in the list (works great
+   ;; with 2 themes variants, one dark and one light)
+   dotspacemacs-themes '(spacemacs-dark
+                         spacemacs-light)
+   ;; If non nil the cursor color matches the state color in GUI Emacs.
+   dotspacemacs-colorize-cursor-according-to-state t
+   ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
+   ;; quickly tweak the mode-line size to make separators look not too crappy.
+   dotspacemacs-default-font '("Source Code Pro"
+                               :size 13
+                               :weight normal
+                               :width normal
+                               :powerline-scale 1.1)
+   ;; The leader key
+   dotspacemacs-leader-key "SPC"
+   ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
+   ;; (default "SPC")
+   dotspacemacs-emacs-command-key "SPC"
+   ;; The key used for Vim Ex commands (default ":")
+   dotspacemacs-ex-command-key ":"
+   ;; The leader key accessible in `emacs state' and `insert state'
+   ;; (default "M-m")
+   dotspacemacs-emacs-leader-key "M-m"
+   ;; Major mode leader key is a shortcut key which is the equivalent of
+   ;; pressing `<leader> m`. Set it to `nil` to disable it. (default ",")
+   dotspacemacs-major-mode-leader-key ","
+   ;; Major mode leader key accessible in `emacs state' and `insert state'.
+   ;; (default "C-M-m")
+   dotspacemacs-major-mode-emacs-leader-key "C-M-m"
+   ;; These variables control whether separate commands are bound in the GUI to
+   ;; the key pairs C-i, TAB and C-m, RET.
+   ;; Setting it to a non-nil value, allows for separate commands under <C-i>
+   ;; and TAB or <C-m> and RET.
+   ;; In the terminal, these pairs are generally indistinguishable, so this only
+   ;; works in the GUI. (default nil)
+   dotspacemacs-distinguish-gui-tab nil
+   ;; If non nil `Y' is remapped to `y$' in Evil states. (default nil)
+   dotspacemacs-remap-Y-to-y$ nil
+   ;; If non-nil, the shift mappings `<' and `>' retain visual state if used
+   ;; there. (default t)
+   dotspacemacs-retain-visual-state-on-shift t
+   ;; If non-nil, J and K move lines up and down when in visual mode.
+   ;; (default nil)
+   dotspacemacs-visual-line-move-text nil
+   ;; If non nil, inverse the meaning of `g' in `:substitute' Evil ex-command.
+   ;; (default nil)
+   dotspacemacs-ex-substitute-global nil
+   ;; Name of the default layout (default "Default")
+   dotspacemacs-default-layout-name "Default"
+   ;; If non nil the default layout name is displayed in the mode-line.
+   ;; (default nil)
+   dotspacemacs-display-default-layout nil
+   ;; If non nil then the last auto saved layouts are resume automatically upon
+   ;; start. (default nil)
+   dotspacemacs-auto-resume-layouts nil
+   ;; Size (in MB) above which spacemacs will prompt to open the large file
+   ;; literally to avoid performance issues. Opening a file literally means that
+   ;; no major mode or minor modes are active. (default is 1)
+   dotspacemacs-large-file-size 1
+   ;; Location where to auto-save files. Possible values are `original' to
+   ;; auto-save the file in-place, `cache' to auto-save the file to another
+   ;; file stored in the cache directory and `nil' to disable auto-saving.
+   ;; (default 'cache)
+   dotspacemacs-auto-save-file-location 'cache
+   ;; Maximum number of rollback slots to keep in the cache. (default 5)
+   dotspacemacs-max-rollback-slots 5
+   ;; If non nil, `helm' will try to minimize the space it uses. (default nil)
+   dotspacemacs-helm-resize nil
+   ;; if non nil, the helm header is hidden when there is only one source.
+   ;; (default nil)
+   dotspacemacs-helm-no-header nil
+   ;; define the position to display `helm', options are `bottom', `top',
+   ;; `left', or `right'. (default 'bottom)
+   dotspacemacs-helm-position 'bottom
+   ;; Controls fuzzy matching in helm. If set to `always', force fuzzy matching
+   ;; in all non-asynchronous sources. If set to `source', preserve individual
+   ;; source settings. Else, disable fuzzy matching in all sources.
+   ;; (default 'always)
+   dotspacemacs-helm-use-fuzzy 'always
+   ;; If non nil the paste micro-state is enabled. When enabled pressing `p`
+   ;; several times cycle between the kill ring content. (default nil)
+   dotspacemacs-enable-paste-transient-state nil
+   ;; Which-key delay in seconds. The which-key buffer is the popup listing
+   ;; the commands bound to the current keystroke sequence. (default 0.4)
+   dotspacemacs-which-key-delay 0.4
+   ;; Which-key frame position. Possible values are `right', `bottom' and
+   ;; `right-then-bottom'. right-then-bottom tries to display the frame to the
+   ;; right; if there is insufficient space it displays it at the bottom.
+   ;; (default 'bottom)
+   dotspacemacs-which-key-position 'bottom
+   ;; If non nil a progress bar is displayed when spacemacs is loading. This
+   ;; may increase the boot time on some systems and emacs builds, set it to
+   ;; nil to boost the loading time. (default t)
+   dotspacemacs-loading-progress-bar t
+   ;; If non nil the frame is fullscreen when Emacs starts up. (default nil)
+   ;; (Emacs 24.4+ only)
+   dotspacemacs-fullscreen-at-startup nil
+   ;; If non nil `spacemacs/toggle-fullscreen' will not use native fullscreen.
+   ;; Use to disable fullscreen animations in OSX. (default nil)
+   dotspacemacs-fullscreen-use-non-native nil
+   ;; If non nil the frame is maximized when Emacs starts up.
+   ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
+   ;; (default nil) (Emacs 24.4+ only)
+   dotspacemacs-maximized-at-startup nil
+   ;; A value from the range (0..100), in increasing opacity, which describes
+   ;; the transparency level of a frame when it's active or selected.
+   ;; Transparency can be toggled through `toggle-transparency'. (default 90)
+   dotspacemacs-active-transparency 90
+   ;; A value from the range (0..100), in increasing opacity, which describes
+   ;; the transparency level of a frame when it's inactive or deselected.
+   ;; Transparency can be toggled through `toggle-transparency'. (default 90)
+   dotspacemacs-inactive-transparency 90
+   ;; If non nil show the titles of transient states. (default t)
+   dotspacemacs-show-transient-state-title t
+   ;; If non nil show the color guide hint for transient state keys. (default t)
+   dotspacemacs-show-transient-state-color-guide t
+   ;; If non nil unicode symbols are displayed in the mode line. (default t)
+   dotspacemacs-mode-line-unicode-symbols t
+   ;; If non nil smooth scrolling (native-scrolling) is enabled. Smooth
+   ;; scrolling overrides the default behavior of Emacs which recenters point
+   ;; when it reaches the top or bottom of the screen. (default t)
+   dotspacemacs-smooth-scrolling t
+   ;; Control line numbers activation.
+   ;; If set to `t' or `relative' line numbers are turned on in all `prog-mode' and
+   ;; `text-mode' derivatives. If set to `relative', line numbers are relative.
+   ;; This variable can also be set to a property list for finer control:
+   ;; '(:relative nil
+   ;;   :disabled-for-modes dired-mode
+   ;;                       doc-view-mode
+   ;;                       markdown-mode
+   ;;                       org-mode
+   ;;                       pdf-view-mode
+   ;;                       text-mode
+   ;;   :size-limit-kb 1000)
+   ;; (default nil)
+   dotspacemacs-line-numbers nil
+   ;; Code folding method. Possible values are `evil' and `origami'.
+   ;; (default 'evil)
+   dotspacemacs-folding-method 'evil
+   ;; If non-nil smartparens-strict-mode will be enabled in programming modes.
+   ;; (default nil)
+   dotspacemacs-smartparens-strict-mode nil
+   ;; If non-nil pressing the closing parenthesis `)' key in insert mode passes
+   ;; over any automatically added closing parenthesis, bracket, quote, etc…
+   ;; This can be temporary disabled by pressing `C-q' before `)'. (default nil)
+   dotspacemacs-smart-closing-parenthesis nil
+   ;; Select a scope to highlight delimiters. Possible values are `any',
+   ;; `current', `all' or `nil'. Default is `all' (highlight any scope and
+   ;; emphasis the current one). (default 'all)
+   dotspacemacs-highlight-delimiters 'all
+   ;; If non nil, advise quit functions to keep server open when quitting.
+   ;; (default nil)
+   dotspacemacs-persistent-server nil
+   ;; List of search tool executable names. Spacemacs uses the first installed
+   ;; tool of the list. Supported tools are `ag', `pt', `ack' and `grep'.
+   ;; (default '("ag" "pt" "ack" "grep"))
+   dotspacemacs-search-tools '("ag" "pt" "ack" "grep")
+   ;; The default package repository used if no explicit repository has been
+   ;; specified with an installed package.
+   ;; Not used for now. (default nil)
+   dotspacemacs-default-package-repository nil
+   ;; Delete whitespace while saving buffer. Possible values are `all'
+   ;; to aggressively delete empty line and long sequences of whitespace,
+   ;; `trailing' to delete only the whitespace at end of lines, `changed'to
+   ;; delete only whitespace for changed lines or `nil' to disable cleanup.
+   ;; (default nil)
+   dotspacemacs-whitespace-cleanup nil
+   ))
+
+(defun dotspacemacs/user-init ()
+  "Initialization function for user code.
+It is called immediately after `dotspacemacs/init', before layer configuration
+executes.
+ This function is mostly useful for variables that need to be set
+before packages are loaded. If you are unsure, you should try in setting them in
+`dotspacemacs/user-config' first."
+  )
+
+(defun dotspacemacs/user-config ()
+  "Configuration function for user code.
+This function is called at the very end of Spacemacs initialization after
+layers configuration.
+This is the place where most of your configurations should be done. Unless it is
+explicitly specified that a variable should be set before a package is loaded,
+you should place your code here."
+  (keyboard-translate ?\C-q ?\C-x)
+  (global-set-key (kbd "C-t") 'quoted-insert)
+  (global-set-key (kbd "C-c") nil) ; hack to get rid non prefix errors
+  (global-set-key (kbd "C-x x") 'helm-M-x)
+  (global-set-key (kbd "C-x C-x") 'helm-M-x)
+  (global-set-key (kbd "C-o") 'ace-window)
+  (global-set-key (kbd "M-[") 'winner-undo)
+  (global-set-key (kbd "M-]") 'winner-redo)
+  (global-set-key (kbd "C-x C-f") 'helm-find-files)
+  (global-set-key (kbd "C-x F") 'find-file)
+  (global-set-key (kbd "C-x f") 'find-file-at-point)
+  (global-set-key (kbd "C-x RET") 'helm-mini)
+  (global-set-key (kbd "C-x <C-return>") 'helm-mini)
+
+  )
+
+;; Do not write anything past this comment. This is where Emacs will
+;; auto-generate custom variable definitions.
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+#+END_SRC

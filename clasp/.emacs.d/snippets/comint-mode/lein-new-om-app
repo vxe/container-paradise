@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: lein-new-om-app
+# key: lein-new-om-app
+# --
+lein new figwheel om-tut -- --om

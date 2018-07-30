@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: perl-heredoc
+# key: perlheredoc
+# --
+my $1 = << "~";
+$0

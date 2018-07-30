@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: import-java-string-library
+# key: importjavastrinlibrary
+# --
+(require '[clojure.string :as str])

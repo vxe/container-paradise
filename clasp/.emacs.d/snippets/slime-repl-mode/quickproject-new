@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: quickproject-new
+# key: <qpnwq
+# --
+(quickproject:make-project #p"~/path/to/project" :depends-on '(drakma cxml))

@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: online
+# key: <online
+# --
+@online{${2:citation_name},
+  author = {$3},
+  title = {$4},
+  year = $5,
+  url = {$1},
+  urldate = {$6}
+}

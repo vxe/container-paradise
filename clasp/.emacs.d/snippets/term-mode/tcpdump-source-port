@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: tcpdump-source-port
+# key: tcpdumpsourceport
+# --
+sudo tcpdump -vvv -i $(sudo facter -p default_interface) -s 0 -l src port 8080

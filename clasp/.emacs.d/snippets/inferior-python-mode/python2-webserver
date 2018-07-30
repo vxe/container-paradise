@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: python2-webserver
+# key: python2-webserver
+# binding: direct-keybinding
+# --
+python -m SimpleHTTPServer 8000

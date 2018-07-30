@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: org-remote-file-sudo
+# key: org
+# binding: direct-keybinding
+# --
+[[file:/ssh:${1:vedwin}@${2:hostname}|sudo:${3:sudo-to}@$2:${4:filepath}][$4]

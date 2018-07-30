@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: check-nic-speed
+# key: checknicspeedpwofjkew
+# --
+sudo ethtool $(sudo facter -p default_interface) | grep -i speed

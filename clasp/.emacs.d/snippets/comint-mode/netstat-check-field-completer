@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: netstat-check-field-completer
+# key: checkfieldcompleter
+# --
+sudo netstat -pant | grep 1984

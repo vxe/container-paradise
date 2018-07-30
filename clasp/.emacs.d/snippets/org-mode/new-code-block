@@ -1,0 +1,8 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: new-code-block
+# key: newcodeblock
+# binding: direct-keybinding
+# --
+#+begin_src ${1:language} :tangle ${2:output-file-name}
+$0
+#+end_src

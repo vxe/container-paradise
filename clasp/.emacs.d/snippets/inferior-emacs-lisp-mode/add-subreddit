@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: add-subreddit
+# key: addsubreddit
+# --
+(gnus-group-unsubscribe-group "nnreddit:mpcusers")

@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: cloze-multi-property
+# key: <clozep
+# --
+:PROPERTIES:
+:DRILL_CARD_TYPE: hide1cloze
+:END:

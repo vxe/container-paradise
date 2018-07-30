@@ -1,0 +1,12 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: post-mortum-template
+# key: postmortumtemplate
+# binding: direct-keybinding
+# --
+* Tickets Associated with Event
+* Detection
+* Triage/Escalation
+* Theories
+* Current Status
+* Outage Timeline - Who became involved when and what they did said
+* Images - Charts/Graphs/Timelines

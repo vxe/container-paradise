@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: nmap-ping-scan
+# key: nmappingscan
+# --
+nmap -v -sP 

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: naemon-check-config
+# key: naemoncheckconfig
+# --
+sudo service naemon configtest

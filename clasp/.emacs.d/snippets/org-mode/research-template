@@ -1,0 +1,15 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: research-template
+# key: researchtemplate
+# binding: direct-keybinding
+# --
+# -*- mode:org -*-
+#+STARTUP: indent
+#+SEQ_TODO: STUFF(m) NEXT(n) WAITING(w) DELEGATE(l) PROJ(p) SOMEDAY(s@/!) | CANCELLED(c) DONE(d@/!)
+#+TAGS: administrative(a) family(f) finance($) social(s) health(h) personal_development(p) career(c) dating(:dating:) research(r) write(w) video(v) emacs(e) stumpwm(u)
+#+TITLE: ${1:name_of_investigation}
+
+
+* `(vxe-mt-chomp "date +%F")`
+** ${2:question_to_be_answered} `(vxe-mt-chomp "date +%H:%M:%S")`
+   $0

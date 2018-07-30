@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: sre-new-graphite-case
+# key: srenewgraphitecase
+# --
+((string= type "fed-timeouts") (eww (concat "http://graphite."
+						  edge
+						  ".parsec.apple.com/render/?target=highestMax(group(cactiStyle(aliasByNode(scaleToSeconds(maximumAbove(sumSeriesWithWildcards(nonNegativeDerivative(services.federator.api%5B0-9%5D*.*.timeout.count)%2C2)%2C0)%2C1)%2C2))%2CcactiStyle(aliasByNode(scaleToSeconds(maximumAbove(sumSeriesWithWildcards(nonNegativeDerivative(services.federator.api%5B0-9%5D*.*.*.timeout.count)%2C2)%2C0)%2C1)%2C2%2C3)))%2C12)&target=alias(drawAsInfinite(color(events.shepherd.API.federator%2C'red'))%2C'deployment')&target=alias(color(alpha(shade(remote.prn.services.arcsecond.status.api-glb.*.down)%2C0.3)%2C'gray')%2C'offline')&from=-"
+						  time
+						  "hours&hideLegend=false&lineWidth=2&title=Timeouts&tz=US/Pacific&vtitle=per%20second&width=1200&height=1000")))

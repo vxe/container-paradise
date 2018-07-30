@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: hadoop-kill-map-task
+# key: hadoopkillmaptask
+# --
+sudo -u hdfs hadoop job -kill-task ${1:taskid}

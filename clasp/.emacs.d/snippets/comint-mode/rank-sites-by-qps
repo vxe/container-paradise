@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: rank-sites-by-qps
+# key: ranksitesbyqps
+# --
+curl -s "http://graphite.prn.parsec.apple.com/render/?width=586&height=308&target=sumSeriesWithWildcards(group(remote.*.services.federator.%7Bbag%2Cfeedback%2Cwebsearch%7D.count%2Cremote.*.services.federator.search.performed.count)%2C4%2C5%2C6)&format=csv" | grep \`date -v-10M +%H:%M\` | sed 's/,/ /g'  | sort -nk4 | awk -F. '{print toupper(\$2)}' | perl -e 'print reverse <>'

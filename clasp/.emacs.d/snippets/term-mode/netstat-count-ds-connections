@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: netstat-count-ds-connections
+# key: netstat-count-ds-connections
+# --
+export EDGE=$1; for ds in \`for ip in {0001..0010}; do host ds$ip.$EDGE | perl -ne 'print "$1\n" if /(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})/' | tr '\n' ' ' ; done\`; do rolename -l $ds; sudo netstat -pant | grep $ds | wc -l; done

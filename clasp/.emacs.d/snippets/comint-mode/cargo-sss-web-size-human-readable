@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: cargo-sss-web-size-human-readable
+# key: cargo-sss-web-size-human-readable
+# --
+for edge in ams ap1 ash atl bln bos chi dal drf exp fra hkg hou kcy lax lon man mia msp nyc osa sea sin sjc syd tyo us1; do echo $edge; export b=\`curl -s "http://graphite.$edge.parsec.apple.com/render/?width=1433&height=518&_salt=1491813983.264&yMin=0&yMax=&target=services.cargo.SSS.SSS_Web.r1.0.collections.summary.total_size&format=csv" | awk -F, '{print \$3}'| sed 's/[.]0//g' | tr -d '\r' | tail -2 | head -1\` ; gb=$((b / 2**30));echo $gb GB; done

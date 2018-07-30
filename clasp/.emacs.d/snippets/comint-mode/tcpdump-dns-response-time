@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: tcpdump-dns-response-time
+# key: tcpdumpdnsresponsetime
+# --
+sudo tcpdump -vvv -i p2p1 -s 0 -l -n port 53 | php parse-tcpdump-udp-port-53.php -f

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: ssh-copy-pub-key
+# key: sshcopysshkey
+# --
+ssh-copy-id "user@host -p 6842"

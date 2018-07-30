@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: check-image-cache-hit-ratio
+# key: checkimagecachehitration
+# --
+for edge in ams ash atl bln bos chi dal den drf exp fra hkg lax lon man mia msp nyc prn sea sin sjc stg syd tyo
+do
+open "http://graphite.$edge.parsec.apple.com/render/?target=cactiStyle(aliasByNode(scale(divideEachSeries(scaleToSeconds(sumSeriesWithWildcards(nonNegativeDerivative(exclude(services.federator.api%5B0-9%5D*.images.cache.hit.*.count%2C%22holidays%22))%2C2)%2C1)%2CscaleToSecond
+s(sumSeriesWithWildcards(nonNegativeDerivative(exclude(services.federator.api%5B0-9%5D*.images.cache.%7Bhit%2Cmiss%7D.*.count%2C%22holidays%22))%2C2%2C5)%2C1))%2C100)%2C4))&target=alias(drawAsInfinite(color(events.shepherd.API.federator%2C'red'))%2C'deployment')&target=alias(color(alpha(shade(remote.prn.services.arcsecond.status.api-glb.*.down)%2C0.3)%2C'gray')%2C'offline')&from=-10days&hideLegend=false&lineWidth=2&title=Images%20Cache%20Hit%20Ratio&tz=US/Pacific&vtitle=percent&yMax=100&yMin=0&width=1200&height=1000"
+done

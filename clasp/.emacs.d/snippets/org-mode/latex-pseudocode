@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: latex-pseudocode
+# key: <lpc
+# --
+#+begin_latex
+\begin{algorithm}
+\caption{${1:caption}}
+\begin{algorithmic} 
+
+\end{algorithmic}
+\end{algorithm
+#+end_latex

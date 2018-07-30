@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: docker-cl-root
+# key: docker-cl-root
+# --
+sudo docker run -p 4005:4005 -v $PWD:/root/cl-root  -i -t \`whoami\`/\`basename $PWD | tr '[A-Z]' '[a-z]'\`

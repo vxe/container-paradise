@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: vl
+# key: <vls
+# --
+/var/log

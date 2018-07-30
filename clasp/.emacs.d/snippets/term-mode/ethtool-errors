@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: ethtool-errors
+# key: ethtool-errors
+# --
+sudo ethtool -S \$(sudo facter -p default_interface) | grep -i error

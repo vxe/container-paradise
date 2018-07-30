@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: perl-read-stdin-into-array
+# key: perlreadstdingintoarray
+# --
+@a = <STDIN>;

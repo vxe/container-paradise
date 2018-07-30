@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: hadoop-refresh-nodes-commands
+# key: hadooprefresnodes
+# --
+sudo -u hdfs hdfs dfsadmin -refreshNodes; sudo -u hdfs yarn rmadmin -refreshNodes

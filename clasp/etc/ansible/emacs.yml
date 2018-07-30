@@ -1,0 +1,103 @@
+- name: setup emacs
+  hosts: localhost
+  vars:
+    icicles_dir: "{{ lookup('env','HOME') }}/.emacs.d/lib/icicles"
+    HOME: "{{ lookup('env','HOME') }}"
+    USER: "{{ lookup('env','USER') }}"
+  tasks:
+    - name: create group "staff"
+      group: 
+        name: somegroup
+        state: present
+    - name: "var base directory"
+      file: path="{{ HOME }}/.emacs.d/var" owner="{{ USER }}" group="staff" state="directory"
+    - name: "var cache"
+      file: path="{{ HOME }}/var/.emacs.d/cache" owner="{{ USER }}" group="staff" state="directory"
+    - name: "var state information"
+      file: path="{{ HOME }}/var/.emacs.d/lib" owner="{{ USER }}" group="staff" state="directory"
+    - name: "var lock files"
+      file: path="{{ HOME }}/.emacs.d/var/lock" owner="{{ USER }}" group="staff" state="directory"
+    - name: "var logs"
+      file: path="{{ HOME }}/.emacs.d/var/log" owner="{{ USER }}" group="staff" state="directory"
+    - name: "var opt application files"
+      file: path="{{ HOME }}/.emacs.d/var/opt" owner="{{ USER }}" group="staff" state="directory"
+    - name: "var boot information"
+      file: path="{{ HOME }}/.emacs.d/var/run" owner="{{ USER }}" group="staff" state="directory"
+    - name: "var tmp files"
+      file: path="{{ HOME }}/.emacs.d/var/tmp" owner="{{ USER }}" group="staff" state="directory"
+    ## etc
+    - name: "configuration for locally built applications"
+      file: path="{{ HOME }}/.emacs.d/etc" owner="{{ USER }}" group="staff" state="directory"
+    ## opt
+    - name: "dev versions of software, continuously rebuilt for resting"
+      file: path="{{ HOME }}/.emacs.d/opt" owner="{{ USER }}" group="staff" state="directory"
+    ## icicles
+    # - name: "icicles directory"
+    #   file: path="{{ HOME }}/.emacs.d/lib/icicles" owner="{{ USER }}" group="staff" state="directory"
+    # - name: "icicles download icicles-chg.el"
+    #   get_url:
+    #     url: "https://www.emacswiki.org/emacs/download/icicles-chg.el"
+    #     dest: "{{ icicles_dir }}"
+    # - name: "icicles download icicles-cmd1.el"
+    #   get_url:
+    #     url: "https://www.emacswiki.org/emacs/download/icicles-cmd1.el"
+    #     dest: "{{ icicles_dir }}"
+    # - name: "icicles download icicles-cmd2.el"
+    #   get_url:
+    #     url: "https://www.emacswiki.org/emacs/download/icicles-cmd2.el"
+    #     dest: "{{ icicles_dir }}"
+    # - name: "icicles download icicles-doc1.el"
+    #   get_url:
+    #     url: "https://www.emacswiki.org/emacs/download/icicles-doc1.el"
+    #     dest: "{{ icicles_dir }}"
+    # - name: "icicles download icicles-doc2.el"
+    #   get_url:
+    #     url: "https://www.emacswiki.org/emacs/download/icicles-doc2.el"
+    #     dest: "{{ icicles_dir }}"
+    # - name: "icicles download icicles-face.el"
+    #   get_url:
+    #     url: "https://www.emacswiki.org/emacs/download/icicles-face.el"
+    #     dest: "{{ icicles_dir }}"
+    # - name: "icicles download icicles-fn.el"
+    #   get_url:
+    #     url: "https://www.emacswiki.org/emacs/download/icicles-fn.el"
+    #     dest: "{{ icicles_dir }}"
+    # - name: "icicles download icicles-mac.el"
+    #   get_url:
+    #     url: "https://www.emacswiki.org/emacs/download/icicles-mac.el"
+    #     dest: "{{ icicles_dir }}"
+    # - name: "icicles download icicles-mcmd.el"
+    #   get_url:
+    #     url: "https://www.emacswiki.org/emacs/download/icicles-mcmd.el"
+    #     dest: "{{ icicles_dir }}"
+    # - name: "icicles download icicles-mode.el"
+    #   get_url:
+    #     url: "https://www.emacswiki.org/emacs/download/icicles-mode.el"
+    #     dest: "{{ icicles_dir }}"
+    # - name: "icicles download icicles-opt.el"
+    #   get_url:
+    #     url: "https://www.emacswiki.org/emacs/download/icicles-opt.el"
+    #     dest: "{{ icicles_dir }}"
+    # - name: "icicles download icicles-var.el"
+    #   get_url:
+    #     url: "https://www.emacswiki.org/emacs/download/icicles-var.el"
+    #     dest: "{{ icicles_dir }}"
+    # - name: "icicles download hexrgb.el"
+    #   get_url:
+    #     url: "https://www.emacswiki.org/emacs/download/hexrgb.el"
+    #     dest: "{{ icicles_dir }}"
+    - name: "geeknote.el"
+      git:
+        repo: 'https://github.com/vxe/emacs-geeknote.git'
+        dest: '{{ HOME }}/.emacs.d/lib/emacs-geeknote'
+        clone: yes
+        update: no
+    - name: install package "wiki"
+      git:
+        repo: 'https://github.com/vxe/wiki.git'
+        dest: "{{ HOME }}/.emacs.d/wiki"
+        clone: yes
+        update: no
+
+
+

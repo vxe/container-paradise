@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: dmesg
+# key: <dmesg
+# --
+dmesg -T | grep -i error | wc -l; dmesg -T | grep -i error | tail

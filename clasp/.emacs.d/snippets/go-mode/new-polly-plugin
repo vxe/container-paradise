@@ -1,0 +1,41 @@
+# -*- mode: snippet -*-
+# name: polly-plugin
+# key: <polly-plugin
+# --
+package ${1:command_name}
+
+import (
+	# "fmt"
+	# "github.com/glycerine/zygomys/zygo"
+	"parrot-plugins"
+)
+
+type ${2:plugin_name} struct {
+	answer int64
+}
+
+func (*$2) New() parrotplugins.Plugin {
+	return &Lisp{}
+}
+
+func (api *$2) Run(msg parrotplugins.Message) (output interface{}, err error) {
+	# env := zygo.NewZlisp()
+	# err = env.LoadString("(+ 3 2)")
+	# evaluation, err := env.Run()
+	# output = fmt.Sprintf("%d", evaluation)
+	# return
+	$0
+
+}
+
+func (*$2) Help() string {
+	return "this is $2"
+}
+
+func init() {
+
+	// Make one to use in our app.
+	$1 := &$2{}
+	// Registration name is used for /command name.
+	parrotplugins.Register("$1", $1)
+}

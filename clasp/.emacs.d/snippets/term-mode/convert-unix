@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: convert-unix
+# key: ooopopopopop
+# --
+date -d @

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: array-remove-head
+# key: array-remove-head
+# --
+${1:array_name}.shift()

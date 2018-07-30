@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: pandas-get-column-values
+# key: pandasgetcolumnvalue
+# --
+${1:frame}.columns.values.tolist()

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: lein-repl-connect
+# key: leinreplconnect
+# --
+lein repl :connect 127.0.0.1:${1:port}

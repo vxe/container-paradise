@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: tcpdump-destination-port
+# key: tcpdumpdestport
+# --
+sudo tcpdump -vvv -i $(sudo facter -p default_interface) -s 0 -l dst port ${1:port}

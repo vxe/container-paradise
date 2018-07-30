@@ -1,0 +1,19 @@
+# -*- mode: snippet -*-
+# name: case
+# key: <case
+# --
+case "\$1" in
+
+canary)  edges=$CANARY
+    ;;
+1)  edges=$BATCH1
+    ;;
+2)  edges=$BATCH2
+    ;;
+3)  edges=$BATCH3
+    ;;
+4)  edges=$BATCH4
+    ;;
+*) echo "\$1 is invalid"
+    ;;
+esac

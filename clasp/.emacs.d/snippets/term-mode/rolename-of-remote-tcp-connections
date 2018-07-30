@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: rolename-of-remote-tcp-connections
+# key: rolenameofremotetcpconnections
+# --
+sudo netstat -pant | awk '{print \$5}' |  perl -ne 'print "\$1\n" if /(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})/' | while read line ; do rolename -l $line; done

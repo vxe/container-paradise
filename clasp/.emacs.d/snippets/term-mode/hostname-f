@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: hn
+# key: hostname-f
+# --
+hostname -f

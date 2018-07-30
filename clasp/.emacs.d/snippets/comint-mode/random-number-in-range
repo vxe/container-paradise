@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: random-number-in-range
+# key: randomnumberinrange
+# --
+shuf -i 0-200 -n 1

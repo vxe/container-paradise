@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: perl-reverse
+# key: perlreverse
+# --
+perl -e 'print reverse <>'
