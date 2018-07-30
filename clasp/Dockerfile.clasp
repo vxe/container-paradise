@@ -8,31 +8,22 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN  apt-get -y update && apt-get -y install git net-tools cmake build-essential zsh curl wget ansible vim-nox cron gnutls-bin liblockfile1 rsync man
 # emacs
 RUN apt-get -y install libasound2 libatk1.0-0 libcairo-gobject2 libcairo2 libdbus-1-3 libgdk-pixbuf2.0-0 libgif7 libglib2.0-0 libgtk-3-0 libice6 liblcms2-2 libm17n-0 libmagickcore-6.q16-3 libmagickwand-6.q16-3 libotf0 libpango-1.0-0 libpangocairo-1.0-0 librsvg2-2 libsm6 libx11-xcb1 libxfixes3 libxft2 libxinerama1 libxrandr2 libxrender1 emacsen-common
-# RUN wget http://emacs.ganneff.de/pool/main/e/emacs-snapshot/emacs-snapshot-common_20180608+emacs-26.1-2137-gf09e9d292f-~egd9+1_all.deb
-# RUN wget http://emacs.ganneff.de/pool/main/e/emacs-snapshot/emacs-snapshot-bin-common_20180608+emacs-26.1-2137-gf09e9d292f-~egd9+1_amd64.deb
-# RUN wget http://emacs.ganneff.de/pool/main/e/emacs-snapshot/emacs-snapshot-nox_20180608+emacs-26.1-2137-gf09e9d292f-~egd9+1_amd64.deb
-# RUN dpkg -i emacs-snapshot-common_20180608+emacs-26.1-2137-gf09e9d292f-~egd9+1_all.deb 
-# RUN dpkg -i emacs-snapshot-bin-common_20180608+emacs-26.1-2137-gf09e9d292f-~egd9+1_amd64.deb
-# RUN dpkg -i emacs-snapshot-nox_20180608+emacs-26.1-2137-gf09e9d292f-~egd9+1_amd64.deb
-# RUN emacs --version
-# RUN wget 
 # RUN ansible-galaxy install -r /host/etc/ansible/requirements.yml
 RUN apt-get -y autoclean
 RUN cd /root; git clone https://github.com/vxe/home.git ; cd home ; ansible-playbook -l localhost etc/ansible/clasp.yml --verbose
-# RUN emacs --version
 # RUN ansible-playbook -l localhost /host/etc/ansible/perl-locallib.yml --verbose
 # RUN ansible-playbook -l localhost /host/etc/ansible/virtualenvs.yml --verbose
 # RUN ansible-playbook -l localhost /host/etc/ansible/ruby-gems.yml --verbose
 # RUN ansible-playbook -l localhost /host/etc/ansible/slow-lang.yml --verbose
 # RUN rm -rf /root/.emacs.d/ && rsync --exclude .git --exclude var --exclude elpa -avz /host/ /root  && emacs -nw --batch -l ~/.emacs.d/init.el --eval="(+ 2 3)" 
-RUN rsync --exclude .git --exclude var --exclude elpa -avz /root/home/.emacs.d/ /home/app  && emacs -nw --batch -l ~/.emacs.d/init.el --eval="(+ 2 3)"
+RUN rsync --exclude .git --exclude var --exclude elpa -avz /root/home/ /home/app  && emacs -nw --batch -l /home/app/.emacs.d/init.el --eval="(+ 2 3)"
 RUN /home/app/clasp/bin/clasp --eval "(progn (load \"/home/app/.emacs.d/lib/slime/swank-loader.lisp\" :verbose t) (funcall (read-from-string \"swank-loader:init\")) (funcall (read-from-string \"swank:start-server\") \"/tmp/slime.24\"))"
 RUN cd /home/app/clasp/bin; curl -O https://beta.quicklisp.org/quicklisp.lisp
 RUN /home/app/clasp/bin/clasp --load quicklisp.lisp --eval "(quicklisp-quickstart:install)"
 RUN /home/app/clasp/bin/clasp --load quicklisp.lisp --eval "(ql:add-to-init-file)"
-RUN cd /root ; git clone --recursive https://github.com/Andersbakken/rtags.git
+RUN cd /home/app/.emacs.d; mkdir -p opt; cd opt; git clone --recursive https://github.com/Andersbakken/rtags.git
 RUN apt-get -y install libclang-6.0-dev
-RUN cd /root/rtags; cmake -DLIBCLANG_LLVM_CONFIG_EXECUTABLE=/usr/bin/llvm-config-6.0 -DCMAKE_EXPORT_COMPILE_COMMANDS=1 . ; make ; make install
+RUN cd /home/app/opt/.emacs.d/rtags; cmake -DLIBCLANG_LLVM_CONFIG_EXECUTABLE=/usr/bin/llvm-config-6.0 -DCMAKE_EXPORT_COMPILE_COMMANDS=1 . ; make ; make install
 RUN which emacs; ln -s /usr/bin/emacs /root/emacs
 
 EXPOSE 5432/tcp 
