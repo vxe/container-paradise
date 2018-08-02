@@ -10,4 +10,13 @@ Container images bootstrapped with my configs.  The game is simple:
 - configure it with ansible
 
 You win if you get emacs to load after running `docker run`
+** automated image builds workflow
+each directory in this repo is linked to an 'automated' build in
+docker hub.  Every push to master triggers a build for each image.
+The following things /should/ happen on each push
+
+- latest version of [[https://github.com/vxe/home.git][home]] is pulled
+- the latest emacs config is pulled and compiled
+
+
 
