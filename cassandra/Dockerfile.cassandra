@@ -15,9 +15,10 @@ RUN dpkg -i emacs-snapshot-common_20180608+emacs-26.1-2137-gf09e9d292f-~egd9+1_a
 RUN dpkg -i emacs-snapshot-bin-common_20180608+emacs-26.1-2137-gf09e9d292f-~egd9+1_amd64.deb
 RUN dpkg -i emacs-snapshot-nox_20180608+emacs-26.1-2137-gf09e9d292f-~egd9+1_amd64.deb
 RUN emacs --version
-# RUN wget 
-RUN ansible-galaxy install -r /host/etc/ansible/requirements.yml
-RUN ansible-playbook -l localhost /host/etc/ansible/home-debian-stretch.yml --verbose
+# RUN wget
+RUN git clone https://github.com/vxe/home.git ; cd home; rsync --exclude '.git' -avz ./ /root
+RUN ansible-galaxy install -r /root/etc/ansible/requirements.yml
+RUN ansible-playbook -l localhost /root/etc/ansible/home-debian-stretch.yml --verbose
 # RUN ansible-playbook -l localhost /host/etc/ansible/perl-locallib.yml --verbose
 # RUN ansible-playbook -l localhost /host/etc/ansible/virtualenvs.yml --verbose
 # RUN ansible-playbook -l localhost /host/etc/ansible/ruby-gems.yml --verbose
