@@ -17,6 +17,10 @@ The following things /should/ happen on each push
 
 - latest version of [[https://github.com/vxe/home.git][home]] is pulled
 - the latest emacs config is pulled and compiled
+- use [[file:build.yml][include anasible playbook]] to build
+  #+BEGIN_SRC shell
+  ansible-playbook -l localhost build.yml &
+  #+END_SRC
 
 
 
