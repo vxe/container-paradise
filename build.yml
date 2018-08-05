@@ -1,0 +1,30 @@
+---
+- name: build all images
+  hosts: localhost
+  vars:
+    images:
+      - python2
+      - clasp
+      - redis
+      - rabbitmq
+      - zookeeper
+      - postgres
+      - opencv
+      - kali
+      - nginx
+      - cassandra
+      - node
+      - vault
+      - couchbase
+  tasks:
+    - name: rebuild all containers
+      make:
+        chdir: "./{{item}}"
+      with_items:
+        - "{{images}}"
+    - name: clean up
+      make:
+        chdir: "./{{item}}"
+        target: clean
+      with_items:
+        - "{{images}}"
