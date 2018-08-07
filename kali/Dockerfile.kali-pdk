@@ -1,0 +1,3 @@
+FROM vedwin/kali
+
+RUN wget "https://pm.puppet.com/cgi-bin/pdk_download.cgi?arch=amd64&dist=ubuntu&rel=14.04&ver=latest" && dpkg -i "pdk_1.6.1.0-1trusty_amd64.deb"
