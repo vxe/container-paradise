@@ -21,6 +21,7 @@ RUN emacs --version
 RUN git clone https://github.com/vxe/home.git && rsync -avz --exclude '.git' /root/home/ /root
 RUN ansible-galaxy install -r /root/etc/ansible/requirements.yml
 RUN ansible-playbook -l localhost /root/etc/ansible/home-kali.yml --verbose
+RUN ansible-playbook -l localhost /root/etc/ansible/emacs.yml --verbose
 # RUN ansible-playbook -l localhost /host/etc/ansible/perl-locallib.yml --verbose
 # RUN ansible-playbook -l localhost /host/etc/ansible/virtualenvs.yml --verbose
 # RUN ansible-playbook -l localhost /host/etc/ansible/ruby-gems.yml --verbose
