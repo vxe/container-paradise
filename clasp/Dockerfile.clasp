@@ -12,7 +12,7 @@ RUN apt-get -y install libasound2 libatk1.0-0 libcairo-gobject2 libcairo2 libdbu
 RUN apt-get -y autoclean
 RUN pip install virtualenv 
 RUN cd /root; git clone https://github.com/vxe/home.git ; cd home ; ansible-playbook -l localhost etc/ansible/clasp.yml --verbose
-RUN cd /root/home ; ansible-playbook -l localhost etc/ansible/emacs.yml --verbose
+RUN cd /root/home ; ansible-playbook -l localhost etc/ansible/emacs-clasp.yml --verbose
 # RUN ansible-playbook -l localhost /host/etc/ansible/perl-locallib.yml --verbose
 # RUN ansible-playbook -l localhost /host/etc/ansible/virtualenvs.yml --verbose
 # RUN ansible-playbook -l localhost /host/etc/ansible/ruby-gems.yml --verbose
