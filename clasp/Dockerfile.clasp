@@ -16,14 +16,14 @@ RUN cd /root; git clone https://github.com/vxe/home.git ; cd home ; ansible-play
 RUN cd /root/home ; ansible-playbook -l localhost etc/ansible/emacs-clasp.yml --verbose
 # RUN ansible-playbook -l localhost /host/etc/ansible/perl-locallib.yml --verbose
 # RUN ansible-playbook -l localhost /host/etc/ansible/virtualenvs.yml --verbose
-# RUN ansible-playbook -l localhost /host/etc/ansible/ruby-gems.yml --verbose
+ls# RUN ansible-playbook -l localhost /host/etc/ansible/ruby-gems.yml --verbose
 # RUN ansible-playbook -l localhost /host/etc/ansible/slow-lang.yml --verbose
 # RUN rm -rf /root/.emacs.d/ && rsync --exclude .git --exclude var --exclude elpa -avz /host/ /root  && emacs -nw --batch -l ~/.emacs.d/init.el --eval="(+ 2 3)" 
 RUN rsync --exclude .git --exclude var --exclude elpa -avz /root/home/ /home/app  && emacs -nw --batch -l /home/app/.emacs.d/init.el --eval="(+ 2 3)"
 RUN /home/app/clasp/bin/clasp --eval "(progn (load \"/home/app/.emacs.d/lib/slime/swank-loader.lisp\" :verbose t) (funcall (read-from-string \"swank-loader:init\")) (funcall (read-from-string \"swank:start-server\") \"/tmp/slime.24\"))"
 RUN cd /home/app/clasp/bin; curl -O https://beta.quicklisp.org/quicklisp.lisp
-RUN /home/app/clasp/bin/clasp --load quicklisp.lisp --eval "(quicklisp-quickstart:install)"
-RUN /home/app/clasp/bin/clasp --load quicklisp.lisp --eval "(ql:add-to-init-file)"
+RUN /home/app/clasp/bin/cclasp-boehm --load quicklisp.lisp --eval "(quicklisp-quickstart:install)"
+RUN /home/app/clasp/bin/cclasp-boehm --load quicklisp.lisp --eval "(ql:add-to-init-file)"
 RUN cd /home/app/.emacs.d; mkdir -p opt; cd opt; git clone --recursive https://github.com/Andersbakken/rtags.git
 RUN apt-get -y install libclang-6.0-dev
 RUN cd /home/app/.emacs.d/opt/rtags; cmake -DLIBCLANG_LLVM_CONFIG_EXECUTABLE=/usr/bin/llvm-config-6.0 -DCMAKE_EXPORT_COMPILE_COMMANDS=1 . ; make ; make install
