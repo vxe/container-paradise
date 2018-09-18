@@ -11,9 +11,11 @@ RUN apt-get -y install libasound2 libatk1.0-0 libcairo-gobject2 libcairo2 libdbu
 RUN apt-get -y autoclean
 RUN pip install virtualenv 
 RUN cd /root; git clone https://github.com/vxe/home.git ; cd home ; ansible-playbook -l localhost etc/ansible/clasp.yml --verbose
+RUN cd /root/home/.emacs.d/lib; git clone https://github.com/slime/slime.git
 RUN cd /root/home ; ansible-playbook -l localhost etc/ansible/emacs-clasp.yml --verbose
 RUN rsync --exclude .git --exclude var --exclude elpa -avz /root/home/ /home/app  && emacs -nw --batch -l /home/app/.emacs.d/init.el --eval="(+ 2 3)"
-RUN /home/app/clasp/bin/clasp --eval "(progn (load \"/root/.emacs.d/lib/slime/swank-loader.lisp\" :verbose t) (funcall (read-from-string \"swank-loader:init\")) (funcall (read-from-string \"swank:start-server\") \"/tmp/slime.24\"))"
+RUN 
+RUN /home/app/clasp/bin/clasp --eval "(progn (load \"/home/app/.emacs.d/lib/slime/swank-loader.lisp\" :verbose t) (funcall (read-from-string \"swank-loader:init\")) (funcall (read-from-string \"swank:start-server\") \"/tmp/slime.24\"))"
 RUN cd /home/app/clasp/bin; curl -O https://beta.quicklisp.org/quicklisp.lisp
 RUN /home/app/clasp/bin/cclasp-boehm --load quicklisp.lisp --eval "(quicklisp-quickstart:install)"
 RUN /home/app/clasp/bin/cclasp-boehm --load quicklisp.lisp --eval "(ql:add-to-init-file)"
